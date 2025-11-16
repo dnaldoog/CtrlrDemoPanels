@@ -43,13 +43,13 @@
        ctrlrMenuBarHighlightedTextColour="ffffffff" ctrlrMenuBarHighlightColour="ff4364ff"
        ctrlrMenuBarFont="&lt;Sans-Serif&gt;;13;0;0;0;0;1;3" ctrlrUseEditorWrapper="0"
        deviceCapIdentity="0" deviceCapFirmware="0" deviceCapEditBuffer="0"
-       deviceCapBank="0" deviceCapProgram="0" deviceCapAbout="0" panelIndex="0"
+       deviceCapBank="0" deviceCapProgram="0" deviceCapAbout="0" panelIndex="1"
        panelIsDirty="0" uiPanelModulatorListViewTree="0">
   <uiWindowManager>
     <uiChildWindow uiChildWindowName="MIDILibrary" uiChildWindowState="950 96 800 500">
       <uiChildWindowContentState/>
     </uiChildWindow>
-    <uiChildWindow uiChildWindowName="LuaMethodEditor" uiChildWindowState="423 149 1474 699">
+    <uiChildWindow uiChildWindowName="LuaMethodEditor" uiChildWindowState="522 156 1474 839">
       <uiChildWindowContentState luaMethodEditor="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#13;&#10;&#13;&#10;&lt;OPEN id=&quot;LUA&quot; scrollPos=&quot;0&quot;&gt;&#13;&#10;  &lt;SELECTED id=&quot;/LUA/midiRequest&quot;/&gt;&#13;&#10;&lt;/OPEN&gt;&#13;&#10;;264b9c2ded694127b02d7b24b227027f:137a4f18b4bf4e9fbaebfb55ca38a788:da7367ab5c40df7b81236ed3d5c65e43"/>
     </uiChildWindow>
     <uiChildWindow uiChildWindowName="Mutator" uiChildWindowState="560 276 800 500">
@@ -87,17 +87,17 @@
       <luaMethod luaMethodName="midiRequest" luaMethodCode="--&#13;-- Initialize a conversation with the MIDI device to get some MIDI data from it (request data).&#13;--&#13;-- @itemToGet - a ValueTree object that is requested, this is the selected item in the MIDI LibraryApplication&#13;-- @request   - a CtrlrMIDILibraryRequest object that shoule be modified by the method to complete the request&#13;midiRequest = function(itemToGet, request)&#13;&#10;&#9;console (CtrlrMIDILibrary.requestToString (request))&#13;&#10;&#9;request.errorMessage = &quot;\nUnder development&quot;&#13;end"
                  luaMethodLinkedProperty="luaMidiLibraryRequest" luaMethodSource="0"
                  uuid="da7367ab5c40df7b81236ed3d5c65e43" luaMethodValid="1"/>
-      <luaMethod luaMethodName="midiReceived" luaMethodCode="--&#10;-- Called when a panel receives a midi message (does not need to match any modulator mask)&#10;-- @midi   CtrlrMidiMessage object&#10;--&#10;&#10;midiReceived = function(--[[ CtrlrMidiMessage --]] midi)&#13;&#10;&#9;--panel:setModulatorValuesFromData(midi:getData(), &quot;modulatorCustomIndex&quot;, CtrlrPanel.EncodeNormal, -1, 1, false)&#13;&#10;&#9;panel:setModulatorValuesFromData(midi:getData(), &quot;modulatorCustomIndex&quot;, CtrlrPanel.EncodeSignedNibbleMsbFirst, -4, 2, false)&#13;&#10;&#10;end"
+      <luaMethod luaMethodName="midiReceived" luaMethodCode="--&#10;-- Called when a panel receives a midi message (does not need to match any modulator mask)&#10;-- @midi   CtrlrMidiMessage object&#10;--&#10;&#10;midiReceived = function(--[[ CtrlrMidiMessage --]] midi)&#13;&#10;&#9;panel:setModulatorValuesFromData(midi:getData(), &quot;modulatorCustomIndex&quot;, CtrlrPanel.EncodeNormal,-5, 1, false)&#13;&#10;&#9;--panel:setModulatorValuesFromData(midi:getData(), &quot;modulatorCustomIndex&quot;, CtrlrPanel.EncodeSignedNibbleMsbFirst, -4, 2, false)&#13;&#10;&#10;end"
                  luaMethodLinkedProperty="luaPanelMidiReceived" luaMethodSource="0"
                  uuid="264b9c2ded694127b02d7b24b227027f" luaMethodValid="1"/>
-      <luaMethod luaMethodName="sendMidi" luaMethodCode="sendMidi = function(comp, event)&#13;&#10;    -- Debug: check all modulators&#13;&#10;    console(&quot;=== Debug Info ===&quot;)&#13;&#10;    for i=0, panel:getNumModulators()-1 do&#13;&#10;        local mod = panel:getModulatorByIndex(i)&#13;&#10;        local idx = mod:getProperty(&quot;modulatorCustomIndex&quot;)&#13;&#10;        local val = mod:getModulatorValue()&#13;&#10;        console(string.format(&quot;Mod[%d]: name=%s, customIndex=%s, value=%d&quot;, &#13;&#10;            i, L(mod:getName()), tostring(idx), val))&#13;&#10;    end&#13;&#10;    &#13;&#10;    local header=&quot;F0 41 00 00 11&quot;&#13;&#10;    local eox=&quot;7e F7&quot;&#13;&#10;    local data = panel:getModulatorValuesAsData(&quot;modulatorCustomIndex&quot;, CtrlrPanel.EncodeLSBFirst, 2, true) &#13;&#10;    --local data = panel:getModulatorValuesAsData(&quot;modulatorCustomIndex&quot;, CtrlrPanel.EncodeNormal, 1, false) &#13;&#10;    &#13;&#10;    console(string.format(&quot;Data size: %d bytes&quot;, data:getSize()))&#13;&#10;    console(string.format(&quot;Data hex: %s&quot;, data:toHexString(1)))&#13;&#10;    &#13;&#10;    local message=string.format(&quot;%s %s %s&quot;,header,data:toHexString(1),eox)&#13;&#10;    panel:sendMidiMessageNow(CtrlrMidiMessage(message))&#13;&#10;    panel:getLabelComponent(&quot;SendMidi&quot;):setText(message:upper())&#13;&#10;end"
+      <luaMethod luaMethodName="sendMidi" luaMethodCode="sendMidi = function(comp, event)&#13;&#10;    -- Debug: check all modulators&#13;&#10;    console(&quot;=== Debug Info ===&quot;)&#13;&#10;    for i=0, panel:getNumModulators()-1 do&#13;&#10;        local mod = panel:getModulatorByIndex(i)&#13;&#10;        local idx = mod:getProperty(&quot;modulatorCustomIndex&quot;)&#13;&#10;        local val = mod:getModulatorValue()&#13;&#10;        console(string.format(&quot;Mod[%d]: name=%s, customIndex=%s, value=%d&quot;, &#13;&#10;            i, L(mod:getName()), tostring(idx), val))&#13;&#10;    end&#13;&#10;    &#13;&#10;    local header=&quot;F0 41 00 00 11&quot;&#13;&#10;    local eox=&quot;7e F7&quot;&#13;&#10;    --local data = panel:getModulatorValuesAsData(&quot;modulatorCustomIndex&quot;, CtrlrPanel.EncodeLSBFirst, 2, true) &#13;&#10;    local data = panel:getModulatorValuesAsData(&quot;modulatorCustomIndex&quot;, CtrlrPanel.EncodeNormal, 1, false)   &#13;&#10;    console(string.format(&quot;Data size: %d bytes&quot;, data:getSize()))&#13;&#10;    console(string.format(&quot;Data hex: %s&quot;, data:toHexString(1)))&#13;&#10;    &#13;&#10;    local message=string.format(&quot;%s %s %s&quot;,header,data:toHexString(1),eox)&#13;&#10;    panel:sendMidiMessageNow(CtrlrMidiMessage(message))&#13;&#10;    panel:getLabelComponent(&quot;SendMidi&quot;):setText(message:upper())&#13;&#10;end"
                  luaMethodLinkedProperty="componentLuaMouseDown" luaMethodSource="0"
                  uuid="137a4f18b4bf4e9fbaebfb55ca38a788" luaMethodValid="1"/>
     </luaManagerMethods>
   </luaManager>
   <panelResources/>
   <uiPanelEditor uiPanelCanvasRectangle="0 0 543 746" name="DEMO - Data dump utilities"
-                 uiPanelEditMode="1" uiViewPortWidth="1918" uiViewPortHeight="960"
+                 uiPanelEditMode="0" uiViewPortWidth="1918" uiViewPortHeight="960"
                  uiPanelLock="1" uiPanelDisabledOnEdit="0" uiPanelMenuBarVisible="1"
                  uiPanelMenuBarHideOnExport="0" uiPanelProgramsMenuHideOnExport="0"
                  uiPanelMidiControllerMenuHideOnExport="0" uiPanelMidiThruMenuHideOnExport="0"
@@ -132,7 +132,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="" name="modulator-1" modulatorMin="0.0"
-             modulatorMax="255.0" modulatorValue="0.0">
+             modulatorMax="255.0" modulatorValue="22.0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.0" midiMessageCtrlrValue="0" midiMessageMultiList=""
           midiMessageSysExFormula=""/>
@@ -183,7 +183,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="1" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="" name="modulator-2" modulatorMin="0.0"
-             modulatorMax="50.0" modulatorValue="0.0">
+             modulatorMax="50.0" modulatorValue="21.0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.0" midiMessageCtrlrValue="0" midiMessageMultiList=""
           midiMessageSysExFormula=""/>
@@ -234,7 +234,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="2" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="" name="modulator-3" modulatorMin="0.0"
-             modulatorMax="127.0" modulatorValue="0.0">
+             modulatorMax="127.0" modulatorValue="10.0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.0" midiMessageCtrlrValue="0" midiMessageMultiList=""
           midiMessageSysExFormula=""/>
@@ -285,7 +285,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="3" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="" name="modulator-4" modulatorMin="0.0"
-             modulatorMax="200.0" modulatorValue="0.0">
+             modulatorMax="200.0" modulatorValue="22.0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.0" midiMessageCtrlrValue="0" midiMessageMultiList=""
           midiMessageSysExFormula=""/>
@@ -336,7 +336,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="4" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="" name="control 01" modulatorMin="0.0"
-             modulatorMax="255.0" modulatorValue="-124.0">
+             modulatorMax="255.0" modulatorValue="18.0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.0" midiMessageCtrlrValue="0" midiMessageMultiList=""
           midiMessageSysExFormula=""/>
@@ -387,7 +387,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="5" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="" name="control 02" modulatorMin="0.0"
-             modulatorMax="255.0" modulatorValue="0.0">
+             modulatorMax="255.0" modulatorValue="23.0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.0" midiMessageCtrlrValue="0" midiMessageMultiList=""
           midiMessageSysExFormula=""/>
@@ -438,7 +438,7 @@
              modulatorLinkedToComponent="0" modulatorBaseValue="0" modulatorCustomIndex="6"
              modulatorCustomName="" modulatorCustomIndexGroup="0" modulatorCustomNameGroup=""
              modulatorVstNameFormat="%n" luaModulatorValueChange="" name="control 03"
-             modulatorMin="0.0" modulatorMax="255.0" modulatorValue="-64.0">
+             modulatorMin="0.0" modulatorMax="255.0" modulatorValue="127.0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.0" midiMessageCtrlrValue="0" midiMessageMultiList=""
           midiMessageSysExFormula=""/>
@@ -489,7 +489,7 @@
              modulatorLinkedToComponent="0" modulatorBaseValue="0" modulatorCustomIndex="7"
              modulatorCustomName="" modulatorCustomIndexGroup="0" modulatorCustomNameGroup=""
              modulatorVstNameFormat="%n" luaModulatorValueChange="" name="control 04"
-             modulatorMin="0.0" modulatorMax="255.0" modulatorValue="0.0">
+             modulatorMin="0.0" modulatorMax="255.0" modulatorValue="16.0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.0" midiMessageCtrlrValue="0" midiMessageMultiList=""
           midiMessageSysExFormula=""/>
@@ -540,7 +540,7 @@
              modulatorLinkedToComponent="0" modulatorBaseValue="0" modulatorCustomIndex="8"
              modulatorCustomName="" modulatorCustomIndexGroup="0" modulatorCustomNameGroup=""
              modulatorVstNameFormat="%n" luaModulatorValueChange="" name="control 05"
-             modulatorMin="0.0" modulatorMax="255.0" modulatorValue="0.0">
+             modulatorMin="0.0" modulatorMax="255.0" modulatorValue="85.0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.0" midiMessageCtrlrValue="0" midiMessageMultiList=""
           midiMessageSysExFormula=""/>
@@ -591,7 +591,7 @@
              modulatorLinkedToComponent="0" modulatorBaseValue="0" modulatorCustomIndex="9"
              modulatorCustomName="" modulatorCustomIndexGroup="0" modulatorCustomNameGroup=""
              modulatorVstNameFormat="%n" luaModulatorValueChange="" name="control 06"
-             modulatorMin="0.0" modulatorMax="255.0" modulatorValue="-80.0">
+             modulatorMin="0.0" modulatorMax="255.0" modulatorValue="22.0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.0" midiMessageCtrlrValue="0" midiMessageMultiList=""
           midiMessageSysExFormula=""/>
@@ -642,7 +642,7 @@
              modulatorLinkedToComponent="0" modulatorBaseValue="0" modulatorCustomIndex="10"
              modulatorCustomName="" modulatorCustomIndexGroup="0" modulatorCustomNameGroup=""
              modulatorVstNameFormat="%n" luaModulatorValueChange="" name="control 07"
-             modulatorMin="0.0" modulatorMax="255.0" modulatorValue="0.0">
+             modulatorMin="0.0" modulatorMax="255.0" modulatorValue="26.0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.0" midiMessageCtrlrValue="0" midiMessageMultiList=""
           midiMessageSysExFormula=""/>
@@ -693,7 +693,7 @@
              modulatorLinkedToComponent="0" modulatorBaseValue="0" modulatorCustomIndex="11"
              modulatorCustomName="" modulatorCustomIndexGroup="0" modulatorCustomNameGroup=""
              modulatorVstNameFormat="%n" luaModulatorValueChange="" name="control 08"
-             modulatorMin="0.0" modulatorMax="255.0" modulatorValue="0.0">
+             modulatorMin="0.0" modulatorMax="255.0" modulatorValue="19.0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.0" midiMessageCtrlrValue="0" midiMessageMultiList=""
           midiMessageSysExFormula=""/>
@@ -750,13 +750,13 @@
                componentLuaMouseDrag="-- None" componentLuaMouseDoubleClick="-- None"
                componentLuaMouseEnter="-- None" componentLuaMouseExit="-- None"
                uiLabelBgColour="0" uiLabelTextColour="ff000000" uiLabelOutline="0"
-               uiLabelOutlineColour="0" uiLabelJustification="centred" uiLabelFitFont="0"
-               uiLabelFont="&lt;Sans-Serif&gt;;14;0;0;0;0;1;3" uiLabelText="Receive SYSEX F0 43 22 00 44 F7&#10;to start at 43 (67) enter -1 in third parameter goes to modulatorCustomIndex 0&#10;&#9;panel:setModulatorValuesFromData(midi:getData(), &quot;modulatorCustomIndex&quot;, CtrlrPanel.EncodeNormal, -1, 1, false)&#10;&#10;&#10;"
+               uiLabelOutlineColour="0" uiLabelJustification="left" uiLabelFitFont="0"
+               uiLabelFont="&lt;Sans-Serif&gt;;14;0;0;0;0;1;3" uiLabelText="RECEIVE SYSEX and ASSIGN&#10;If header is of size 5 bytes, then set third argument to -5&#10;Panel:setModulatorValuesFromData(midi:getData(),&quot;nameOfCustomField&quot;,-5,1 (byte per value), false = not mapped data)"
                uiLabelDisplaysAllValues="0" uiLabelDisplayFormat="%n(%N) = %v(%h)"
                uiLabelInputHighlightTextColour="0xffffffff" uiLabelInputHighlightColour="0xff0000ff"
                uiLabelEditOnSingleClick="0" uiLabelEditOnDoubleClick="0" uiLabelEditFocusDiscardsChanges="1"
                uiLabelInputAllowedChars="" uiLabelInputMaxLength="1024.0" uiLabelChangedCbk="-- None"
-               uiType="uiLabel" componentRectangle="8 312 509 118" componentLayerUid="ce83c9f16d000000ccccccccd8e10b09"/>
+               uiType="uiLabel" componentRectangle="8 312 509 82" componentLayerUid="ce83c9f16d000000ccccccccd8e10b09"/>
   </modulator>
   <modulator modulatorCustomIndex="-1" modulatorCustomIndexGroup="0" modulatorIsStatic="1"
              name="modulator-9" modulatorVstExported="0" modulatorValue="0.0">
@@ -817,7 +817,7 @@
              modulatorLinkedToComponent="0" modulatorBaseValue="0" modulatorCustomIndex="-1"
              modulatorCustomName="" modulatorCustomIndexGroup="0" modulatorCustomNameGroup=""
              modulatorVstNameFormat="%n" luaModulatorValueChange="-- None"
-             name="modulator-12" modulatorMin="0" modulatorMax="1.0" modulatorValue="1.0">
+             name="modulator-12" modulatorMin="0" modulatorMax="1.0" modulatorValue="0.0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.0" midiMessageCtrlrValue="0" midiMessageMultiList=""
           midiMessageSysExFormula=""/>
@@ -866,11 +866,12 @@
                componentLuaMouseEnter="-- None" componentLuaMouseExit="-- None"
                uiLabelBgColour="0" uiLabelTextColour="ff000000" uiLabelOutline="0"
                uiLabelOutlineColour="0" uiLabelJustification="centred" uiLabelFitFont="0"
-               uiLabelFont="&lt;Sans-Serif&gt;;14;0;0;0;0;1;3" uiLabelText="F0 41 00 00 11 24 00 24 00 24 00 24 00 24 00 24 00 24 00 24 00 24 00 24 00 24 00 24 00 7E F7"
+               uiLabelFont="&lt;Sans-Serif&gt;;14;0;0;0;0;1;3" uiLabelText="F0 41 00 00 11 16 15 0A 16 12 17 23 10 55 47 1A 81 7E F7"
                uiLabelDisplaysAllValues="0" uiLabelDisplayFormat="%n(%N) = %v(%h)"
                uiLabelInputHighlightTextColour="0xffffffff" uiLabelInputHighlightColour="0xff0000ff"
                uiLabelEditOnSingleClick="1" uiLabelEditOnDoubleClick="0" uiLabelEditFocusDiscardsChanges="1"
                uiLabelInputAllowedChars="" uiLabelInputMaxLength="1024.0" uiLabelChangedCbk="-- None"
                uiType="uiLabel" componentRectangle="32 680 496 46" componentLayerUid="ce83c9f16d000000ccccccccd8e10b09"/>
   </modulator>
+  <panelCustomData/>
 </panel>
