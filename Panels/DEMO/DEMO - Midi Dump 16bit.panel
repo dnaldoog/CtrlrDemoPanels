@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<panel name="DEMO - Midi Dump" panelShowDialogs="1" panelMessageTime="2000.0"
+<panel name="DEMO - Midi Dump 16bit" panelShowDialogs="1" panelMessageTime="2000.0"
        panelAuthorName="dnaldoog" panelAuthorEmail="zan642@gmail.comce"
        panelAuthorDonateUrl="" panelAuthorUrl="" panelAuthorDesc=""
        panelVersionMajor="1" panelVersionMinor="0" panelVersionName=""
@@ -90,7 +90,7 @@
     </luaManagerMethods>
   </luaManager>
   <panelResources/>
-  <uiPanelEditor uiPanelCanvasRectangle="0 0 600 400" name="DEMO - Midi Dump"
+  <uiPanelEditor uiPanelCanvasRectangle="0 0 600 400" name="DEMO - Midi Dump 16bit"
                  uiPanelEditMode="0" uiViewPortWidth="1918" uiViewPortHeight="960"
                  uiPanelLock="0" uiPanelDisabledOnEdit="0" uiPanelMenuBarVisible="1"
                  uiPanelMenuBarHideOnExport="0" uiPanelProgramsMenuHideOnExport="0"
