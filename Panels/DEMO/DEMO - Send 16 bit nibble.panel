@@ -24,12 +24,12 @@
        luaPanelMessageHandler="-- None" luaPanelModulatorValueChanged="-- None"
        luaPanelSaveState="-- None" luaPanelRestoreState="-- None" luaPanelMidiSnapshotPost="-- None"
        luaPanelMidiSnapshotPre="-- None" luaAudioProcessBlock="-- None"
-       luaPanelOSCReceived="-- None" panelFilePath="C:\Users\zan64\Documents\CtrlrPanel.panel"
-       panelLastSaveDir="" panelUID="8.Y3SQggkzjPE" panelInstanceUID="Jcrg"
-       panelInstanceManufacturerID="RYwT" panelModulatorListColumns="-- None"
-       panelModulatorListCsvDelimiter="," panelModulatorListXmlRoot="ctrlrModulatorList"
-       panelModulatorListXmlModulator="ctrlrModulator" panelModulatorListSortOption="1"
-       panelGlobalVariables="-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1"
+       luaPanelOSCReceived="-- None" panelFilePath="C:\Users\zan64\Documents\CtrlrDemoPanels\Panels\DEMO\DEMO - Send 16 bit nibble.panel"
+       panelLastSaveDir="C:\Users\zan64\Documents\CtrlrDemoPanels\Panels\DEMO"
+       panelUID="8.Y3SQggkzjPE" panelInstanceUID="Jcrg" panelInstanceManufacturerID="RYwT"
+       panelModulatorListColumns="-- None" panelModulatorListCsvDelimiter=","
+       panelModulatorListXmlRoot="ctrlrModulatorList" panelModulatorListXmlModulator="ctrlrModulator"
+       panelModulatorListSortOption="1" panelGlobalVariables="-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1"
        panelResources="-- None" panelPropertyDisplayIDs="0" panelIndex="1"
        panelIsDirty="0">
   <uiWindowManager/>
@@ -152,7 +152,7 @@
                uiLabelInputHighlightColour="0xff0000ff" uiLabelEditOnSingleClick="0"
                uiLabelEditOnDoubleClick="0" uiLabelEditFocusDiscardsChanges="1"
                uiLabelInputAllowedChars="" uiLabelInputMaxLength="1024" uiLabelChangedCbk="-- None"
-               uiType="uiLabel" componentRectangle="80 224 402 68" componentLayerUid="bd3899f18b070000f0b2942817020000"/>
+               uiType="uiLabel" componentRectangle="80 226 402 68" componentLayerUid="bd3899f18b070000f0b2942817020000"/>
   </modulator>
   <panelCustomData/>
   <modulator modulatorVstExported="1" vstIndex="466" modulatorIsStatic="0"
