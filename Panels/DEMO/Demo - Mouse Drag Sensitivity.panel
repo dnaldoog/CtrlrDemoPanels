@@ -23,12 +23,12 @@
        luaPanelMessageHandler="-- None" luaPanelModulatorValueChanged="-- None"
        luaPanelSaveState="-- None" luaPanelRestoreState="-- None" luaPanelMidiSnapshotPost="-- None"
        luaPanelMidiSnapshotPre="-- None" luaAudioProcessBlock="-- None"
-       luaPanelOSCReceived="-- None" panelFilePath="/home/john/Downloads/Demo - Mouse Drag Sensitivity.panel"
-       panelLastSaveDir="C:\Users\zan64\Documents\CtrlrDemoPanels\Panels\DEMO"
-       panelUID="8.CXa2J6FImwI" panelInstanceUID="Jcrg" panelInstanceManufacturerID="RYwT"
-       panelModulatorListColumns="-- None" panelModulatorListCsvDelimiter=","
-       panelModulatorListXmlRoot="ctrlrModulatorList" panelModulatorListXmlModulator="ctrlrModulator"
-       panelModulatorListSortOption="1.0" panelGlobalVariables="-1:0:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1"
+       luaPanelOSCReceived="-- None" panelFilePath="/home/john/CtrlrDemoPanels/Panels/DEMO/Demo - Mouse Drag Sensitivity.panel"
+       panelLastSaveDir="/home/john/CtrlrDemoPanels/Panels/DEMO" panelUID="8.CXa2J6FImwI"
+       panelInstanceUID="Jcrg" panelInstanceManufacturerID="RYwT" panelModulatorListColumns="-- None"
+       panelModulatorListCsvDelimiter="," panelModulatorListXmlRoot="ctrlrModulatorList"
+       panelModulatorListXmlModulator="ctrlrModulator" panelModulatorListSortOption="1.0"
+       panelGlobalVariables="-1:0:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1"
        panelResources="-- None" panelPropertyDisplayIDs="0" panelIndex="0"
        panelIsDirty="0">
   <uiWindowManager>
@@ -61,16 +61,16 @@
                    luaMethodLinkedProperty="" luaMethodSource="0" uuid="00000000000000000000000000000006"
                    luaMethodValid="1"/>
       </luaMethodGroup>
-      <luaMethod luaMethodName="setMouseDragSensitivity" luaMethodCode="--&#10;-- Called when a mouse is down on this component&#10;--&#10;&#10;setMouseDragSensitivity = function(--[[ CtrlrComponent --]] comp --[[ MouseEvent --]], event)&#10;    local setDefault = 250&#10;    local sensIncrease = panel:getModulatorByName(&quot;setSens&quot;):getModulatorValue()&#10;    if event.mods:isShiftDown() then&#10;        sensDetect.set = true&#10;        --[[&#10;setSliderSnapsToMousePosition(false): For linear sliders (horizontal or vertical), &#10;you typically need to call slider.setSliderSnapsToMousePosition(false); &#10;for setMouseDragSensitivity to work as expected.&#10;--]]&#10;        panel:getSlider(&quot;nameOfSlider&quot;):getOwnedSlider():setSliderSnapsToMousePosition(false)&#10;        --[[&#10;Higher values for distanceForFullScaleDrag result in less sensitivity &#10;(the user has to drag the mouse further for the same change in value), allowing for finer control.&#10;Lower values result in more sensitivity &#10;(the value changes quickly with little mouse movement). &#10;--]]&#10;        panel:getSlider(&quot;nameOfSlider&quot;):getOwnedSlider():setMouseDragSensitivity(sensIncrease)&#10;    end&#10;    local send = panel:getSlider(&quot;nameOfSlider&quot;):getOwnedSlider():getMouseDragSensitivity()&#10;    panel:getLabelComponent(&quot;debugL&quot;):setText(String(send))&#10;end&#10;"
+      <luaMethod luaMethodName="setMouseDragSensitivity" luaMethodCode="--&#10;-- Called when a mouse is down on this component&#10;--&#10;&#10;setMouseDragSensitivity = function(--[[ CtrlrComponent --]] comp --[[ MouseEvent --]], event)&#10;    local sensIncrease = panel:getModulatorByName(&quot;setSens&quot;):getModulatorValue()&#10;    if event.mods:isShiftDown() then&#10;        sensDetect.set = true&#10;        panel:getSlider(&quot;nameOfSlider&quot;):getOwnedSlider():setSliderSnapsToMousePosition(false)&#10;        panel:getSlider(&quot;nameOfSlider&quot;):getOwnedSlider():setMouseDragSensitivity(sensIncrease)&#10;    end&#10;    local send = panel:getSlider(&quot;nameOfSlider&quot;):getOwnedSlider():getMouseDragSensitivity()&#10;    panel:getLabelComponent(&quot;debugL&quot;):setText(String(send))&#10;end&#10;"
                  luaMethodLinkedProperty="componentLuaMouseDown" luaMethodSource="0"
                  uuid="ea7219c7cc294481a9c4e1d0b10fb7c6" luaMethodValid="1"/>
       <luaMethod luaMethodName="changeValue" luaMethodCode="--&#10;-- Called when a modulator value changes&#10;-- @mod   http://ctrlr.org/api/class_ctrlr_modulator.html&#10;-- @value    new numeric value of the modulator&#10;--&#10;changeValue = function(--[[ CtrlrModulator --]] mod, --[[ number --]] value, --[[ number --]] source)&#13;&#10;console(&quot; Do something here perhaps&quot;)&#10;end"
                  luaMethodLinkedProperty="luaModulatorValueChange" luaMethodSource="0"
                  uuid="230b93889c5a49caa7b70d7cf093cac6" luaMethodValid="1"/>
-      <luaMethod luaMethodName="resetMouseDragSensitivity" luaMethodCode="--&#10;-- Called when a mouse is up on this component&#10;--&#10;&#10;resetMouseDragSensitivity = function(--[[ CtrlrComponent --]] comp --[[ MouseEvent --]], event)&#10;    if sensDetect.set == false then&#10;        local setDefault = 250&#10;        panel:getSlider(&quot;nameOfSlider&quot;):getOwnedSlider():setMouseDragSensitivity(setDefault)&#10;        local send = panel:getSlider(&quot;nameOfSlider&quot;):getOwnedSlider():getMouseDragSensitivity()&#10;        panel:getLabelComponent(&quot;debugL&quot;):setText(String(send))&#10;    end&#10;&#10;    sensDetect.set = false&#10;end&#10;"
+      <luaMethod luaMethodName="resetMouseDragSensitivity" luaMethodCode="--&#10;-- Called when a mouse is up on this component&#10;--&#10;&#10;resetMouseDragSensitivity = function(--[[ CtrlrComponent --]] comp --[[ MouseEvent --]], event)&#10;    if sensDetect.set == false then&#10;        panel:getSlider(&quot;nameOfSlider&quot;):getOwnedSlider():setMouseDragSensitivity(sensDetect.default)&#10;        local send = panel:getSlider(&quot;nameOfSlider&quot;):getOwnedSlider():getMouseDragSensitivity()&#10;        panel:getLabelComponent(&quot;debugL&quot;):setText(String(send))&#10;    end&#10;&#10;    sensDetect.set = false&#10;end"
                  luaMethodLinkedProperty="componentLuaMouseUp" luaMethodSource="0"
                  uuid="91cd90d6a318466a9875a3668287f7a1" luaMethodValid="1"/>
-      <luaMethod luaMethodName="sensDetect" luaMethodCode="sensDetect=setmetatable({},{__index=function(t,k) t[k]=false return t[k] end}) -- global&#13;&#10;&#13;&#10;"
+      <luaMethod luaMethodName="sensDetect" luaMethodCode="sensDetect=setmetatable({default=250},{__index=function(t,k) t[k]=false return t[k] end}) -- global&#13;&#10;&#13;&#10;"
                  luaMethodLinkedProperty="" luaMethodSource="0" uuid="2cca3020f50b4ae48bc7e48e57a0261e"
                  luaMethodValid="1"/>
     </luaManagerMethods>
@@ -111,7 +111,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="-- None" name="nameOfSlider" modulatorMin="0.0"
-             modulatorMax="1500.0" modulatorValue="1054.0">
+             modulatorMax="1500.0" modulatorValue="0.0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.0" midiMessageCtrlrNumberSize="7" midiMessageMultiList=""
           midiMessageSysExFormula=""/>
@@ -231,7 +231,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="-- None" name="setSens" modulatorMin="250.0"
-             modulatorMax="2000.0" modulatorValue="2000.0">
+             modulatorMax="2000.0" modulatorValue="1200.0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1" midiMessageCtrlrNumberSize="7" midiMessageMultiList=""
           midiMessageSysExFormula=""/>
@@ -268,5 +268,4 @@
                uiSliderValueOutlineColour="0x00ffffff" uiType="uiSlider" componentRectangle="416 112 105 96"
                componentLayerUid="605404791c000000d05c41a7a9010000"/>
   </modulator>
-  <panelCustomData/>
 </panel>
