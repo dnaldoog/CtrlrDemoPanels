@@ -75,10 +75,10 @@
                    luaMethodLinkedProperty="" luaMethodSource="0" uuid="00000000000000000000000000000006"
                    luaMethodValid="1"/>
       </luaMethodGroup>
-      <luaMethod luaMethodName="init" luaMethodCode="--&#10;-- Called when the panel has finished loading&#10;--&#10;-- @type the type of instance being started, types available in the CtrlrPanel&#10;-- class as enum&#10;--&#10;-- InstanceSingle&#10;-- InstanceMulti&#10;-- InstanceSingleRestriced&#10;-- InstanceSingleEngine&#10;-- InstanceMultiEngine&#10;-- InstanceSingleRestrictedEngine&#10;--&#10;init = function(--[[ CtrlrInstance --]] type)&#13;&#10;    c = panel:getComboComponent(&quot;myCombo&quot;)&#13;&#10;    if c ~= nil then&#13;&#10;        combo = c:getOwnedComboBox()&#13;&#10;        local text = combo:getText()&#13;&#10;    end&#13;&#10;&#13;&#10;panel:getLabelComponent(&quot;debug&quot;):setText(&quot;&quot;)&#10;end"
+      <luaMethod luaMethodName="init" luaMethodCode="--&#10;-- Called when the panel has finished loading&#10;--&#10;-- @type the type of instance being started, types available in the CtrlrPanel&#10;-- class as enum&#10;--&#10;-- InstanceSingle&#10;-- InstanceMulti&#10;-- InstanceSingleRestriced&#10;-- InstanceSingleEngine&#10;-- InstanceMultiEngine&#10;-- InstanceSingleRestrictedEngine&#10;--&#10;init = function(--[[ CtrlrInstance --]] type)&#13;&#10;    c = panel:getComboComponent(&quot;myCombo&quot;)&#13;&#10;    if c ~= nil then&#13;&#10;        combo = c:getOwnedComboBox()&#13;&#10;        local text = combo:getText()&#13;&#10;    end&#13;&#10;c:setSelectedId(0,false)&#13;&#10;c:setText(&quot;choose from below&quot;,false)&#13;&#10;panel:getLabelComponent(&quot;debug&quot;):setText(&quot;&quot;)&#10;end"
                  luaMethodLinkedProperty="luaPanelLoaded" luaMethodSource="0"
                  uuid="60dc1612ea3c4cb8b0074b41cd488dfd" luaMethodValid="1"/>
-      <luaMethod luaMethodName="accessOwnedComboObject" luaMethodCode="--&#10;-- Called when a mouse is down on this component&#10;--&#10;-- get name of modulator with L(comp:getOwner():getName())&#10;-- get mouse event info from event parameter event.x, event.y, event.mods, etc.&#10;-- x coordinate = event.x&#10;-- y coordinate = event.y&#10;&#10;accessOwnedComboObject = function(--[[ CtrlrComponent --]] comp, --[[ MouseEvent --]] event)&#13;&#10;&#13;&#10;c:setSelectedId(0,false)&#13;&#10;c:setText(&quot;choose from below&quot;,false)&#13;&#10;console(&quot;comp=&quot;..comp:getOwner():getValue()..&quot;, combo=&quot;..combo:getSelectedId()..&quot;, c=&quot;..c:getSelectedId())&#13;&#10;end"
+      <luaMethod luaMethodName="accessOwnedComboObject" luaMethodCode="--&#10;-- Called when a mouse is down on this component&#10;--&#10;-- get name of modulator with L(comp:getOwner():getName())&#10;-- get mouse event info from event parameter event.x, event.y, event.mods, etc.&#10;-- x coordinate = event.x&#10;-- y coordinate = event.y&#10;&#10;accessOwnedComboObject = function(--[[ CtrlrComponent --]] comp, --[[ MouseEvent --]] event)&#13;&#10;&#13;&#10;&#13;&#10;console(&quot;comp=&quot;..comp:getOwner():getValue()..&quot;, combo=&quot;..combo:getSelectedId()..&quot;, c=&quot;..c:getSelectedId())&#13;&#10;&#13;&#10;init()&#13;&#10;end"
                  luaMethodLinkedProperty="componentLuaMouseDown" luaMethodSource="0"
                  uuid="26b30446da9243bfa07999d0b2f62e52" luaMethodValid="1"/>
       <luaMethod luaMethodName="setDebug" luaMethodCode="--&#10;-- Called when a modulator value changes&#10;-- @mod   http://ctrlr.org/api/class_ctrlr_modulator.html&#10;-- @value    new numeric value of the modulator&#10;--&#10;-- get name of modulator with L(mod:getName())&#10;--&#10;-- @source indicates what caused the change&#10;--&#10;-- * initial value = 0&#10;-- * changed by Host = 1&#10;-- * changed by MidiIn = 2&#10;-- * changed by MidiController = 3&#10;-- * changed by GUI = 4&#10;-- * changed by Lua = 5&#10;-- * changed by Program = 6&#10;-- * changed by Link = 7&#10;-- * change by Unknown = 8&#10;&#10;setDebug = function(--[[ CtrlrModulator --]] mod, --[[ number --]] value, --[[ number --]] source)&#13;&#10;local str=String(combo:getText())&#13;&#10;panel:getLabelComponent(&quot;debug&quot;):setText(str)&#10;end"
@@ -123,7 +123,7 @@
              modulatorLinkedToComponent="Modulator" modulatorBaseValue="0"
              modulatorCustomIndex="0" modulatorCustomName="" modulatorCustomIndexGroup="0"
              modulatorCustomNameGroup="" modulatorVstNameFormat="%n" luaModulatorValueChange="setDebug"
-             name="myCombo" modulatorMin="0" modulatorMax="4" modulatorValue="2.0">
+             name="myCombo" modulatorMin="0" modulatorMax="4" modulatorValue="4.0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.0" midiMessageCtrlrValue="0" midiMessageCtrlrNumberSize="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -163,7 +163,7 @@
              modulatorLinkedToComponent="Modulator" modulatorBaseValue="0"
              modulatorCustomIndex="0" modulatorCustomName="" modulatorCustomIndexGroup="0"
              modulatorCustomNameGroup="" modulatorVstNameFormat="%n" luaModulatorValueChange="-- None"
-             name="modulator-1" modulatorMin="0" modulatorMax="1.0" modulatorValue="1.0">
+             name="modulator-1" modulatorMin="0" modulatorMax="1.0" modulatorValue="0.0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.0" midiMessageCtrlrValue="0" midiMessageCtrlrNumberSize="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -207,7 +207,7 @@
                componentLuaMouseEnter="-- None" componentLuaMouseExit="-- None"
                uiLabelBgColour="0" uiLabelTextColour="ff000000" uiLabelOutline="0"
                uiLabelOutlineColour="0" uiLabelJustification="centred" uiLabelFitFont="0"
-               uiLabelFont="&lt;Sans-Serif&gt;;14;0;0;0;0;1;3" uiLabelText="vdf"
+               uiLabelFont="&lt;Sans-Serif&gt;;14;0;0;0;0;1;3" uiLabelText=""
                uiLabelDisplaysAllValues="0" uiLabelDisplayFormat="%n(%N) = %v(%h)"
                uiLabelInputHighlightTextColour="0xffffffff" uiLabelInputHighlightColour="0xff0000ff"
                uiLabelEditOnSingleClick="0" uiLabelEditOnDoubleClick="0" uiLabelEditFocusDiscardsChanges="1"
