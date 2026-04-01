@@ -49,7 +49,7 @@
                                  luaMethodEditorLineNumbersColour="ff000000" openSearchTabsState="1"
                                  luaMethodEditorAutoCompleteOpt="0"/>
     </uiChildWindow>
-    <uiChildWindow uiChildWindowName="LuaConsole" uiChildWindowState="934 544 800 500">
+    <uiChildWindow uiChildWindowName="LuaConsole" uiChildWindowState="524 400 800 500">
       <uiChildWindowContentState/>
     </uiChildWindow>
   </uiWindowManager>
@@ -87,16 +87,16 @@
     </luaManagerMethods>
   </luaManager>
   <panelResources/>
-  <uiPanelEditor uiPanelCanvasRectangle="0 0 600 400" name="DEMO - combo component"
+  <uiPanelEditor uiPanelCanvasRectangle="0 0 600 369" name="DEMO - combo component"
                  uiPanelEditMode="0" uiViewPortWidth="1918" uiViewPortHeight="960"
-                 uiPanelLock="0" uiPanelDisabledOnEdit="0" uiPanelMenuBarVisible="1"
+                 uiPanelLock="1" uiPanelDisabledOnEdit="0" uiPanelMenuBarVisible="1"
                  uiPanelMenuBarHideOnExport="0" uiPanelProgramsMenuHideOnExport="0"
                  uiPanelMidiControllerMenuHideOnExport="0" uiPanelMidiThruMenuHideOnExport="0"
                  uiPanelMidiChannelMenuHideOnExport="0" uiPanelViewPortSize="1337"
                  uiPanelPropertiesSize="573" uiViewPortResizable="1" uiViewPortShowScrollBars="1"
                  uiViewPortEnableResizeLimits="0" uiViewPortMinWidth="0" uiViewPortMinHeight="0"
                  uiViewPortMaxWidth="0" uiViewPortMaxHeight="0" uiViewPortEnableFixedAspectRatio="0"
-                 uiViewPortFixedAspectRatio="1.5" uiPanelZoom="1.0" uiPanelViewPortBackgroundColour="b2efefef"
+                 uiViewPortFixedAspectRatio="1.626" uiPanelZoom="1.0" uiPanelViewPortBackgroundColour="b2efefef"
                  uiPanelBackgroundColour="ffefefef" uiPanelBackgroundColour1="ffefefef"
                  uiPanelBackgroundColour2="ffc7c7c7" uiPanelBackgroundGradientType="0"
                  uiPanelImageResource="-- None" uiPanelImageAlpha="255.0" uiPanelImageLayout="64"
@@ -212,7 +212,7 @@
                uiLabelInputHighlightTextColour="0xffffffff" uiLabelInputHighlightColour="0xff0000ff"
                uiLabelEditOnSingleClick="0" uiLabelEditOnDoubleClick="0" uiLabelEditFocusDiscardsChanges="1"
                uiLabelInputAllowedChars="" uiLabelInputMaxLength="1024" uiLabelChangedCbk="-- None"
-               uiType="uiLabel" componentRectangle="168 242 223 57" componentLayerUid="fd7a91c40b0100001069ae0c6d020000"/>
+               uiType="uiLabel" componentRectangle="176 240 223 57" componentLayerUid="fd7a91c40b0100001069ae0c6d020000"/>
   </modulator>
   <panelCustomData/>
 </panel>
