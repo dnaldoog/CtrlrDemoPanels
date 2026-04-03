@@ -2,7 +2,7 @@
 
 <panel name="DEMO - dynamic popup" panelShowDialogs="1" panelMessageTime="2000"
        panelAuthorName="" panelAuthorEmail="" panelAuthorDonateUrl=""
-       panelAuthorUrl="" panelAuthorDesc="" panelVersionMajor="1" panelVersionMinor="0"
+       panelAuthorUrl="" panelAuthorDesc="" panelVersionMajor="2" panelVersionMinor="0"
        panelVersionName="" panelVendor="" panelDevice="" panelCertificateWinSelectPath=""
        panelCertificateWinPassCode="" panelPlugType="Instrument|Synth"
        panelExportPublicKey="" panelExportServerAuthURL="https://localhost:8000/auth/authenticate"
@@ -29,15 +29,24 @@
        panelModulatorListColumns="-- None" panelModulatorListCsvDelimiter=","
        panelModulatorListXmlRoot="ctrlrModulatorList" panelModulatorListXmlModulator="ctrlrModulator"
        panelModulatorListSortOption="1" panelGlobalVariables="-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1"
-       panelResources="-- None" panelPropertyDisplayIDs="0" panelIndex="0"
-       panelIsDirty="0">
+       panelResources="-- None" panelPropertyDisplayIDs="0" panelMidiInputFromHost="0"
+       panelMidiInputChannelHost="1" panelMidiOutputToHost="0" panelMidiOutputChannelHost="1"
+       panelMidiThruH2H="0" panelMidiThruH2HChannelize="0" panelMidiThruH2D="0"
+       panelMidiThruH2DChannelize="0" panelMidiThruD2H="0" panelMidiThruD2HChannelize="0"
+       ctrlrMenuItemBackgroundColour="ffffffff" ctrlrMenuItemTextColour="ff000000"
+       ctrlrMenuItemHighlightedTextColour="ffffffff" ctrlrMenuItemHighlightColour="ff4364ff"
+       ctrlrMenuItemFont="&lt;Sans-Serif&gt;;18;0;0;0;0;1;3" ctrlrMenuItemSeparatorColour="44000000"
+       ctrlrMenuItemHeaderColour="ff000000" ctrlrMenuBarBackgroundColour1="fff7f7f7"
+       ctrlrMenuBarBackgroundColour2="ffcccccc" ctrlrMenuBarTextColour="ff000000"
+       ctrlrMenuBarHighlightedTextColour="ffffffff" ctrlrMenuBarHighlightColour="ff4364ff"
+       ctrlrMenuBarFont="&lt;Sans-Serif&gt;;18;0;0;0;0;1;3" ctrlrUseEditorWrapper="0"
+       panelIndex="0" panelIsDirty="0">
   <uiWindowManager>
-    <uiChildWindow uiChildWindowName="LuaMethodEditor" uiChildWindowState="528 192 1046 680">
-      <uiChildWindowContentState luaMethodEditor="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#13;&#10;&#13;&#10;&lt;OPEN id=&quot;LUA&quot; scrollPos=&quot;0&quot;&gt;&#13;&#10;  &lt;SELECTED id=&quot;/LUA/init&quot;/&gt;&#13;&#10;&lt;/OPEN&gt;&#13;&#10;;f51433522e8842c7956c2efc0cd1b231:4b3ac27a08c74846bc88146d92ebdb2a:553c716530c445bbac4435ce8718a2cd"
-                                 luaMethodEditorAutoComplete="0" luaMethodEditorAutoCompleteOpt="0"
-                                 luaMethodEditorFont="&lt;Monospaced&gt;;14;0;0;0;0;1;3" luaMethodEditorBgColour="ffffffff"
-                                 luaMethodEditorLineNumbersBgColour="ff6495ed" luaMethodEditorLineNumbersColour="ff000000"
-                                 openSearchTabsState="1"/>
+    <uiChildWindow uiChildWindowName="LuaMethodEditor" uiChildWindowState="fs 8 31 800 500">
+      <uiChildWindowContentState openSearchTabsState="1" luaMethodEditorLineNumbersColour="ff000000"
+                                 luaMethodEditorLineNumbersBgColour="ff6495ed" luaMethodEditorBgColour="ffffffff"
+                                 luaMethodEditorFont="&lt;Monospaced&gt;;14;0;0;0;0;1;3" luaMethodEditorAutoCompleteOpt="0"
+                                 luaMethodEditorAutoComplete="0" luaMethodEditor="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#13;&#10;&#13;&#10;&lt;OPEN id=&quot;LUA&quot; scrollPos=&quot;0&quot;&gt;&#13;&#10;  &lt;SELECTED id=&quot;/LUA/init&quot;/&gt;&#13;&#10;&lt;/OPEN&gt;&#13;&#10;;f51433522e8842c7956c2efc0cd1b231:4b3ac27a08c74846bc88146d92ebdb2a:553c716530c445bbac4435ce8718a2cd"/>
     </uiChildWindow>
     <uiChildWindow uiChildWindowName="LuaConsole" uiChildWindowState="717 292 800 500">
       <uiChildWindowContentState/>
@@ -68,7 +77,7 @@
       <luaMethod luaMethodName="showPopup" luaMethodCode="--&#13;&#10;-- Called when a mouse is down on this component&#13;&#10;--&#13;&#10;-- get name of modulator with L(comp:getOwner():getName())&#13;&#10;-- get mouse event info from event parameter event.x, event.y, event.mods, etc.&#13;&#10;-- x coordinate = event.x&#13;&#10;-- y coordinate = event.y&#13;&#10;&#13;&#10;showPopup = function(--[[ CtrlrComponent --]] comp --[[ MouseEvent --]], event)&#13;&#10;    m = PopupMenu()&#13;&#10;    local current = setCurrent or 0&#13;&#10;    local t = myTgts&#13;&#10;    if t ~= nil then&#13;&#10;        for i, v in ipairs(t) do&#13;&#10;            if i == current then&#13;&#10;                m:addItem(i, v, true, true, Image())&#13;&#10;            else&#13;&#10;                m:addItem(i, v, true, false, Image()) -- remember last choice&#13;&#10;            end&#13;&#10;        end&#13;&#10;    end&#13;&#10;    ret = m:show(0, 0, 0, 0)&#13;&#10;    console(&quot;ret = &quot; .. ret)&#13;&#10;    if ret ~= 0 then&#13;&#10;       panel:getLabelComponent(&quot;debug&quot;):setText(myTgts[ret])&#13;&#10;        setCurrent = ret&#13;&#10;    end&#13;&#10;end&#13;&#10;"
                  luaMethodLinkedProperty="componentLuaMouseDown" luaMethodSource="0"
                  uuid="f51433522e8842c7956c2efc0cd1b231" luaMethodValid="1"/>
-      <luaMethod luaMethodName="init" luaMethodCode="--&#10;-- Called when the panel has finished loading&#10;--&#10;-- @type the type of instance being started, types available in the CtrlrPanel&#10;-- class as enum&#10;--&#10;-- InstanceSingle&#10;-- InstanceMulti&#10;-- InstanceSingleRestriced&#10;-- InstanceSingleEngine&#10;-- InstanceMultiEngine&#10;-- InstanceSingleRestrictedEngine&#10;--&#10;init = function(--[[ CtrlrInstance --]] type)&#13;&#10;&#13;&#10;    meta = {}&#13;&#10;    meta.group1 = {&quot;Delay 1&quot;, &quot;Delay 2&quot;, &quot;Feedback 1&quot;, &quot;Feedback 2&quot;, &quot;Low Rt&quot;}&#13;&#10;    meta.group2 = {&quot;Delay 2&quot;, &quot;Delay 3&quot;, &quot;Feedback 2&quot;, &quot;Feedback 3&quot;, &quot;Low Rt&quot;, &quot;High Rt&quot;}&#13;&#10;    meta.group3 = {&quot;Reverb 1&quot;, &quot;Hall&quot;, &quot;Plate&quot;, &quot;Small plate&quot;, &quot;stero delay&quot;}&#13;&#10;    meta.group4 = {&quot;Flanger&quot;, &quot;Phaser&quot;, &quot;Chorus&quot;, &quot;Exciter&quot;, &quot;Pitch&quot;}&#13;&#10;&#13;&#10;--[[ If you want a default set of values for uiCombo --]]&#13;&#10;myTgts=meta.group1 --setmetatable({},{__index=meta.group1})&#13;&#10;&#13;&#10;panel:getLabelComponent(&quot;debug&quot;):setText('---')&#13;&#10;        timer:setCallback(1, TimerCallback)&#13;&#10;        timer:startTimer(1, 300)&#10;end&#13;&#10;&#13;&#10;TimerCallback = function(timerId)&#13;&#10; &#13;&#10;    if timerId == 1 then&#13;&#10;        &#13;&#10;sets = panel:getComboComponent(&quot;sets&quot;)&#13;&#10;sets:setSelectedId(0,false)&#13;&#10;sets:setText(&quot;choose from below&quot;,false)&#13;&#10;&#13;&#10;        timer:stopTimer(timerId)&#13;&#10;end&#13;&#10;end&#13;&#10;"
+      <luaMethod luaMethodName="init" luaMethodCode="--&#13;&#10;-- Called when the panel has finished loading&#13;&#10;--&#13;&#10;-- @type the type of instance being started, types available in the CtrlrPanel&#13;&#10;-- class as enum&#13;&#10;--&#13;&#10;-- InstanceSingle&#13;&#10;-- InstanceMulti&#13;&#10;-- InstanceSingleRestriced&#13;&#10;-- InstanceSingleEngine&#13;&#10;-- InstanceMultiEngine&#13;&#10;-- InstanceSingleRestrictedEngine&#13;&#10;--&#13;&#10;init = function(--[[ CtrlrInstance --]] type)&#13;&#10;&#13;&#10;&#13;&#10;    local versionMajor = panel:getProperty(&quot;panelVersionMajor&quot;)&#13;&#10;    local versionMinor = panel:getProperty(&quot;panelVersionMinor&quot;)&#13;&#10;    local versionName = panel:getProperty(&quot;panelVersionName&quot;)&#13;&#10;    local version = string.format(&quot;Version: %d.%d.%s &quot;, versionMajor, versionMinor,versionName)&#13;&#10;    panel:getLabelComponent(&quot;Version&quot;):setText(version)&#13;&#10;&#13;&#10;    meta = {}&#13;&#10;    meta.group1 = {&quot;Delay 1&quot;, &quot;Delay 2&quot;, &quot;Feedback 1&quot;, &quot;Feedback 2&quot;, &quot;Low Rt&quot;}&#13;&#10;    meta.group2 = {&quot;Delay 2&quot;, &quot;Delay 3&quot;, &quot;Feedback 2&quot;, &quot;Feedback 3&quot;, &quot;Low Rt&quot;, &quot;High Rt&quot;}&#13;&#10;    meta.group3 = {&quot;Reverb 1&quot;, &quot;Hall&quot;, &quot;Plate&quot;, &quot;Small plate&quot;, &quot;stero delay&quot;}&#13;&#10;    meta.group4 = {&quot;Flanger&quot;, &quot;Phaser&quot;, &quot;Chorus&quot;, &quot;Exciter&quot;, &quot;Pitch&quot;}&#13;&#10;&#13;&#10;    --[[ If you want a default set of values for uiCombo --]]&#13;&#10;    myTgts = meta.group1 --setmetatable({},{__index=meta.group1})&#13;&#10;&#13;&#10;    panel:getLabelComponent(&quot;debug&quot;):setText(&quot;---&quot;)&#13;&#10;    timer:setCallback(1, TimerCallback)&#13;&#10;    timer:startTimer(1, 300)&#13;&#10;end&#13;&#10;&#13;&#10;TimerCallback = function(timerId) -- seem to need this for JUCE 8.0&#13;&#10;    if timerId == 1 then&#13;&#10;        sets = panel:getComboComponent(&quot;sets&quot;)&#13;&#10;        sets:setSelectedId(0, false)&#13;&#10;        sets:setText(&quot;choose from below&quot;, false)&#13;&#10;&#13;&#10;        timer:stopTimer(timerId)&#13;&#10;    end&#13;&#10;end&#13;&#10;"
                  luaMethodLinkedProperty="luaPanelLoaded" luaMethodSource="0"
                  uuid="553c716530c445bbac4435ce8718a2cd" luaMethodValid="1"/>
       <luaMethod luaMethodName="chooseSet" luaMethodCode="--&#13;&#10;-- Called when a modulator value changes&#13;&#10;-- @mod   http://ctrlr.org/api/class_ctrlr_modulator.html&#13;&#10;-- @value    new numeric value of the modulator&#13;&#10;--&#13;&#10;-- get name of modulator with L(mod:getName())&#13;&#10;--&#13;&#10;-- @source indicates what caused the change&#13;&#10;--&#13;&#10;-- * initial value = 0&#13;&#10;-- * changed by Host = 1&#13;&#10;-- * changed by MidiIn = 2&#13;&#10;-- * changed by MidiController = 3&#13;&#10;-- * changed by GUI = 4&#13;&#10;-- * changed by Lua = 5&#13;&#10;-- * changed by Program = 6&#13;&#10;-- * changed by Link = 7&#13;&#10;-- * change by Unknown = 8&#13;&#10;&#13;&#10;chooseSet = function(--[[ CtrlrModulator --]] mod --[[ number --]], value --[[ number --]], source)&#13;&#10;    local c = panel:getComboComponent(&quot;sets&quot;)&#13;&#10;    if c ~= nil then&#13;&#10;        combo = c:getOwnedComboBox()&#13;&#10;    end&#13;&#10;    myTgts = meta[combo:getText()]&#13;&#10;end&#13;&#10;"
@@ -97,7 +106,8 @@
                  uiPanelInvisibleComponentAlpha="0.5" uiPanelTooltipPlacement="2"
                  uiPanelTooltipFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;3" uiPanelTooltipColour="ff000000"
                  uiPanelTooltipBackgroundColour="ffffffff" uiPanelTooltipOutlineColour="ffdddddd"
-                 uiPanelTooltipCornerRound="1.0" uiPanelLegacyMode="0" uiPanelLookAndFeel="V4 Light">
+                 uiPanelTooltipCornerRound="1" uiPanelLegacyMode="0" uiPanelLookAndFeel="V4 Light"
+                 uiPanelWidth="400" uiPanelHeight="400">
     <uiPanelCanvasLayer uiPanelCanvasLayerName="New layer" uiPanelCanvasLayerUid="6d1930f17901000050df95aeba010000"
                         uiPanelCanvasLayerColour="0x000000" uiPanelCanvasLayerVisibility="1"
                         uiPanelCanvasLayerIndex="0"/>
@@ -136,8 +146,8 @@
                componentRectangle="122 56 88 64" uiButtonColourOn="ff42a2c8"
                uiButtonColourOff="ffffffff" uiButtonTextColourOn="ffffffff"
                uiButtonTextColourOff="ff000000" uiButtonConnectedLeft="0" uiButtonConnectedRight="0"
-               uiButtonConnectedTop="0" uiButtonConnectedBottom="0" uiType="uiButton"
-               componentLayerUid="6d1930f17901000050df95aeba010000"/>
+               uiButtonConnectedTop="0" uiButtonConnectedBottom="0" componentRadioGroupNotifyMidi="1"
+               uiType="uiButton" componentLayerUid="6d1930f17901000050df95aeba010000"/>
   </modulator>
   <modulator modulatorVstExported="1" vstIndex="11162" modulatorIsStatic="0"
              modulatorGlobalVariable="-1" modulatorMuteOnStart="0" modulatorMute="0"
@@ -176,8 +186,8 @@
                uiComboButtonColour="ffdddddd" uiComboBgColour="ffffffff" uiComboMenuBackgroundColour="ffffffff"
                uiComboMenuHighlightColour="66a9a9a9" uiComboMenuFontHighlightedColour="ffffffff"
                uiComboMenuBackgroundRibbed="0" uiComboButtonGradient="1" uiComboButtonGradientColour1="ffffffff"
-               uiComboButtonGradientColour2="ffd4d4d4" uiType="uiCombo" componentRectangle="66 152 206 40"
-               componentLayerUid="6d1930f17901000050df95aeba010000"/>
+               uiComboButtonGradientColour2="ffd4d4d4" componentRadioGroupNotifyMidi="1"
+               uiType="uiCombo" componentRectangle="66 152 206 40" componentLayerUid="6d1930f17901000050df95aeba010000"/>
   </modulator>
   <modulator modulatorCustomIndex="0" modulatorCustomIndexGroup="0" modulatorIsStatic="1"
              name="debug" modulatorVstExported="0" modulatorValue="0.0">
@@ -201,6 +211,32 @@
                uiLabelInputHighlightTextColour="0xffffffff" uiLabelInputHighlightColour="0xff0000ff"
                uiLabelEditOnSingleClick="0" uiLabelEditOnDoubleClick="0" uiLabelEditFocusDiscardsChanges="1"
                uiLabelInputAllowedChars="" uiLabelInputMaxLength="1024" uiLabelChangedCbk="-- None"
-               uiType="uiLabel" componentRectangle="56 208 224 73" componentLayerUid="6d1930f17901000050df95aeba010000"/>
+               componentRadioGroupNotifyMidi="1" uiType="uiLabel" componentRectangle="56 208 224 73"
+               componentLayerUid="6d1930f17901000050df95aeba010000"/>
+  </modulator>
+  <modulator modulatorCustomIndex="0" modulatorCustomIndexGroup="0" modulatorIsStatic="1"
+             name="Version" modulatorVstExported="0" modulatorValue="0.0">
+    <component componentVisibility="1" componentSentBack="0" componentMouseCursor="2"
+               componentDisabled="0" componentIsLocked="0" componentSnapSize="0"
+               componentGroupName="" componentGroupped="0" componentRadioGroupId="0"
+               componentVisibleName="modulator-2" componentLabelVisible="0"
+               componentLabelAlwaysOnTop="1" componentLabelPosition="top" componentLabelWidth="0"
+               componentLabelHeight="14" componentLabelJustification="centred"
+               componentLabelFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;3" componentLabelColour="ff000000"
+               componentEffect="0" componentEffectRadius="1" componentEffectColour="0xff000000"
+               componentEffectOffsetX="0" componentEffectOffsetY="0" componentExcludedFromLabelDisplay="0"
+               componentValueDecimalPlaces="0" componentLuaMouseMoved="-- None"
+               componentLuaMouseDown="-- None" componentLuaMouseUp="-- None"
+               componentLuaMouseDrag="-- None" componentLuaMouseDoubleClick="-- None"
+               componentLuaMouseEnter="-- None" componentLuaMouseExit="-- None"
+               uiLabelBgColour="0" uiLabelTextColour="ff9a9a9a" uiLabelOutline="0"
+               uiLabelOutlineColour="0" uiLabelJustification="centred" uiLabelFitFont="0"
+               uiLabelFont="&lt;Sans-Serif&gt;;14;0;0;0;0;1;3" uiLabelText="Version: 2.0. "
+               uiLabelDisplaysAllValues="0" uiLabelDisplayFormat="%n(%N) = %v(%h)"
+               uiLabelInputHighlightTextColour="0xffffffff" uiLabelInputHighlightColour="0xff0000ff"
+               uiLabelEditOnSingleClick="0" uiLabelEditOnDoubleClick="0" uiLabelEditFocusDiscardsChanges="1"
+               uiLabelInputAllowedChars="" uiLabelInputMaxLength="1024" uiLabelChangedCbk="-- None"
+               componentRadioGroupNotifyMidi="1" componentLayerUid="6d1930f17901000050df95aeba010000"
+               componentRectangle="8 8 88 24" uiType="uiLabel"/>
   </modulator>
 </panel>
