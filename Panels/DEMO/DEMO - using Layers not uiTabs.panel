@@ -93,16 +93,16 @@
                  uiPanelTooltipCornerRound="1.0" uiPanelLegacyMode="0" uiPanelLookAndFeel="V4 Light">
     <uiPanelCanvasLayer uiPanelCanvasLayerName="TABS" uiPanelCanvasLayerUid="649aa3edc2000000e0809d07a9010000"
                         uiPanelCanvasLayerColour="0x000000" uiPanelCanvasLayerVisibility="1"
-                        uiPanelCanvasLayerIndex="0" uiPanelCanvasLayerIsIsolated="1"/>
+                        uiPanelCanvasLayerIndex="0" uiPanelCanvasLayerIsIsolated="0"/>
     <uiPanelCanvasLayer uiPanelCanvasLayerName="LFO" uiPanelCanvasLayerUid="498f5a27c30000009057937cfe7f0000"
-                        uiPanelCanvasLayerColour="0x000000" uiPanelCanvasLayerVisibility="0"
+                        uiPanelCanvasLayerColour="0x000000" uiPanelCanvasLayerVisibility="1"
                         uiPanelCanvasLayerIndex="2" uiPanelCanvasLayerIsIsolated="0"/>
     <uiPanelCanvasLayer uiPanelCanvasLayerName="MAIN" uiPanelCanvasLayerUid="94d22c98c30000009057937cfe7f0000"
-                        uiPanelCanvasLayerColour="0x000000" uiPanelCanvasLayerVisibility="1"
-                        uiPanelCanvasLayerIndex="3" uiPanelCanvasLayerIsIsolated="0"/>
+                        uiPanelCanvasLayerColour="0x000000" uiPanelCanvasLayerVisibility="0"
+                        uiPanelCanvasLayerIndex="4" uiPanelCanvasLayerIsIsolated="0"/>
     <uiPanelCanvasLayer uiPanelCanvasLayerName="VCF" uiPanelCanvasLayerUid="db1c20ebc30000009057937cfe7f0000"
                         uiPanelCanvasLayerColour="0x000000" uiPanelCanvasLayerVisibility="1"
-                        uiPanelCanvasLayerIndex="4" uiPanelCanvasLayerIsIsolated="0"/>
+                        uiPanelCanvasLayerIndex="3" uiPanelCanvasLayerIsIsolated="0"/>
     <uiPanelCanvasLayer uiPanelCanvasLayerName="VCA" uiPanelCanvasLayerUid="cddefdefc30000009057937cfe7f0000"
                         uiPanelCanvasLayerColour="0x000000" uiPanelCanvasLayerVisibility="0"
                         uiPanelCanvasLayerIndex="1" uiPanelCanvasLayerIsIsolated="0"/>
@@ -130,7 +130,7 @@
                uiTabsFrontTabFont="&lt;Sans-Serif&gt;;16;0;0;0;0;1;3" uiTabsFrontTabTextColour="ff000000"
                uiTabsFrontTabOutlineColour="ff555555" uiTabsAddTab="0" uiTabsRemoveTab="0"
                componentRectangle="0 0 598 402" uiType="uiTabs" componentLayerUid="649aa3edc2000000e0809d07a9010000"
-               uiTabsCurrentTab="0">
+               uiTabsCurrentTab="1">
       <uiTabsTab uiTabsTabIndex="0" uiTabsTabName="VCF" uiTabsTabContentBackgroundColour="ffd9d9d9"
                  uiTabsTabBackgroundColour="ffd9d9d9" uiTabsTabBackgroundImage="-- None"
                  uiTabsTabBackgroundImageLayout="36" uiTabsTabBackgroundImageAlpha="255"/>
@@ -205,7 +205,7 @@
                componentLuaMouseEnter="-- None" componentLuaMouseExit="-- None"
                uiLabelBgColour="ffc7c7c7" uiLabelTextColour="ff000000" uiLabelOutline="0"
                uiLabelOutlineColour="0" uiLabelJustification="centred" uiLabelFitFont="0"
-               uiLabelFont="&lt;Sans-Serif&gt;;14;0;0;0;0;1;3" uiLabelText="You chose layer - &quot;VCF&quot;"
+               uiLabelFont="&lt;Sans-Serif&gt;;14;0;0;0;0;1;3" uiLabelText="You chose layer - &quot;LFO&quot;"
                uiLabelDisplaysAllValues="0" uiLabelDisplayFormat="%n(%N) = %v(%h)"
                uiLabelInputHighlightTextColour="0xffffffff" uiLabelInputHighlightColour="0xff0000ff"
                uiLabelEditOnSingleClick="0" uiLabelEditOnDoubleClick="0" uiLabelEditFocusDiscardsChanges="1"
@@ -222,7 +222,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="-- None" name="VCF Attack" modulatorMin="0.0"
-             modulatorMax="127.0" modulatorValue="0.0">
+             modulatorMax="127.0" modulatorValue="32.0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1" midiMessageCtrlrValue="0" midiMessageCtrlrNumberSize="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -314,7 +314,7 @@
              modulatorLinkedToComponent="Modulator" modulatorBaseValue="0"
              modulatorCustomIndex="0" modulatorCustomName="" modulatorCustomIndexGroup="0"
              modulatorCustomNameGroup="" modulatorVstNameFormat="%n" luaModulatorValueChange="-- None"
-             name="VCA Sustain" modulatorMin="0.0" modulatorMax="127.0" modulatorValue="27.0">
+             name="VCA Sustain" modulatorMin="0.0" modulatorMax="127.0" modulatorValue="93.0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1" midiMessageCtrlrValue="0" midiMessageCtrlrNumberSize="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -374,4 +374,5 @@
                uiLabelInputAllowedChars="" uiLabelInputMaxLength="1024" uiLabelChangedCbk="-- None"
                uiType="uiLabel" componentRectangle="344 128 88 45" componentLayerUid="cddefdefc30000009057937cfe7f0000"/>
   </modulator>
+  <panelCustomData/>
 </panel>
