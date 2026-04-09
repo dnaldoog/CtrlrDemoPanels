@@ -32,7 +32,7 @@
        panelResources="-- None" panelPropertyDisplayIDs="0" panelIndex="0"
        panelIsDirty="0">
   <uiWindowManager>
-    <uiChildWindow uiChildWindowName="LayerEditor" uiChildWindowState="560 266 800 500">
+    <uiChildWindow uiChildWindowName="LayerEditor" uiChildWindowState="380 263 800 500">
       <uiChildWindowContentState/>
     </uiChildWindow>
     <uiChildWindow uiChildWindowName="LuaMethodEditor" uiChildWindowState="604 147 1076 500">
@@ -61,7 +61,7 @@
                    luaMethodLinkedProperty="" luaMethodSource="0" uuid="00000000000000000000000000000006"
                    luaMethodValid="1"/>
       </luaMethodGroup>
-      <luaMethod luaMethodName="changeLayer" luaMethodCode="--&#13;&#10;-- Called when the current tab in an uiTabs component is changed&#13;&#10;--&#13;&#10;&#13;&#10;changeLayer = function( mod, tabIndex)&#13;&#10;&#9;defaultLayers()&#13;&#10;&#9;local t = {&#13;&#10;&#9;&#9;&quot;LFO&quot;,&#13;&#10;&#9;&#9;&quot;VCF&quot;,&#13;&#10;&#9;&#9;&quot;VCA&quot;&#13;&#10;&#9;}&#13;&#10;&#9;panel:getCanvas():getLayerByName(t[tabIndex + 1]):setVisible(true)&#13;&#10;    panel:getLabelComponent(&quot;statusbar&quot;):setText(string.format(&quot;You chose layer - %q&quot;,t[tabIndex+1]))&#13;&#10;end&#13;&#10;&#13;&#10;&#13;&#10;defaultLayers = function()&#13;&#10;&#9;panel:getCanvas():getLayerByName(&quot;TABS&quot;):setVisible(true)&#13;&#10;&#9;panel:getCanvas():getLayerByName(&quot;MAIN&quot;):setVisible(true)&#13;&#10;&#9;panel:getCanvas():getLayerByName(&quot;VCF&quot;):setVisible(false)&#13;&#10;&#9;panel:getCanvas():getLayerByName(&quot;LFO&quot;):setVisible(false)&#13;&#10;&#9;panel:getCanvas():getLayerByName(&quot;VCA&quot;):setVisible(false)&#13;&#10;end"
+      <luaMethod luaMethodName="changeLayer" luaMethodCode="--&#13;&#10;-- Called when the current tab in an uiTabs component is changed&#13;&#10;--&#13;&#10;&#13;&#10;changeLayer = function( mod, tabIndex)&#13;&#10;&#9;defaultLayers()&#13;&#10;&#9;local t = { -- keep in same order as tabs!&#13;&#10;&#9;&#9;&quot;VCF&quot;,&#13;&#10;        &quot;LFO&quot;,&#13;&#10;&#9;&#9;&quot;VCA&quot;&#13;&#10;&#9;}&#13;&#10;&#9;panel:getCanvas():getLayerByName(t[tabIndex + 1]):setVisible(true)&#13;&#10;    panel:getLabelComponent(&quot;statusbar&quot;):setText(string.format(&quot;You chose layer - %q&quot;,t[tabIndex+1]))&#13;&#10;end&#13;&#10;&#13;&#10;&#13;&#10;defaultLayers = function()&#13;&#10;&#9;panel:getCanvas():getLayerByName(&quot;TABS&quot;):setVisible(true)&#13;&#10;&#9;panel:getCanvas():getLayerByName(&quot;MAIN&quot;):setVisible(true)&#13;&#10;&#9;panel:getCanvas():getLayerByName(&quot;VCF&quot;):setVisible(false)&#13;&#10;&#9;panel:getCanvas():getLayerByName(&quot;LFO&quot;):setVisible(false)&#13;&#10;&#9;panel:getCanvas():getLayerByName(&quot;VCA&quot;):setVisible(false)&#13;&#10;end"
                  luaMethodLinkedProperty="uiTabsCurrentTabChanged" luaMethodSource="0"
                  uuid="da79cc87033b4fda87c9e4cf7eddc2aa" luaMethodValid="1"/>
       <luaMethod luaMethodName="init" luaMethodCode="--&#10;-- Called when the panel has finished loading&#10;--&#10;-- @type the type of instance being started, types available in the CtrlrPanel&#10;-- class as enum&#10;--&#10;-- InstanceSingle&#10;-- InstanceMulti&#10;-- InstanceSingleRestriced&#10;-- InstanceSingleEngine&#10;-- InstanceMultiEngine&#10;-- InstanceSingleRestrictedEngine&#10;--&#10;init = function(--[[ CtrlrInstance --]] type)&#13;&#10;panel:getLabelComponent(&quot;statusbar&quot;):setText('')&#13;&#10;defaultLayers()&#10;end"
@@ -93,7 +93,7 @@
                  uiPanelTooltipCornerRound="1.0" uiPanelLegacyMode="0" uiPanelLookAndFeel="V4 Light">
     <uiPanelCanvasLayer uiPanelCanvasLayerName="TABS" uiPanelCanvasLayerUid="649aa3edc2000000e0809d07a9010000"
                         uiPanelCanvasLayerColour="0x000000" uiPanelCanvasLayerVisibility="1"
-                        uiPanelCanvasLayerIndex="0" uiPanelCanvasLayerIsIsolated="0"/>
+                        uiPanelCanvasLayerIndex="0" uiPanelCanvasLayerIsIsolated="1"/>
     <uiPanelCanvasLayer uiPanelCanvasLayerName="LFO" uiPanelCanvasLayerUid="498f5a27c30000009057937cfe7f0000"
                         uiPanelCanvasLayerColour="0x000000" uiPanelCanvasLayerVisibility="0"
                         uiPanelCanvasLayerIndex="2" uiPanelCanvasLayerIsIsolated="0"/>
@@ -101,10 +101,10 @@
                         uiPanelCanvasLayerColour="0x000000" uiPanelCanvasLayerVisibility="1"
                         uiPanelCanvasLayerIndex="3" uiPanelCanvasLayerIsIsolated="0"/>
     <uiPanelCanvasLayer uiPanelCanvasLayerName="VCF" uiPanelCanvasLayerUid="db1c20ebc30000009057937cfe7f0000"
-                        uiPanelCanvasLayerColour="0x000000" uiPanelCanvasLayerVisibility="0"
+                        uiPanelCanvasLayerColour="0x000000" uiPanelCanvasLayerVisibility="1"
                         uiPanelCanvasLayerIndex="4" uiPanelCanvasLayerIsIsolated="0"/>
     <uiPanelCanvasLayer uiPanelCanvasLayerName="VCA" uiPanelCanvasLayerUid="cddefdefc30000009057937cfe7f0000"
-                        uiPanelCanvasLayerColour="0x000000" uiPanelCanvasLayerVisibility="1"
+                        uiPanelCanvasLayerColour="0x000000" uiPanelCanvasLayerVisibility="0"
                         uiPanelCanvasLayerIndex="1" uiPanelCanvasLayerIsIsolated="0"/>
   </uiPanelEditor>
   <modulator modulatorCustomIndex="0" modulatorCustomIndexGroup="0" modulatorIsStatic="1"
@@ -129,12 +129,12 @@
                uiTabsOutlineGlobalColour="0x00000000" uiTabsFrontTabOutline="1.0"
                uiTabsFrontTabFont="&lt;Sans-Serif&gt;;16;0;0;0;0;1;3" uiTabsFrontTabTextColour="ff000000"
                uiTabsFrontTabOutlineColour="ff555555" uiTabsAddTab="0" uiTabsRemoveTab="0"
-               componentRectangle="0 0 598 402" uiTabsCurrentTab="2" componentLayerUid="649aa3edc2000000e0809d07a9010000"
-               uiType="uiTabs">
+               componentRectangle="0 0 598 402" uiType="uiTabs" componentLayerUid="649aa3edc2000000e0809d07a9010000"
+               uiTabsCurrentTab="0">
       <uiTabsTab uiTabsTabIndex="0" uiTabsTabName="VCF" uiTabsTabContentBackgroundColour="ffd9d9d9"
                  uiTabsTabBackgroundColour="ffd9d9d9" uiTabsTabBackgroundImage="-- None"
                  uiTabsTabBackgroundImageLayout="36" uiTabsTabBackgroundImageAlpha="255"/>
-      <uiTabsTab uiTabsTabIndex="1" uiTabsTabName="LFO" uiTabsTabContentBackgroundColour="ffd9d9d9"
+      <uiTabsTab uiTabsTabIndex="1.0" uiTabsTabName="LFO" uiTabsTabContentBackgroundColour="ffd9d9d9"
                  uiTabsTabBackgroundColour="ffd9d9d9" uiTabsTabBackgroundImage="-- None"
                  uiTabsTabBackgroundImageLayout="36" uiTabsTabBackgroundImageAlpha="255"/>
       <uiTabsTab uiTabsTabIndex="2" uiTabsTabName="VCA" uiTabsTabContentBackgroundColour="ffd9d9d9"
@@ -185,8 +185,8 @@
                uiSliderValueWidth="64" uiSliderValueHeight="10" uiSliderValueTextJustification="centred"
                uiSliderValueFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;3" uiSliderValueTextColour="ff000000"
                uiSliderValueHighlightColour="66a9a9a9" uiSliderValueBgColour="0x00ffffff"
-               uiSliderValueOutlineColour="0x00ffffff" componentLayerUid="498f5a27c30000009057937cfe7f0000"
-               componentRectangle="256 112 72 96" uiType="uiSlider"/>
+               uiSliderValueOutlineColour="0x00ffffff" uiType="uiSlider" componentRectangle="256 112 72 96"
+               componentLayerUid="498f5a27c30000009057937cfe7f0000"/>
   </modulator>
   <modulator modulatorCustomIndex="0" modulatorCustomIndexGroup="0" modulatorIsStatic="1"
              name="statusbar" modulatorVstExported="0" modulatorValue="0.0">
@@ -205,13 +205,12 @@
                componentLuaMouseEnter="-- None" componentLuaMouseExit="-- None"
                uiLabelBgColour="ffc7c7c7" uiLabelTextColour="ff000000" uiLabelOutline="0"
                uiLabelOutlineColour="0" uiLabelJustification="centred" uiLabelFitFont="0"
-               uiLabelFont="&lt;Sans-Serif&gt;;14;0;0;0;0;1;3" uiLabelText="You chose layer - &quot;VCA&quot;"
+               uiLabelFont="&lt;Sans-Serif&gt;;14;0;0;0;0;1;3" uiLabelText="You chose layer - &quot;VCF&quot;"
                uiLabelDisplaysAllValues="0" uiLabelDisplayFormat="%n(%N) = %v(%h)"
                uiLabelInputHighlightTextColour="0xffffffff" uiLabelInputHighlightColour="0xff0000ff"
                uiLabelEditOnSingleClick="0" uiLabelEditOnDoubleClick="0" uiLabelEditFocusDiscardsChanges="1"
                uiLabelInputAllowedChars="" uiLabelInputMaxLength="1024" uiLabelChangedCbk="-- None"
-               componentLayerUid="94d22c98c30000009057937cfe7f0000" componentRectangle="0 376 600 24"
-               uiType="uiLabel"/>
+               uiType="uiLabel" componentRectangle="0 376 600 24" componentLayerUid="94d22c98c30000009057937cfe7f0000"/>
   </modulator>
   <modulator modulatorVstExported="1" vstIndex="9" modulatorIsStatic="0" modulatorGlobalVariable="-1"
              modulatorMuteOnStart="0" modulatorMute="0" modulatorExcludeFromSnapshot="0"
@@ -256,8 +255,8 @@
                uiSliderValueWidth="64" uiSliderValueHeight="10" uiSliderValueTextJustification="centred"
                uiSliderValueFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;3" uiSliderValueTextColour="ff000000"
                uiSliderValueHighlightColour="66a9a9a9" uiSliderValueBgColour="0x00ffffff"
-               uiSliderValueOutlineColour="0x00ffffff" uiType="uiSlider" componentRectangle="256 112 72 96"
-               componentLayerUid="db1c20ebc30000009057937cfe7f0000"/>
+               uiSliderValueOutlineColour="0x00ffffff" componentLayerUid="db1c20ebc30000009057937cfe7f0000"
+               componentRectangle="256 112 72 96" uiType="uiSlider"/>
   </modulator>
   <modulator modulatorVstExported="1" vstIndex="10" modulatorIsStatic="0"
              modulatorGlobalVariable="-1" modulatorMuteOnStart="0" modulatorMute="0"
@@ -302,8 +301,8 @@
                uiSliderValueWidth="64" uiSliderValueHeight="10" uiSliderValueTextJustification="centred"
                uiSliderValueFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;3" uiSliderValueTextColour="ff000000"
                uiSliderValueHighlightColour="66a9a9a9" uiSliderValueBgColour="0x00ffffff"
-               uiSliderValueOutlineColour="0x00ffffff" componentLayerUid="db1c20ebc30000009057937cfe7f0000"
-               componentRectangle="336 112 72 96" uiType="uiSlider"/>
+               uiSliderValueOutlineColour="0x00ffffff" uiType="uiSlider" componentRectangle="336 112 72 96"
+               componentLayerUid="db1c20ebc30000009057937cfe7f0000"/>
   </modulator>
   <modulator modulatorVstExported="1" vstIndex="11" modulatorIsStatic="0"
              modulatorGlobalVariable="-1" modulatorMuteOnStart="0" modulatorMute="0"
@@ -348,8 +347,8 @@
                uiSliderValueWidth="64" uiSliderValueHeight="10" uiSliderValueTextJustification="centred"
                uiSliderValueFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;3" uiSliderValueTextColour="ff000000"
                uiSliderValueHighlightColour="66a9a9a9" uiSliderValueBgColour="0x00ffffff"
-               uiSliderValueOutlineColour="0x00ffffff" componentLayerUid="cddefdefc30000009057937cfe7f0000"
-               componentRectangle="208 72 72 149" uiType="uiSlider"/>
+               uiSliderValueOutlineColour="0x00ffffff" uiType="uiSlider" componentRectangle="208 72 72 149"
+               componentLayerUid="cddefdefc30000009057937cfe7f0000"/>
   </modulator>
   <modulator modulatorCustomIndex="0" modulatorCustomIndexGroup="0" modulatorIsStatic="1"
              name="modulator-2" modulatorVstExported="0" modulatorValue="0.0">
@@ -373,7 +372,6 @@
                uiLabelInputHighlightTextColour="0xffffffff" uiLabelInputHighlightColour="0xff0000ff"
                uiLabelEditOnSingleClick="0" uiLabelEditOnDoubleClick="0" uiLabelEditFocusDiscardsChanges="1"
                uiLabelInputAllowedChars="" uiLabelInputMaxLength="1024" uiLabelChangedCbk="-- None"
-               componentLayerUid="cddefdefc30000009057937cfe7f0000" componentRectangle="344 128 88 45"
-               uiType="uiLabel"/>
+               uiType="uiLabel" componentRectangle="344 128 88 45" componentLayerUid="cddefdefc30000009057937cfe7f0000"/>
   </modulator>
 </panel>
