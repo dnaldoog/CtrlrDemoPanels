@@ -33,7 +33,7 @@
        panelIsDirty="0">
   <uiWindowManager>
     <uiChildWindow uiChildWindowName="LuaMethodEditor" uiChildWindowState="560 266 1043 500">
-      <uiChildWindowContentState luaMethodEditor="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#13;&#10;&#13;&#10;&lt;OPEN id=&quot;LUA&quot; scrollPos=&quot;0&quot;/&gt;&#13;&#10;;93127bce47a04a29857567bdf52d096d:7255ef6fd9d14f9e8b1f4df7ae392ee6"/>
+      <uiChildWindowContentState luaMethodEditor="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#13;&#10;&#13;&#10;&lt;OPEN id=&quot;LUA&quot; scrollPos=&quot;0&quot;/&gt;&#13;&#10;;93127bce47a04a29857567bdf52d096d:7255ef6fd9d14f9e8b1f4df7ae392ee6:8bc2ad15ae0844a596ed4c72eca3e115"/>
     </uiChildWindow>
     <uiChildWindow uiChildWindowName="LuaConsole" uiChildWindowState="560 266 800 500">
       <uiChildWindowContentState/>
@@ -64,9 +64,12 @@
       <luaMethod luaMethodName="paintHelp" luaMethodCode="--&#10;-- Called when a component needs repainting&#10;-- @comp&#10;-- @g    http://ctrlr.org/api/class_ctrlr_lua_graphics.html&#10;--              see also http://www.rawmaterialsoftware.com/juce/api/classGraphics.html&#10;--&#10;&#10;paintHelp = function(--[[ CtrlrComponent --]] comp, --[[ CtrlrComponent --]] g)&#10;    g:setFont(14)&#13;&#10;    local ft = g:getCurrentFont()&#13;&#10;    ft:setStyleFlags(1)&#13;&#10;    g:setFont(ft)&#13;&#10;&#13;&#10;    g:setColour(Colour(0xffffcc00))&#13;&#10;    g:fillEllipse(2, 3, 13, 13)&#13;&#10;&#13;&#10;    g:setColour(Colour(0xff000000))&#13;&#10;    g:drawText(&quot;?&quot;, 5, 5, 9, 9, Justification(Justification.left), true)&#13;&#10;end"
                  luaMethodLinkedProperty="uiCustomPaintCallback" luaMethodSource="0"
                  uuid="93127bce47a04a29857567bdf52d096d" luaMethodValid="1"/>
-      <luaMethod luaMethodName="showHelp" luaMethodCode="--&#10;-- Called when a mouse DOWN (any mouse button) event happens on a component&#10;-- @comp&#10;-- @event   http://www.rawmaterialsoftware.com/juce/api/classMouseEvent.html&#10;--&#10;&#10;showHelp = function(--[[ CtrlrComponent --]] comp, --[[ MouseEvent --]] event)&#13;&#10;&#13;&#10;    local cName = L(comp:getOwner():getName())&#13;&#10;local sf=string.format&#13;&#10;    helpMessage = {&#10;      helpA = { -- name of component&#13;&#10;            &quot;Multiple Switch Selection&quot;,&#13;&#10;            &quot;Hold down the Command/Ctrl Key to make multiple switching selections.&quot;,&#13;&#10;            iw = true, -- info Window - if false show bubble component instead&#13;&#10;&#13;&#10;        },&#13;&#10;        [&quot;help B&quot;] = {&#13;&#10;            &quot;PALETTE RELATIVE CHANGE&quot;,&#13;&#10;            [[&#13;&#10;[F] Connected Tones = Leading Tone&#13;&#10;[R] Connected Tones change relative to Leading Tone&#13;&#10;&#13;&#10;&#13;&#10;]],&#13;&#10;            iw = false,&#13;&#10;&#13;&#10;        }&#13;&#10;    }&#13;&#10;    &#13;&#10;&#13;&#10;&#13;&#10;    local w, h = comp:getWidth(), comp:getHeight()&#13;&#10;    if event.x &gt; 0 and event.x &lt; w then&#13;&#10;        if event.y &gt; 0 and event.y &lt; h then&#13;&#10;            if helpMessage[cName].iw then -- show info Window&#13;&#10;                utils.infoWindow(helpMessage[cName][1], helpMessage[cName][2])&#13;&#10;            else&#13;&#10;                --https://docs.juce.com/master/classBubbleMessageComponent.html&#13;&#10;                local b = BubbleMessageComponent(500) -- fade&#13;&#10;                --b:getContentSize(300,900)&#13;&#10;                --local line = string.rep(&quot;_&quot;, 50)&#13;&#10;                --b:showAt(comp, sf(&quot;\n%s\n%s\n%s\n\n&quot;, mess[cName][1], line, mess[cName][2]), 12000, true, false)&#13;&#10;                b:showAt(comp, sf(&quot;%s&quot;, helpMessage[cName][2]), 12000, true, false)&#13;&#10;            end&#13;&#10;        end&#13;&#10;    end&#13;&#10;end&#13;&#10;&#13;&#10;"
+      <luaMethod luaMethodName="showHelp" luaMethodCode="--&#13;&#10;-- Called when a mouse DOWN (any mouse button) event happens on a component&#13;&#10;-- @comp&#13;&#10;-- @event   http://www.rawmaterialsoftware.com/juce/api/classMouseEvent.html&#13;&#10;--&#13;&#10;&#13;&#10;showHelp = function(--[[ CtrlrComponent --]] comp --[[ MouseEvent --]], event)&#13;&#10;    local cName = L(comp:getOwner():getName())&#13;&#10;    local sf = string.format&#13;&#10;    helpMessage = {&#13;&#10;        saveButton = {&#13;&#10;            -- name of component&#13;&#10;            &quot;SAVE PATCH&quot;,&#13;&#10;            &quot;Please make sure you have suffientent disk space\nbefore saving&quot;,&#13;&#10;            iw = false -- info Window - if false show bubble component instead&#13;&#10;        },&#13;&#10;        [&quot;help B&quot;] = {&#13;&#10;            &quot;PALETTE RELATIVE CHANGE&quot;,&#13;&#10;            [[&#13;&#10;[F] Connected Tones = Leading Tone&#13;&#10;[R] Connected Tones change relative to Leading Tone&#13;&#10;&#13;&#10;&#13;&#10;]],&#13;&#10;            iw = false -- info Window - if false show bubble component instead&#13;&#10;        },&#13;&#10;        helpA = {&#13;&#10;            -- name of component&#13;&#10;            &quot;Multiple Switch Selection&quot;,&#13;&#10;            &quot;Hold down the Command/Ctrl Key to make multiple switching selections.&quot;,&#13;&#10;            iw = true -- info Window - if false show bubble component instead&#13;&#10;        },&#13;&#10;        [&quot;help B&quot;] = {&#13;&#10;            &quot;PALETTE RELATIVE CHANGE&quot;,&#13;&#10;            [[&#13;&#10;[F] Connected Tones = Leading Tone&#13;&#10;[R] Connected Tones change relative to Leading Tone&#13;&#10;&#13;&#10;&#13;&#10;]],&#13;&#10;            iw = false&#13;&#10;        }&#13;&#10;    }&#13;&#10;&#13;&#10;    local w, h = comp:getWidth(), comp:getHeight()&#13;&#10;    if event.x &gt; 0 and event.x &lt; w then&#13;&#10;        if event.y &gt; 0 and event.y &lt; h then&#13;&#10;            if helpMessage[cName].iw then -- show info Window&#13;&#10;                utils.infoWindow(helpMessage[cName][1], helpMessage[cName][2])&#13;&#10;            else&#13;&#10;                --https://docs.juce.com/master/classBubbleMessageComponent.html&#13;&#10;                local b = BubbleMessageComponent(500) -- fade&#13;&#10;                --b:getContentSize(300,900)&#13;&#10;                --local line = string.rep(&quot;_&quot;, 50)&#13;&#10;                --b:showAt(comp, sf(&quot;\n%s\n%s\n%s\n\n&quot;, mess[cName][1], line, mess[cName][2]), 12000, true, false)&#13;&#10;                b:showAt(comp, sf(&quot;%s&quot;, helpMessage[cName][2]), 12000, true, false)&#13;&#10;            end&#13;&#10;        end&#13;&#10;    end&#13;&#10;end&#13;&#10;"
                  luaMethodLinkedProperty="uiCustomMouseDownCallback" luaMethodSource="0"
                  uuid="7255ef6fd9d14f9e8b1f4df7ae392ee6" luaMethodValid="1"/>
+      <luaMethod luaMethodName="showHelpFromComponent" luaMethodCode="--&#13;&#10;-- Called when a mouse is down on this component&#13;&#10;--&#13;&#10;-- get name of modulator with L(comp:getOwner():getName())&#13;&#10;-- get mouse event info from event parameter event.x, event.y, event.mods, etc.&#13;&#10;-- x coordinate = event.x&#13;&#10;-- y coordinate = event.y&#13;&#10;&#13;&#10;showHelpFromComponent = function(--[[ CtrlrComponent --]] comp --[[ MouseEvent --]], event)&#13;&#10;    --if event.mods:isShiftDown() then&#13;&#10;    if event.mods:isCommandDown() then&#13;&#10;        showHelp(comp, event)&#13;&#10;    end&#13;&#10;end&#13;&#10;"
+                 luaMethodLinkedProperty="componentLuaMouseDown" luaMethodSource="0"
+                 uuid="8bc2ad15ae0844a596ed4c72eca3e115" luaMethodValid="1"/>
     </luaManagerMethods>
   </luaManager>
   <panelResources/>
@@ -266,6 +269,43 @@
                uiCustomDrawDragImageWhenOver="0" uiCustomAllowExternalDrags="0"
                uiCustomMouseDownGrabsFocus="0" uiCustomWantsKeyboardFocus="0"
                componentLayerUid="7019514b7f020000cccccccccccccccc" uiType="uiCustomComponent"/>
+  </modulator>
+  <modulator modulatorVstExported="1" vstIndex="11055" modulatorIsStatic="0"
+             modulatorGlobalVariable="-1" modulatorMuteOnStart="0" modulatorMute="0"
+             modulatorExcludeFromSnapshot="0" modulatorValueExpression="modulatorValue"
+             modulatorValueExpressionReverse="midiValue" modulatorControllerExpression="value"
+             luaModulatorGetValueForMIDI="-- None" luaModulatorGetValueFromMIDI="-- None"
+             modulatorLinkedToPanelProperty="-- None" modulatorLinkedToModulatorProperty="-- None"
+             modulatorLinkedToModulator="-- None" modulatorLinkedToModulatorSource="1"
+             modulatorLinkedToComponent="Modulator" modulatorBaseValue="0"
+             modulatorCustomIndex="0" modulatorCustomName="" modulatorCustomIndexGroup="0"
+             modulatorCustomNameGroup="" modulatorVstNameFormat="%n" luaModulatorValueChange="-- None"
+             name="saveButton" modulatorMin="0" modulatorMax="1" modulatorValue="0.0">
+    <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
+          midiMessageCtrlrNumber="1" midiMessageCtrlrValue="0" midiMessageCtrlrNumberSize="0"
+          midiMessageLatchAndStream="0" midiMessageMultiList="" midiMessageSysExFormula=""/>
+    <component componentVisibility="1" componentSentBack="0" componentMouseCursor="2"
+               componentDisabled="0" componentIsLocked="0" componentSnapSize="0"
+               componentGroupName="" componentGroupped="0" componentRadioGroupId="0"
+               componentVisibleName="modulator-3" componentLabelVisible="1"
+               componentLabelAlwaysOnTop="1" componentLabelPosition="top" componentLabelWidth="0"
+               componentLabelHeight="14" componentLabelJustification="centred"
+               componentLabelFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;3" componentLabelColour="ff000000"
+               componentEffect="0" componentEffectRadius="1" componentEffectColour="0xff000000"
+               componentEffectOffsetX="0" componentEffectOffsetY="0" componentExcludedFromLabelDisplay="0"
+               componentValueDecimalPlaces="0" componentLuaMouseMoved="-- None"
+               componentLuaMouseDown="showHelpFromComponent" componentLuaMouseUp="-- None"
+               componentLuaMouseDrag="-- None" componentLuaMouseDoubleClick="-- None"
+               componentLuaMouseEnter="-- None" componentLuaMouseExit="-- None"
+               uiButtonLookAndFeel="Default" uiButtonLookAndFeelIsCustom="0"
+               uiButtonIsToggle="1" uiButtonTrueValue="1" uiButtonFalseValue="0"
+               uiButtonContent="False&#10;True" uiButtonRepeat="0" uiButtonRepeatRate="100"
+               uiButtonTriggerOnMouseDown="0" componentInternalFunction="-- None"
+               componentRectangle="160 252 88 64" uiButtonColourOn="ff42a2c8"
+               uiButtonColourOff="ffffffff" uiButtonTextColourOn="ffffffff"
+               uiButtonTextColourOff="ff000000" uiButtonConnectedLeft="0" uiButtonConnectedRight="0"
+               uiButtonConnectedTop="0" uiButtonConnectedBottom="0" uiType="uiButton"
+               componentLayerUid="7019514b7f020000cccccccccccccccc"/>
   </modulator>
   <panelCustomData/>
 </panel>
