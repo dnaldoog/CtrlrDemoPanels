@@ -31,7 +31,7 @@
        panelModulatorListCsvDelimiter="," panelModulatorListXmlRoot="ctrlrModulatorList"
        panelModulatorListXmlModulator="ctrlrModulator" panelModulatorListSortOption="0.0"
        panelGlobalVariables="-1:-1:-1:-1:-1:0:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1"
-       panelResources="-- None" panelPropertyDisplayIDs="0" panelMidiInputFromHost="1"
+       panelResources="-- None" panelPropertyDisplayIDs="1" panelMidiInputFromHost="1"
        panelMidiInputChannelHost="1" panelMidiOutputToHost="1" panelMidiOutputChannelHost="1"
        panelMidiThruH2H="0" panelMidiThruH2HChannelize="0" panelMidiThruH2D="0"
        panelMidiThruH2DChannelize="0" panelMidiThruD2H="0" panelMidiThruD2HChannelize="0"
@@ -43,7 +43,7 @@
        ctrlrMenuBarHighlightedTextColour="ffffffff" ctrlrMenuBarHighlightColour="ff4364ff"
        ctrlrMenuBarFont="&lt;Sans-Serif&gt;;18;0;0;0;0;1;3" ctrlrUseEditorWrapper="0"
        panelExportPrivateKey="79a2c092966570c21d5fc9c4dd0d8434e87e671d87cc77ffc341976a0ff18cff70f81d87681cca3a1405a5ac3f6bcec3f318dd8d0d1992d657284691fd8a8bf884b11e039e74a0aae9cc3a6ec75b0c2596f6a94058955b20c204e0122ff3fd39d1d2503215a6fe6a80476d8ae652bf128cbd6dd0b1d0e3d2f2942a5d7e8b1c73d5162db56fd6b49cbaff41f5f13080d6dcac62d10284c8739db045ad4d9c7cb59fa8408a6080ecb43bacf097e787d07824352ebf50472028b773cc89d716b4dd131e0dece3498f1b6c702b7373e43c3efc061eb082bcedbd29b08f6f91255d7d0fb8715ea227be9976053d1d018d2fce9de7a1d9c9f1a7ebd09c0eab89d908f1,813cec9bbfcbc7ce3f35c6612ade5c7837064d8f60493f7fbf75b0e0b0f0a5cf68079f5fde9e96ddb546000703628bb0324a6b65ddeb2c03bc9acafb1d6334b80cfc2fe3d85beab59868fe15b3d0bce7f06613d45e1eb0d2ce252e1352f33d0d6eef753537016e51284be46394b7eb03b58944adbcedf21021bd6d035673ce3c8aa340f715eb95e3f9835cc348d47c65ecc0b15b8b200df27625e455ded91789c705092d76a94411d10b164b0691363628a45a7f0a1ca2db1081df00a821a6f77b43818803a04e9f2becdec7678958d63c314de0ee70c3096e59d4521d8094beb329e897060c8697e29ed40fadc2fb00770b37a099f19587b77c30ae992f710d"
-       panelIndex="3" uiPanelModulatorListViewTree="0" panelIsDirty="1">
+       panelIndex="3" uiPanelModulatorListViewTree="0" panelIsDirty="0">
   <uiWindowManager>
     <uiChildWindow uiChildWindowName="ModulatorList" uiChildWindowState="fs 560 270 800 500">
       <uiChildWindowContentState/>
@@ -92,7 +92,7 @@
       <luaMethod luaMethodName="Panel" luaMethodCode="Panel = {}&#13;&#10;Panel.__index = Panel&#13;&#10;&#13;&#10;setmetatable(&#13;&#10;    Panel,&#13;&#10;    {&#13;&#10;        __call = function(cls, ...)&#13;&#10;            local self = setmetatable({}, cls)&#13;&#10;            self:_init(...)&#13;&#10;            return self&#13;&#10;        end&#13;&#10;    }&#13;&#10;)&#13;&#10;&#13;&#10;function Panel:_init(init)&#13;&#10;    self.block = init&#13;&#10;    &#13;&#10;    -------------------------------------------------------------------------&#13;&#10;    -- CRTLRX ENGINE POLYFILL CHECK&#13;&#10;    -- Safely hook the native C++ panel metatable if isLoading() is missing&#13;&#10;    -------------------------------------------------------------------------&#13;&#10;    local mt = getmetatable(panel)&#13;&#10;    &#13;&#10;    if mt and type(mt) ~= &quot;boolean&quot; and type(mt.__index) == &quot;function&quot; then&#13;&#10;        local originalIndex = mt.__index&#13;&#10;        &#13;&#10;        mt.__index = function(obj, key)&#13;&#10;            if key == &quot;isLoading&quot; then&#13;&#10;                return function(instance)&#13;&#10;                    local bootstrap = instance.getBootstrapState and instance:getBootstrapState() or false&#13;&#10;                    local restore   = instance.getRestoreState   and instance:getRestoreState()   or false&#13;&#10;                    local program   = instance.getProgramState   and instance:getProgramState()   or false&#13;&#10;                    &#13;&#10;                    return (bootstrap or restore or program)&#13;&#10;                end&#13;&#10;            end&#13;&#10;            return originalIndex(obj, key)&#13;&#10;        end&#13;&#10;    end&#13;&#10;end&#13;&#10;&#13;&#10;-- 1. Your Custom Bootstrap Check&#13;&#10;function Panel:getBootstrapState()&#13;&#10;    return self.block&#13;&#10;end&#13;&#10;&#13;&#10;function Panel:setBootstrapState()&#13;&#10;    self.block = false&#13;&#10;end&#13;&#10;&#13;&#10;-------------------------------------------------------------------------&#13;&#10;-- 2. CENTRALIZED BUSY GUARD CHECK&#13;&#10;-- Adapts perfectly to old builds, new builds, and your custom flags!&#13;&#10;-------------------------------------------------------------------------&#13;&#10;function Panel:isBusy()&#13;&#10;    -- Priority 1: Check your custom Lua constructor block flag first&#13;&#10;    if self.block then &#13;&#10;        return true &#13;&#10;    end&#13;&#10;    &#13;&#10;    -- Priority 2: Safely fire the unified loading status check.&#13;&#10;    -- Thanks to our polyfill above, panel:isLoading() is now 100% safe &#13;&#10;    -- to call on both ancient Ctrlr builds and the latest CtrlrX!&#13;&#10;    if panel:isLoading() then&#13;&#10;        return true&#13;&#10;    end&#13;&#10;    &#13;&#10;    return false&#13;&#10;end"
                  luaMethodLinkedProperty="" luaMethodSource="0" uuid="654f1934e6ba4928b2d68f074973f2ef"
                  luaMethodValid="1"/>
-      <luaMethod luaMethodName="constructor" luaMethodCode="--&#10;-- Called when the panel is created, no modulators will exist at this point&#10;-- consider this the panels constructor&#10;--&#10;constructor = function()&#13;&#10;    myPanel = Panel -- stop functions from loading when the panel is loaded&#10;    myPanel:_init(true)&#10;end"
+      <luaMethod luaMethodName="constructor" luaMethodCode="--&#10;-- Called when the panel is created, no modulators will exist at this point&#10;-- consider this the panels constructor&#10;--&#10;constructor = function()&#13;&#10;    myPanel = Panel -- stop functions from loading when the panel is loaded&#10;    myPanel:_init(true)&#13;&#10;&#13;&#10;&#13;&#10;--[[ &#13;&#10;&#13;&#10;For the latest version of CtrlrX, you can use the native c++ binding isLoading(), &#13;&#10;The code below is a polyFill &#13;&#10;for CtrlrX builds that don't have the new function isLoading()&#13;&#10;So, you can use any of:&#13;&#10;&#13;&#10;if myPanel:getBootstrapState() then return end (update to this code: see Panel())&#13;&#10;if myPanel:isBusy() then return end (update to this code: see Panel())&#13;&#10;if isLoading() then return end (prefereable)&#13;&#10;&#13;&#10;Do not use:&#13;&#10;&#13;&#10;if panel:getBootstrapState() then return end&#13;&#10;if panel:getgetRestoreState() then return end&#13;&#10;if panel:getProgramState() then return end&#13;&#10;&#13;&#10;because these have timing issues in Standalone instances if there is a lot of code in: luaPanelLoaded()&#13;&#10;&#13;&#10;&#13;&#10;YOUR PANEL SCRIPTS (On an older Ctrlr build)&#10;  &#9474;&#10;  &#9500;&#9472;&#9472;&#9658; Old Script: &quot;if myPanel:getBootstrapState() then...&quot; &#10;  &#9474;     &#9492;&#9472;&#9658; Calls your Lua class method &#9472;&#9472;&#9658; Checks 'self.block' &#9472;&#9472;&#9658; Returns true/false&#10;  &#9474;&#10;  &#9492;&#9472;&#9472;&#9658; Future Script: &quot;if panel:isLoading() then...&quot;&#10;        &#9492;&#9472;&#9658; Triggers Metatable Hook &#9472;&#9472;&#9658; Dynamically fires:&#10;              &#9500;&#9472;&#9658; panel:getBootstrapState() (Native C++ check)&#10;              &#9500;&#9472;&#9658; panel:getRestoreState()   (Native C++ check)&#10;              &#9492;&#9472;&#9658; panel:getProgramState()   (Native C++ check)&#13;&#10;--]]&#13;&#10;&#13;&#10;&#13;&#10;local mt = getmetatable(panel)&#13;&#10;&#13;&#10;    -- Only attempt the hook if the metatable is accessible and using a function index&#13;&#10;    if mt and type(mt) ~= &quot;boolean&quot; and type(mt.__index) == &quot;function&quot; then&#13;&#10;        local originalIndex = mt.__index&#13;&#10;        &#13;&#10;        mt.__index = function(obj, key)&#13;&#10;            if key == &quot;isLoading&quot; then&#13;&#10;                return function(instance)&#13;&#10;                    local bootstrap = instance.getBootstrapState and instance:getBootstrapState() or false&#13;&#10;                    local restore   = instance.getRestoreState   and instance:getRestoreState()   or false&#13;&#10;                    local program   = instance.getProgramState   and instance:getProgramState()   or false&#13;&#10;                    &#13;&#10;                    return (bootstrap or restore or program)&#13;&#10;                end&#13;&#10;            end&#13;&#10;            -- Safely pass control back to the original Luabind routing&#13;&#10;            return originalIndex(obj, key)&#13;&#10;        end&#13;&#10;        console(&quot;Polyfill: Older build detected. Successfully hooked missing isLoading() function.&quot;)&#13;&#10;    else&#13;&#10;        console(&quot;Polyfill: Modern build detected (Metatable protected). Native isLoading() is active.&quot;)&#13;&#10;    end&#13;&#10;&#13;&#10;&#13;&#10;&#10;end"
                  luaMethodLinkedProperty="luaPanelBeforeLoad" luaMethodSource="0"
                  uuid="7ed66c8416e741258bc09cdf7b361714" luaMethodValid="1"/>
     </luaManagerMethods>
@@ -119,7 +119,7 @@
                  uiPanelTooltipFont="&lt;Sans-Serif&gt;;15;1;0;0;0;1;3" uiPanelTooltipColour="0xff000000"
                  uiPanelTooltipBackgroundColour="0xffeeeebb" uiPanelTooltipOutlineColour="0xff000000"
                  uiPanelTooltipCornerRound="1.0" uiPanelLegacyMode="1" uiPanelLookAndFeel="V3"
-                 uiPanelHeight="400" uiPanelWidth="400">
+                 uiPanelWidth="400" uiPanelHeight="400">
     <uiPanelCanvasLayer uiPanelCanvasLayerName="New layer" uiPanelCanvasLayerUid="e75f0ebc02000000feffffffffffffff"
                         uiPanelCanvasLayerColour="0x000000" uiPanelCanvasLayerVisibility="1"
                         uiPanelCanvasLayerIndex="0"/>
@@ -165,11 +165,11 @@
                uiSliderValueTextJustification="centred" uiSliderVelocitySensitivity="1"
                uiSliderVelocityThreshold="1" uiSliderVelocityOffset="0" uiSliderVelocityMode="0"
                uiSliderVelocityModeKeyTrigger="1" uiSliderSpringMode="0" uiSliderSpringValue="0"
-               uiSliderMouseWheelInterval="1.0" uiSliderPopupBubble="0" uiSliderDecimalPlaces="0"
-               uiSliderValueSuffix="" uiSliderSetNotificationOnlyOnRelease="0"
-               uiSliderLookAndFeel="V3" uiSliderLookAndFeelIsCustom="1" uiType="uiSlider"
-               componentRectangle="112 48 64 64" componentLayerUid="e75f0ebc02000000feffffffffffffff"
-               componentRadioGroupNotifyMidi="1"/>
+               uiSliderMouseWheelInterval="1.0" uiSliderPopupBubble="0" componentRadioGroupNotifyMidi="1"
+               componentLayerUid="e75f0ebc02000000feffffffffffffff" componentRectangle="112 48 64 64"
+               uiType="uiSlider" uiSliderLookAndFeelIsCustom="1" uiSliderLookAndFeel="V3"
+               uiSliderSetNotificationOnlyOnRelease="0" uiSliderValueSuffix=""
+               uiSliderDecimalPlaces="0"/>
   </modulator>
   <modulator modulatorVstExported="1" vstIndex="1" modulatorIsStatic="0" modulatorGlobalVariable="-1.0"
              modulatorMuteOnStart="0" modulatorMute="0" modulatorExcludeFromSnapshot="0"
@@ -212,10 +212,10 @@
                uiSliderValueTextJustification="centred" uiSliderVelocitySensitivity="1"
                uiSliderVelocityThreshold="1" uiSliderVelocityOffset="0" uiSliderVelocityMode="0"
                uiSliderVelocityModeKeyTrigger="1" uiSliderSpringMode="0" uiSliderSpringValue="0"
-               uiSliderMouseWheelInterval="1.0" uiSliderPopupBubble="0" uiSliderDecimalPlaces="0"
-               uiSliderValueSuffix="" uiSliderSetNotificationOnlyOnRelease="0"
-               uiSliderLookAndFeel="V3" uiSliderLookAndFeelIsCustom="1" componentLayerUid="e75f0ebc02000000feffffffffffffff"
-               componentRectangle="184 48 64 64" uiType="uiSlider" componentRadioGroupNotifyMidi="1"/>
+               uiSliderMouseWheelInterval="1.0" uiSliderPopupBubble="0" componentRadioGroupNotifyMidi="1"
+               uiType="uiSlider" componentRectangle="184 48 64 64" componentLayerUid="e75f0ebc02000000feffffffffffffff"
+               uiSliderLookAndFeelIsCustom="1" uiSliderLookAndFeel="V3" uiSliderSetNotificationOnlyOnRelease="0"
+               uiSliderValueSuffix="" uiSliderDecimalPlaces="0"/>
   </modulator>
   <modulator modulatorVstExported="1" vstIndex="2" modulatorIsStatic="0" modulatorGlobalVariable="-1.0"
              modulatorMuteOnStart="0" modulatorMute="0" modulatorExcludeFromSnapshot="0"
@@ -258,10 +258,10 @@
                uiSliderValueTextJustification="centred" uiSliderVelocitySensitivity="1"
                uiSliderVelocityThreshold="1" uiSliderVelocityOffset="0" uiSliderVelocityMode="0"
                uiSliderVelocityModeKeyTrigger="1" uiSliderSpringMode="0" uiSliderSpringValue="0"
-               uiSliderMouseWheelInterval="1.0" uiSliderPopupBubble="0" uiSliderDecimalPlaces="0"
-               uiSliderValueSuffix="" uiSliderSetNotificationOnlyOnRelease="0"
-               uiSliderLookAndFeel="V3" uiSliderLookAndFeelIsCustom="1" componentLayerUid="e75f0ebc02000000feffffffffffffff"
-               componentRectangle="256 48 64 64" uiType="uiSlider" componentRadioGroupNotifyMidi="1"/>
+               uiSliderMouseWheelInterval="1.0" uiSliderPopupBubble="0" componentRadioGroupNotifyMidi="1"
+               uiType="uiSlider" componentRectangle="256 48 64 64" componentLayerUid="e75f0ebc02000000feffffffffffffff"
+               uiSliderLookAndFeelIsCustom="1" uiSliderLookAndFeel="V3" uiSliderSetNotificationOnlyOnRelease="0"
+               uiSliderValueSuffix="" uiSliderDecimalPlaces="0"/>
   </modulator>
   <modulator modulatorVstExported="1" vstIndex="3" modulatorIsStatic="0" modulatorGlobalVariable="-1.0"
              modulatorMuteOnStart="0" modulatorMute="0" modulatorExcludeFromSnapshot="0"
@@ -304,10 +304,10 @@
                uiSliderValueTextJustification="centred" uiSliderVelocitySensitivity="1"
                uiSliderVelocityThreshold="1" uiSliderVelocityOffset="0" uiSliderVelocityMode="0"
                uiSliderVelocityModeKeyTrigger="1" uiSliderSpringMode="0" uiSliderSpringValue="0"
-               uiSliderMouseWheelInterval="1.0" uiSliderPopupBubble="0" uiSliderDecimalPlaces="0"
-               uiSliderValueSuffix="" uiSliderSetNotificationOnlyOnRelease="0"
-               uiSliderLookAndFeel="V3" uiSliderLookAndFeelIsCustom="1" componentLayerUid="e75f0ebc02000000feffffffffffffff"
-               componentRectangle="328 48 64 64" uiType="uiSlider" componentRadioGroupNotifyMidi="1"/>
+               uiSliderMouseWheelInterval="1.0" uiSliderPopupBubble="0" componentRadioGroupNotifyMidi="1"
+               uiType="uiSlider" componentRectangle="328 48 64 64" componentLayerUid="e75f0ebc02000000feffffffffffffff"
+               uiSliderLookAndFeelIsCustom="1" uiSliderLookAndFeel="V3" uiSliderSetNotificationOnlyOnRelease="0"
+               uiSliderValueSuffix="" uiSliderDecimalPlaces="0"/>
   </modulator>
   <modulator modulatorVstExported="1" vstIndex="4" modulatorIsStatic="0" modulatorGlobalVariable="-1.0"
              modulatorMuteOnStart="0" modulatorMute="0" modulatorExcludeFromSnapshot="0"
@@ -350,10 +350,10 @@
                uiSliderValueTextJustification="centred" uiSliderVelocitySensitivity="1"
                uiSliderVelocityThreshold="1" uiSliderVelocityOffset="0" uiSliderVelocityMode="0"
                uiSliderVelocityModeKeyTrigger="1" uiSliderSpringMode="0" uiSliderSpringValue="0"
-               uiSliderMouseWheelInterval="1.0" uiSliderPopupBubble="0" uiSliderDecimalPlaces="0"
-               uiSliderValueSuffix="" uiSliderSetNotificationOnlyOnRelease="0"
-               uiSliderLookAndFeel="V3" uiSliderLookAndFeelIsCustom="1" componentLayerUid="e75f0ebc02000000feffffffffffffff"
-               componentRectangle="456 48 64 64" uiType="uiSlider" componentRadioGroupNotifyMidi="1"/>
+               uiSliderMouseWheelInterval="1.0" uiSliderPopupBubble="0" componentRadioGroupNotifyMidi="1"
+               uiType="uiSlider" componentRectangle="456 48 64 64" componentLayerUid="e75f0ebc02000000feffffffffffffff"
+               uiSliderLookAndFeelIsCustom="1" uiSliderLookAndFeel="V3" uiSliderSetNotificationOnlyOnRelease="0"
+               uiSliderValueSuffix="" uiSliderDecimalPlaces="0"/>
   </modulator>
   <modulator modulatorVstExported="1" vstIndex="5" modulatorIsStatic="0" modulatorGlobalVariable="-1.0"
              modulatorMuteOnStart="0" modulatorMute="0" modulatorExcludeFromSnapshot="0"
@@ -396,10 +396,10 @@
                uiSliderValueTextJustification="centred" uiSliderVelocitySensitivity="1"
                uiSliderVelocityThreshold="1" uiSliderVelocityOffset="0" uiSliderVelocityMode="0"
                uiSliderVelocityModeKeyTrigger="1" uiSliderSpringMode="0" uiSliderSpringValue="0"
-               uiSliderMouseWheelInterval="1.0" uiSliderPopupBubble="0" uiSliderDecimalPlaces="0"
-               uiSliderValueSuffix="" uiSliderSetNotificationOnlyOnRelease="0"
-               uiSliderLookAndFeel="V3" uiSliderLookAndFeelIsCustom="1" componentLayerUid="e75f0ebc02000000feffffffffffffff"
-               componentRectangle="392 48 64 64" uiType="uiSlider" componentRadioGroupNotifyMidi="1"/>
+               uiSliderMouseWheelInterval="1.0" uiSliderPopupBubble="0" componentRadioGroupNotifyMidi="1"
+               uiType="uiSlider" componentRectangle="392 48 64 64" componentLayerUid="e75f0ebc02000000feffffffffffffff"
+               uiSliderLookAndFeelIsCustom="1" uiSliderLookAndFeel="V3" uiSliderSetNotificationOnlyOnRelease="0"
+               uiSliderValueSuffix="" uiSliderDecimalPlaces="0"/>
   </modulator>
   <modulator modulatorVstExported="1" vstIndex="6" modulatorIsStatic="0" modulatorGlobalVariable="-1.0"
              modulatorMuteOnStart="0" modulatorMute="0" modulatorExcludeFromSnapshot="0"
@@ -442,11 +442,11 @@
                uiSliderValueTextJustification="centred" uiSliderVelocitySensitivity="1"
                uiSliderVelocityThreshold="1" uiSliderVelocityOffset="0" uiSliderVelocityMode="0"
                uiSliderVelocityModeKeyTrigger="1" uiSliderSpringMode="0" uiSliderSpringValue="0"
-               uiSliderMouseWheelInterval="1.0" uiSliderPopupBubble="0" uiSliderDecimalPlaces="0"
-               uiSliderValueSuffix="" uiSliderSetNotificationOnlyOnRelease="0"
-               uiSliderLookAndFeel="V3" uiSliderLookAndFeelIsCustom="1" uiType="uiSlider"
-               componentRectangle="528 48 64 64" componentLayerUid="e75f0ebc02000000feffffffffffffff"
-               componentRadioGroupNotifyMidi="1"/>
+               uiSliderMouseWheelInterval="1.0" uiSliderPopupBubble="0" componentRadioGroupNotifyMidi="1"
+               componentLayerUid="e75f0ebc02000000feffffffffffffff" componentRectangle="528 48 64 64"
+               uiType="uiSlider" uiSliderLookAndFeelIsCustom="1" uiSliderLookAndFeel="V3"
+               uiSliderSetNotificationOnlyOnRelease="0" uiSliderValueSuffix=""
+               uiSliderDecimalPlaces="0"/>
   </modulator>
   <modulator modulatorCustomIndex="0" modulatorCustomIndexGroup="0" modulatorIsStatic="1"
              name="deb" modulatorVstExported="0" modulatorValue="0.0">
@@ -471,8 +471,8 @@
                uiLabelInputHighlightColour="0xff0000ff" uiLabelEditOnSingleClick="0"
                uiLabelEditOnDoubleClick="0" uiLabelEditFocusDiscardsChanges="1"
                uiLabelInputAllowedChars="" uiLabelInputMaxLength="1024.0" uiLabelChangedCbk="-- None"
-               uiType="uiLabel" componentRectangle="72 128 472 52" componentLayerUid="e75f0ebc02000000feffffffffffffff"
-               componentRadioGroupNotifyMidi="1"/>
+               componentRadioGroupNotifyMidi="1" componentLayerUid="e75f0ebc02000000feffffffffffffff"
+               componentRectangle="72 128 472 52" uiType="uiLabel"/>
   </modulator>
   <modulator modulatorVstExported="1" vstIndex="8" modulatorIsStatic="0" modulatorGlobalVariable="-1.0"
              modulatorMuteOnStart="0" modulatorMute="0" modulatorExcludeFromSnapshot="0"
@@ -515,10 +515,10 @@
                uiSliderValueTextJustification="centred" uiSliderVelocitySensitivity="1"
                uiSliderVelocityThreshold="1" uiSliderVelocityOffset="0" uiSliderVelocityMode="0"
                uiSliderVelocityModeKeyTrigger="1" uiSliderSpringMode="0" uiSliderSpringValue="0"
-               uiSliderMouseWheelInterval="1.0" uiSliderPopupBubble="0" uiSliderDecimalPlaces="0"
-               uiSliderValueSuffix="" uiSliderSetNotificationOnlyOnRelease="0"
-               uiSliderLookAndFeel="V3" uiSliderLookAndFeelIsCustom="1" componentLayerUid="e75f0ebc02000000feffffffffffffff"
-               componentRectangle="40 48 64 64" uiType="uiSlider" componentRadioGroupNotifyMidi="1"/>
+               uiSliderMouseWheelInterval="1.0" uiSliderPopupBubble="0" componentRadioGroupNotifyMidi="1"
+               uiType="uiSlider" componentRectangle="40 48 64 64" componentLayerUid="e75f0ebc02000000feffffffffffffff"
+               uiSliderLookAndFeelIsCustom="1" uiSliderLookAndFeel="V3" uiSliderSetNotificationOnlyOnRelease="0"
+               uiSliderValueSuffix="" uiSliderDecimalPlaces="0"/>
   </modulator>
   <modulator modulatorCustomIndex="0" modulatorCustomIndexGroup="0" modulatorIsStatic="1"
              name="modulator-1" modulatorVstExported="0" modulatorValue="0.0">
@@ -543,8 +543,8 @@
                uiLabelInputHighlightColour="0xff0000ff" uiLabelEditOnSingleClick="0"
                uiLabelEditOnDoubleClick="0" uiLabelEditFocusDiscardsChanges="1"
                uiLabelInputAllowedChars="" uiLabelInputMaxLength="1024" uiLabelChangedCbk="-- None"
-               componentLayerUid="e75f0ebc02000000feffffffffffffff" componentRectangle="32 8 551 34"
-               uiType="uiLabel" componentRadioGroupNotifyMidi="1"/>
+               componentRadioGroupNotifyMidi="1" uiType="uiLabel" componentRectangle="32 8 551 34"
+               componentLayerUid="e75f0ebc02000000feffffffffffffff"/>
   </modulator>
   <modulator modulatorVstExported="1" vstIndex="10979" modulatorIsStatic="0"
              modulatorGlobalVariable="5.0" modulatorMuteOnStart="0" modulatorMute="0"
@@ -579,9 +579,9 @@
                uiButtonConnectedLeft="1" uiButtonConnectedRight="1" uiButtonConnectedTop="1"
                uiButtonConnectedBottom="1" uiButtonRepeat="0" uiButtonRepeatRate="100.0"
                uiButtonTriggerOnMouseDown="0" componentInternalFunction="-- None"
-               componentRectangle="266 208 88 32" uiButtonLookAndFeel="V3" uiButtonLookAndFeelIsCustom="1"
-               uiType="uiButton" componentLayerUid="e75f0ebc02000000feffffffffffffff"
-               componentRadioGroupNotifyMidi="1"/>
+               componentRectangle="266 208 88 32" componentRadioGroupNotifyMidi="1"
+               componentLayerUid="e75f0ebc02000000feffffffffffffff" uiType="uiButton"
+               uiButtonLookAndFeelIsCustom="1" uiButtonLookAndFeel="V3"/>
   </modulator>
   <modulator modulatorCustomIndex="0" modulatorCustomIndexGroup="0" modulatorIsStatic="1"
              name="midi out" modulatorVstExported="0" modulatorValue="0.0">
@@ -605,8 +605,8 @@
                uiLabelInputHighlightTextColour="ff000000" uiLabelInputHighlightColour="ff000000"
                uiLabelEditOnSingleClick="0" uiLabelEditOnDoubleClick="0" uiLabelEditFocusDiscardsChanges="1"
                uiLabelInputAllowedChars="" uiLabelInputMaxLength="1024" uiLabelChangedCbk="-- None"
-               componentLayerUid="e75f0ebc02000000feffffffffffffff" componentRectangle="72 264 469 101"
-               uiType="uiLabel" componentRadioGroupNotifyMidi="1"/>
+               componentRadioGroupNotifyMidi="1" uiType="uiLabel" componentRectangle="72 264 469 101"
+               componentLayerUid="e75f0ebc02000000feffffffffffffff"/>
   </modulator>
   <panelCustomData/>
 </panel>
