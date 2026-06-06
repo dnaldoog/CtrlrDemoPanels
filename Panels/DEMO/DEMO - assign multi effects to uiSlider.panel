@@ -3,7 +3,7 @@
 <panel name="DEMO - assign multi effects to uiSlider" panelShowDialogs="1"
        panelMessageTime="10000.0" panelAuthorName="" panelAuthorEmail=""
        panelAuthorDonateUrl="" panelAuthorUrl="" panelAuthorDesc=""
-       panelVersionMajor="1" panelVersionMinor="0" panelVersionName="Hell-O-Kitty"
+       panelVersionMajor="6" panelVersionMinor="0" panelVersionName="Hell-O-Kitty"
        panelVendor="" panelDevice="" panelCertificateWinSelectPath=""
        panelCertificateWinPassCode="" panelPlugType="Instrument|Synth"
        panelExportPublicKey="" panelExportServerAuthURL="https://localhost:8000/auth/authenticate"
@@ -24,12 +24,12 @@
        luaPanelMessageHandler="-- None" luaPanelModulatorValueChanged="-- None"
        luaPanelSaveState="-- None" luaPanelRestoreState="-- None" luaPanelMidiSnapshotPost="-- None"
        luaPanelMidiSnapshotPre="-- None" luaAudioProcessBlock="-- None"
-       luaPanelOSCReceived="-- None" panelFilePath="C:\Users\zan64\Desktop\TablePanel_V5_JG.panel"
-       panelLastSaveDir="C:\Users\zan64\Desktop" panelUID="8.yV5qkINzV6M"
-       panelInstanceUID="zs2t" panelInstanceManufacturerID="rQF6" panelModulatorListColumns="-- None"
-       panelModulatorListCsvDelimiter="," panelModulatorListXmlRoot="ctrlrModulatorList"
-       panelModulatorListXmlModulator="ctrlrModulator" panelModulatorListSortOption="1.0"
-       panelGlobalVariables="-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1"
+       luaPanelOSCReceived="-- None" panelFilePath="C:\Users\zan64\Documents\CtrlrDemoPanels\Panels\DEMO\DEMO - assign multi effects to uiSlider.panel"
+       panelLastSaveDir="C:\Users\zan64\Documents\CtrlrDemoPanels\Panels\DEMO"
+       panelUID="8.yV5qkINzV6M" panelInstanceUID="zs2t" panelInstanceManufacturerID="rQF6"
+       panelModulatorListColumns="-- None" panelModulatorListCsvDelimiter=","
+       panelModulatorListXmlRoot="ctrlrModulatorList" panelModulatorListXmlModulator="ctrlrModulator"
+       panelModulatorListSortOption="1.0" panelGlobalVariables="-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1"
        panelResources="-- None" panelPropertyDisplayIDs="0" panelMidiInputFromHost="0"
        panelMidiInputChannelHost="1" panelMidiOutputToHost="0" panelMidiOutputChannelHost="1"
        panelMidiThruH2H="0" panelMidiThruH2HChannelize="0" panelMidiThruH2D="0"
@@ -41,12 +41,12 @@
        ctrlrMenuBarBackgroundColour2="ffcccccc" ctrlrMenuBarTextColour="ff000000"
        ctrlrMenuBarHighlightedTextColour="ffffffff" ctrlrMenuBarHighlightColour="ff4364ff"
        ctrlrMenuBarFont="&lt;Sans-Serif&gt;;18;0;0;0;0;1;3" ctrlrUseEditorWrapper="0"
-       panelIndex="0" panelIsDirty="1">
+       panelIndex="0" panelIsDirty="0">
   <uiWindowManager>
-    <uiChildWindow uiChildWindowName="LuaMethodEditor" uiChildWindowState="488 238 1021 725">
-      <uiChildWindowContentState luaMethodEditor="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#13;&#10;&#13;&#10;&lt;OPEN id=&quot;LUA&quot; scrollPos=&quot;0&quot;&gt;&#13;&#10;  &lt;OPEN id=&quot;Built-In&quot;/&gt;&#13;&#10;  &lt;OPEN id=&quot;Start&quot;/&gt;&#13;&#10;  &lt;SELECTED id=&quot;/LUA/effectTable&quot;/&gt;&#13;&#10;&lt;/OPEN&gt;&#13;&#10;;"/>
+    <uiChildWindow uiChildWindowName="LuaMethodEditor" uiChildWindowState="42 31 1148 500">
+      <uiChildWindowContentState luaMethodEditor="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#13;&#10;&#13;&#10;&lt;OPEN id=&quot;LUA&quot; scrollPos=&quot;0&quot;&gt;&#13;&#10;  &lt;OPEN id=&quot;Built-In&quot;/&gt;&#13;&#10;  &lt;OPEN id=&quot;Start&quot;/&gt;&#13;&#10;  &lt;SELECTED id=&quot;/LUA/generateUiComboMenu&quot;/&gt;&#13;&#10;&lt;/OPEN&gt;&#13;&#10;;0925f309f4ac493ab0ab828bfd06de85:44d211c3adbe4ce6ad05997d8eec063d:c0404651eefa40bf9998bf67c2b3d90c"/>
     </uiChildWindow>
-    <uiChildWindow uiChildWindowName="LuaConsole" uiChildWindowState="891 565 800 496">
+    <uiChildWindow uiChildWindowName="LuaConsole" uiChildWindowState="425 621 800 496">
       <uiChildWindowContentState/>
     </uiChildWindow>
   </uiWindowManager>
@@ -77,15 +77,18 @@
                    luaMethodLinkedProperty="" luaMethodSource="0" uuid="9d423f6118884012ac25cf5a5ad3981f"
                    luaMethodValid="1"/>
       </luaMethodGroup>
-      <luaMethod luaMethodName="test" luaMethodCode="--&#13;&#10;-- Called when a modulator value changes&#13;&#10;-- get name of modulator with L(mod:getName())&#13;&#10;-- @value    new numeric value of the modulator&#13;&#10;-- @source indicates what caused the change&#13;&#10;--&#13;&#10;-- * initial value = 0&#13;&#10;-- * changed by Host = 1&#13;&#10;-- * changed by MidiIn = 2&#13;&#10;-- * changed by MidiController = 3&#13;&#10;-- * changed by GUI = 4&#13;&#10;-- * changed by Lua = 5&#13;&#10;-- * changed by Program = 6&#13;&#10;-- * changed by Link = 7&#13;&#10;-- * change by Unknown = 8&#13;&#10;&#13;&#10;test = function(--[[ CtrlrModulator --]] mod --[[ number --]], value --[[ number --]], source)&#13;&#10;    if panel:isLoading() then&#13;&#10;        return&#13;&#10;    end&#13;&#10;&#13;&#10;    local function initializeEffectValues(effectTable, _min, _max)&#13;&#10;        local t = {}&#13;&#10;        -- If values has predefined items (like {&quot;Hall&quot;, &quot;Room&quot;}), use them directly&#13;&#10;        if #effectTable &gt; 0 then&#13;&#10;            t = effectTable&#13;&#10;        else&#13;&#10;            -- Otherwise, dynamically generate the number range as strings&#13;&#10;            for i = _min, _max do&#13;&#10;                table.insert(t, tostring(i))&#13;&#10;            end&#13;&#10;        end&#13;&#10;        return t&#13;&#10;    end&#13;&#10;&#13;&#10;    -- 2. Grab ComboBox Component and Text&#13;&#10;    local combo = nil&#13;&#10;    local c = panel:getComboComponent(&quot;effects&quot;)&#13;&#10;    if c ~= nil then&#13;&#10;        combo = c:getOwnedComboBox()&#13;&#10;    end&#13;&#10;&#13;&#10;    local key = combo:getText()&#13;&#10;    console(&quot;key = &quot; .. key)&#13;&#10;&#13;&#10;    -- Verify the selected effect actually exists in our data table&#13;&#10;    if effectsLookup[key] then&#13;&#10;        local targetParam = {effectsLookup[key][1], effectsLookup[key][2], effectsLookup[key][3]}&#13;&#10;        local targetMod = {&quot;slider1&quot;, &quot;slider2&quot;, &quot;slider3&quot;}&#13;&#10;&#13;&#10;        for i, v in ipairs(targetParam) do&#13;&#10;            local mod = panel:getModulatorByName(targetMod[i])&#13;&#10;&#13;&#10;            if mod ~= nil then&#13;&#10;                local comp = mod:getComponent()&#13;&#10;&#13;&#10;                -- Set the internal physical min/max of the slider component&#13;&#10;                comp:setProperty(&quot;componentMax&quot;, v.max, false)&#13;&#10;                comp:setProperty(&quot;componentMin&quot;, v.min, false)&#13;&#10;&#13;&#10;                -- Generate the list contents separated by newlines&#13;&#10;                local values = initializeEffectValues(v.values, v.min, v.max)&#13;&#10;                comp:setProperty(&quot;uiFixedSliderContent&quot;, table.concat(values, &quot;\n&quot;), false)&#13;&#10;&#13;&#10;                -- Update the label/visible name of the parameter&#13;&#10;                comp:setProperty(&quot;componentVisibleName&quot;, v.name, false)&#13;&#10;            end&#13;&#10;        end&#13;&#10;    else&#13;&#10;        console(&quot;Effect key not found: &quot; .. tostring(key))&#13;&#10;    end&#13;&#10;end&#13;&#10;"
+      <luaMethod luaMethodName="test" luaMethodCode="--&#13;&#10;-- Called when a modulator value changes&#13;&#10;-- get name of modulator with L(mod:getName())&#13;&#10;-- @value    new numeric value of the modulator&#13;&#10;-- @source indicates what caused the change&#13;&#10;--&#13;&#10;-- * initial value = 0&#13;&#10;-- * changed by Host = 1&#13;&#10;-- * changed by MidiIn = 2&#13;&#10;-- * changed by MidiController = 3&#13;&#10;-- * changed by GUI = 4&#13;&#10;-- * changed by Lua = 5&#13;&#10;-- * changed by Program = 6&#13;&#10;-- * changed by Link = 7&#13;&#10;-- * change by Unknown = 8&#13;&#10;&#13;&#10;test = function(--[[ CtrlrModulator --]] mod --[[ number --]], value --[[ number --]], source)&#13;&#10;    if panel:isLoading() then&#13;&#10;        return&#13;&#10;    end&#13;&#10;local effectsLookup=sy55_effects&#13;&#10;    local function initializeEffectValues(t, _min, _max)&#13;&#10;        -- If values has predefined items (like {&quot;Hall&quot;, &quot;Room&quot;}), use them directly&#13;&#10;        if #t == 0 then&#13;&#10;             -- Otherwise, dynamically generate the number range as strings&#13;&#10;local t={}&#13;&#10;            for i = _min, _max do&#13;&#10;                table.insert(t, tostring(i))&#13;&#10;            end&#13;&#10;        end&#13;&#10;        return t&#13;&#10;    end&#13;&#10;&#13;&#10;    -- 2. Grab ComboBox Component and Text&#13;&#10;    local combo = nil&#13;&#10;    local c = panel:getComboComponent(&quot;effects&quot;)&#13;&#10;    if c ~= nil then&#13;&#10;        combo = c:getOwnedComboBox()&#13;&#10;    end&#13;&#10;&#13;&#10;    local key = combo:getText()&#13;&#10;    console(&quot;key = &quot; .. key)&#13;&#10;&#13;&#10;    -- Verify the selected effect actually exists in our data table&#13;&#10;    if effectsLookup[key] then&#13;&#10;        local targetParam = {effectsLookup[key][1], effectsLookup[key][2], effectsLookup[key][3]}&#13;&#10;        local targetMod = {&quot;slider1&quot;, &quot;slider2&quot;, &quot;slider3&quot;}&#13;&#10;&#13;&#10;        for i, v in ipairs(targetParam) do&#13;&#10;            local mod = panel:getModulatorByName(targetMod[i])&#13;&#10;&#13;&#10;            if mod ~= nil then&#13;&#10;                local comp = mod:getComponent()&#13;&#10;                local calculatedMax = v.max or #v.values&#13;&#10;    &#13;&#10;                -- Set the internal physical min/max of the slider component&#13;&#10;                comp:setProperty(&quot;componentMax&quot;, calculatedMax, false)&#13;&#10;                comp:setProperty(&quot;componentMin&quot;, v.min, false)&#13;&#10;&#13;&#10;                -- Generate the list contents separated by newlines&#13;&#10;                local values = initializeEffectValues(v.values, v.min, v.max)&#13;&#10;                comp:setProperty(&quot;uiFixedSliderContent&quot;, table.concat(values, &quot;\n&quot;), false)&#13;&#10;&#13;&#10;                -- Update the label/visible name of the parameter&#13;&#10;                comp:setProperty(&quot;componentVisibleName&quot;, v.name, false)&#13;&#10;            end&#13;&#10;        end&#13;&#10;    else&#13;&#10;        console(&quot;Effect key not found: &quot; .. tostring(key))&#13;&#10;    end&#13;&#10;end&#13;&#10;"
                  luaMethodLinkedProperty="luaModulatorValueChange" luaMethodSource="0"
                  uuid="44d211c3adbe4ce6ad05997d8eec063d" luaMethodValid="1"/>
       <luaMethod luaMethodName="constructor" luaMethodCode="--&#10;-- Called when the panel is created, no modulators will exist at this point&#10;-- consider this the panels constructor&#10;--&#10;--&#13;&#10;-- Called when the panel is created, no modulators will exist at this point&#13;&#10;-- consider this the panels constructor&#13;&#10;--&#13;&#10;constructor = function()&#13;&#10;    local mt = getmetatable(panel)&#13;&#10;&#13;&#10;    -- Only attempt the hook if the metatable is accessible and using a function index&#13;&#10;    if mt and type(mt) ~= &quot;boolean&quot; and type(mt.__index) == &quot;function&quot; then&#13;&#10;        local originalIndex = mt.__index&#13;&#10;        &#13;&#10;        mt.__index = function(obj, key)&#13;&#10;            if key == &quot;isLoading&quot; then&#13;&#10;                return function(instance)&#13;&#10;                    local bootstrap = instance.getBootstrapState and instance:getBootstrapState() or false&#13;&#10;                    local restore   = instance.getRestoreState   and instance:getRestoreState()   or false&#13;&#10;                    local program   = instance.getProgramState   and instance:getProgramState()   or false&#13;&#10;                    &#13;&#10;                    return (bootstrap or restore or program)&#13;&#10;                end&#13;&#10;            end&#13;&#10;            -- Safely pass control back to the original Luabind routing&#13;&#10;            return originalIndex(obj, key)&#13;&#10;        end&#13;&#10;        console(&quot;Polyfill: Older build detected. Successfully hooked missing isLoading() function.&quot;)&#13;&#10;    else&#13;&#10;        console(&quot;Polyfill: Modern build detected (Metatable protected). Native isLoading() is active.&quot;)&#13;&#10;    end&#13;&#10;end"
                  luaMethodLinkedProperty="luaPanelBeforeLoad" luaMethodSource="0"
                  uuid="55f493b181c04337b97e070d98310c1c" luaMethodValid="1"/>
-      <luaMethod luaMethodName="effectTable" luaMethodCode="effectsLookup = {&#13;&#10;  [&quot;Rev.Hall&quot;] = {&#10;    { name = &quot;Time&quot;, min = 0, max = 99, values = {} },&#10;    { name = &quot;LPF&quot;, min = 0, max = 3, values = {&quot;1.25KHz&quot;,&quot;0kHz&quot;,&quot;12kHz&quot;} },&#10;    { name = &quot;Delay Time&quot;, min = 1, max = 5, values = {&quot;0.1&quot;,&quot;0.2&quot;,&quot;0.5&quot;,&quot;0.75&quot;,&quot;1.0ms&quot;} }&#10;  },&#10;  [&quot;Tunnel&quot;] = {&#10;    { name = &quot;LFO Frequency&quot;, min = 0, max = 99, values = {} },&#10;    { name = &quot;LFO Depth&quot;, min = 0, max = 100, values = {} },&#10;    { name = &quot;Delay Time&quot;, min = 1, max = 50, values = {} }&#10;  },&#10;  [&quot;EarlyRef&quot;] = {&#10;    { name = &quot;Type&quot;, min = 1, max = 4, values = {&quot;Hall&quot;, &quot;Room&quot;, &quot;Lch&quot;, &quot;Rch&quot;} },&#10;    { name = &quot;Room Size&quot;, min = 1, max = 10, values = {} },&#10;    { name = &quot;Liveness&quot;, min = 0, max = 10, values = {} }&#10;  },&#10;  [&quot;Dly1&amp;T1&quot;] = {&#10;    { name = &quot;Delay Time L&quot;, min = 1, max = 300, values = {} },&#10;    { name = &quot;Delay Time R&quot;, min = 1, max = 300, values = {} },&#10;    { name = &quot;Feedback&quot;, min = -99, max = 99, values = {} }&#10;  }&#10;}"
+      <luaMethod luaMethodName="effectTable" luaMethodCode="-- Yamaha SY55 Structural Effect Parameter Maps&#13;&#10;-- Note: The SY55 architecture exposes 3 parameters per effect type over MIDI SysEx (Param 1, Param 2, Param 3).&#13;&#10;-- Relative mixes/levels use standard 0-100 scales, while structural ranges vary.&#13;&#10;-- For values that do not use min/max to generate integers, set max to nil. max is calculated on the fly&#13;&#10;-- use &#96;order&#96; to generate menu for uiCombo&#13;&#10;sy55_effects = {&#13;&#10;    [&quot;Rev.Hall&quot;] = {&#13;&#10;        order = 1,&#13;&#10;        -- Typical Reverb Parameters mapping to the SY55 architecture&#13;&#10;        {name = &quot;Time&quot;, min = 3, max = 300, values = {}}, -- 0.3s to 30.0s (stored as index 3-300)&#13;&#10;        {name = &quot;Delay&quot;, min = 0, max = 99, values = {}}, -- 0ms to 99ms&#13;&#10;        {name = &quot;LPF&quot;, min = 0, max = 10, values = {}} -- High frequency dampening factor 0-10&#13;&#10;    },&#13;&#10;    [&quot;Rev.Room&quot;] = {&#13;&#10;        order = 2,&#13;&#10;        {name = &quot;Time&quot;, min = 3, max = 300, values = {}}, -- 0.3s to 30.0s (stored as index 3-300)&#13;&#10;        {name = &quot;Delay&quot;, min = 0, max = 99, values = {}}, -- 0ms to 99ms&#13;&#10;        {name = &quot;LPF&quot;, min = 0, max = 10, values = {}} -- High frequency dampening factor 0-10&#13;&#10;&#13;&#10;    },&#13;&#10;    [&quot;RevPlate&quot;] = {&#13;&#10;        order = 3,&#13;&#10;        {name = &quot;Time&quot;, min = 3, max = 300, values = {}}, -- 0.3s to 30.0s (stored as index 3-300)&#13;&#10;        {name = &quot;Delay&quot;, min = 0, max = 99, values = {}}, -- 0ms to 99ms&#13;&#10;        {name = &quot;LPF&quot;, min = 0, max = 10, values = {}} -- High frequency dampening factor 0-10&#13;&#10;    &#13;&#10;    },&#13;&#10;    [&quot;RevChrch&quot;] = {&#13;&#10;        order = 4,&#13;&#10;        {name = &quot;Time&quot;, min = 3, max = 300, values = {}}, -- 0.3s to 30.0s (stored as index 3-300)&#13;&#10;        {name = &quot;Delay&quot;, min = 0, max = 99, values = {}}, -- 0ms to 99ms&#13;&#10;        {name = &quot;LPF&quot;, min = 0, max = 10, values = {}} -- High frequency dampening factor 0-10&#13;&#10;    &#13;&#10;    },&#13;&#10;    [&quot;Rev.Club&quot;] = {&#13;&#10;        order = 5,&#13;&#10;        {name = &quot;Time&quot;, min = 3, max = 300, values = {}}, -- 0.3s to 30.0s (stored as index 3-300)&#13;&#10;        {name = &quot;Delay&quot;, min = 0, max = 99, values = {}}, -- 0ms to 99ms&#13;&#10;        {name = &quot;LPF&quot;, min = 0, max = 10, values = {}} -- High frequency dampening factor 0-10&#13;&#10;    &#13;&#10;    },&#13;&#10;    [&quot;RevStage&quot;] = {&#13;&#10;        order = 6,&#13;&#10;        {name = &quot;Time&quot;, min = 3, max = 300, values = {}}, -- 0.3s to 30.0s (stored as index 3-300)&#13;&#10;        {name = &quot;Delay&quot;, min = 0, max = 99, values = {}}, -- 0ms to 99ms&#13;&#10;        {name = &quot;LPF&quot;, min = 0, max = 10, values = {}} -- High frequency dampening factor 0-10&#13;&#10;    &#13;&#10;    },&#13;&#10;    [&quot;BathRoom&quot;] = {&#13;&#10;        order = 7,&#13;&#10;        {name = &quot;Time&quot;, min = 3, max = 300, values = {}}, -- 0.3s to 30.0s (stored as index 3-300)&#13;&#10;        {name = &quot;Delay&quot;, min = 0, max = 99, values = {}}, -- 0ms to 99ms&#13;&#10;        {name = &quot;LPF&quot;, min = 0, max = 10, values = {}} -- High frequency dampening factor 0-10&#13;&#10;    &#13;&#10;    },&#13;&#10;    [&quot;RevMetal&quot;] = {&#13;&#10;        order = 8,&#13;&#10;        {name = &quot;Time&quot;, min = 3, max = 300, values = {}}, -- 0.3s to 30.0s (stored as index 3-300)&#13;&#10;        {name = &quot;Delay&quot;, min = 0, max = 99, values = {}}, -- 0ms to 99ms&#13;&#10;        {name = &quot;LPF&quot;, min = 0, max = 10, values = {}} -- High frequency dampening factor 0-10&#13;&#10;    &#13;&#10;    },&#13;&#10;    [&quot;Delay&quot;] = {&#13;&#10;        order = 9,&#13;&#10;        {name = &quot;Time&quot;, min = 1, max = 100, values = {}},&#13;&#10;        {name = &quot;FB Delay&quot;, min = 1, max = 100, values = {}},&#13;&#10;        {name = &quot;FB Gain&quot;, min = 0, max = 99, values = {}}&#13;&#10;    },&#13;&#10;    [&quot;DelayL/R&quot;] = {&#13;&#10;        order = 10,&#13;&#10;        {name = &quot;Lch Delay&quot;, min = 1, max = 10, values = {}},&#13;&#10;        {name = &quot;Rch Delay&quot;, min = 0, max = 10, values = {}},&#13;&#10;        {name = &quot;FB Gain&quot;, min = 0, max = 10, values = {}}&#13;&#10;    },&#13;&#10;    [&quot;St.Echo&quot;] = {&#13;&#10;        order = 11,&#13;&#10;        {name = &quot;Lch Delay&quot;, min = 1, max = 10, values = {}},&#13;&#10;        {name = &quot;Rch Delay&quot;, min = 0, max = 10, values = {}},&#13;&#10;        {name = &quot;FB Gain&quot;, min = 0, max = 10, values = {}}&#13;&#10;    },&#13;&#10;    [&quot;Doubler1&quot;] = {&#13;&#10;        order = 12,&#13;&#10;        {name = &quot;Delay&quot;, min = 1, max = 300, values = {}}, &#13;&#10;        {name = &quot;HPF&quot;, min = 1, max = 300, values = {}},&#13;&#10;        {name = &quot;LPF&quot;, min = -99, max = 99, values = {}}&#13;&#10;    },&#13;&#10;    [&quot;Doubler2&quot;] = {&#13;&#10;        order = 13,&#13;&#10;        {name = &quot;Lch Delay&quot;, min = 1, max = 10, values = {}},&#13;&#10;        {name = &quot;Rch Delay&quot;, min = 0, max = 10, values = {}},&#13;&#10;        {name = &quot;LPF&quot;, min = 0, max = 10, values = {}}&#13;&#10;    },&#13;&#10;    [&quot;PingPong&quot;] = {&#13;&#10;        order = 14,&#13;&#10;        {name = &quot;Time&quot;, min = 0, max = 99, values = {}}, &#13;&#10;        {name = &quot;Pre-Delay&quot;, min = 0, max = 100, values = {}},&#13;&#10;        {name = &quot;FB Gain&quot;, min = 1, max = 50, values = {}}&#13;&#10;    },&#13;&#10;    [&quot;Pan Ref.&quot;] = {&#13;&#10;        order = 15,&#13;&#10;        {name = &quot;Room Size&quot;, min = 0.5, max = 3.2, values = {}},&#13;&#10;        {name = &quot;FB Gain&quot;, min = 0, max = 100, values = {}},&#13;&#10;        {name = &quot;Direction&quot;, min = 1, max = nil, values = {&quot;L-&gt;R&quot;,&quot;R-&gt;L&quot;}}&#13;&#10;    },&#13;&#10;    [&quot;EarlyRef&quot;] = {&#13;&#10;        order = 16,&#13;&#10;        {name = &quot;Room Size&quot;, min = 0.5, max = 3.2, values = {}},&#13;&#10;        {name = &quot;LPF&quot;, min = 0, max = 10, values = {}},&#13;&#10;        {name = &quot;Delay&quot;, min = 1, max = 50, values = {}}&#13;&#10;    },&#13;&#10;    [&quot;Gate Rev&quot;] = {&#13;&#10;        order = 17,&#13;&#10;        {name = &quot;Room Size&quot;, min = 0.5, max = 3.2, values = {}},&#13;&#10;        {name = &quot;LPF&quot;, min = 0, max = 10, values = {}},&#13;&#10;        {name = &quot;Delay&quot;, min = 1, max = 50, values = {}}&#13;&#10;    },&#13;&#10;    [&quot;Rvs Gate&quot;] = {&#13;&#10;        order = 18,&#13;&#10;        {name = &quot;Room Size&quot;, min = 0.5, max = 3.2, values = {}},&#13;&#10;        {name = &quot;LPF&quot;, min = 0, max = 10, values = {}},&#13;&#10;        {name = &quot;Delay&quot;, min = 1, max = 50, values = {}}&#13;&#10;    },&#13;&#10;    [&quot;FB E/R&quot;] = {&#13;&#10;        order = 19,&#13;&#10;        {name = &quot;Room Size&quot;, min = 0.5, max = 3.2, values = {}},&#13;&#10;        {name = &quot;LPF&quot;, min = 0, max = 10, values = {}},&#13;&#10;        {name = &quot;FB Gain&quot;, min = 0, max = 99, values = {}}&#13;&#10;    },&#13;&#10;    [&quot;Dist.&quot;] = {&#13;&#10;        order = 34,&#13;&#10;        {name = &quot;Drive&quot;, min = 1, max = 100, values = {}},&#13;&#10;        {name = &quot;Mid Frequency&quot;, min = 1, max = 10, values = {}},&#13;&#10;        {name = &quot;Output Level&quot;, min = 0, max = 100, values = {}}&#13;&#10;    },&#13;&#10;    [&quot;FB Gate&quot;] = {&#13;&#10;        order = 20,&#13;&#10;        {name = &quot;Room Size&quot;, min = 0.5, max = 3.2, values = {}},&#13;&#10;        {name = &quot;LPF&quot;, min = 0, max = 10, values = {}},&#13;&#10;        {name = &quot;FB Gain&quot;, min = 0, max = 99, values = {}}&#13;&#10;    },&#13;&#10;     [&quot;FB Rvs&quot;] = {&#13;&#10;        order = 21,&#13;&#10;        {name = &quot;Room Size&quot;, min = 0.5, max = 3.2, values = {}},&#13;&#10;        {name = &quot;LPF&quot;, min = 0, max = 10, values = {}},&#13;&#10;        {name = &quot;FB Gain&quot;, min = 0, max = 99, values = {}}&#13;&#10;    },&#13;&#10;    [&quot;Dly1&amp;Rev&quot;] = {&#13;&#10;        order = 22,&#13;&#10;        {name = &quot;Time&quot;, min = 0.3, max = 10, values = {}},&#13;&#10;        {name = &quot;Delay&quot;, min = 0.1, max = 1.52, values = {}},&#13;&#10;        {name = &quot;FB Gain&quot;, min = 0, max = 99, values = {}}&#13;&#10;    },&#13;&#10;    [&quot;Dly2&amp;Rev&quot;] = {&#13;&#10;        order = 23,&#13;&#10;        {name = &quot;Time&quot;, min = 0.3, max = 10, values = {}},&#13;&#10;        {name = &quot;Lch Delay&quot;, min = 0.1, max = 1.52, values = {}},&#13;&#10;        {name = &quot;Rch Delay&quot;, min = 0.1, max = 1.52, values = {}},&#13;&#10;    },&#13;&#10;    [&quot;Tunnel&quot;] = {&#13;&#10;        order = 24,&#13;&#10;        {name = &quot;Time&quot;, min = 0.3, max = 10, values = {}},&#13;&#10;        {name = &quot;Delay&quot;, min = 0.1, max = 1.52, values = {}},&#13;&#10;        {name = &quot;FB Gain&quot;, min = 0, max = 99, values = {}}&#13;&#10;    },&#13;&#10;    [&quot;Tone 1&quot;] = {&#13;&#10;        order = 25,&#13;&#10;        {name = &quot;Low&quot;, min = -12, max = 12, values = {}},&#13;&#10;        {name = &quot;Mid&quot;, min = -12, max = 12, values = {}},&#13;&#10;        {name = &quot;High&quot;, min = -12, max = 12, values = {}}&#13;&#10;    },&#13;&#10;    [&quot;Dly1&amp;T1&quot;] = {&#13;&#10;        order = 26,&#13;&#10;        {name = &quot;Brilliance&quot;, min = 0, max = 12, values = {}},&#13;&#10;        {name = &quot;Delay&quot;, min = 0.1, max = 30.0, values = {}},&#13;&#10;        {name = &quot;FB Gain&quot;, min = 0, max = 99, values = {}}&#13;&#10;    },&#13;&#10;    [&quot;Dly2&amp;T1&quot;] = {&#13;&#10;        order = 27,&#13;&#10;        {name = &quot;Brilliance&quot;, min = 0, max = 12, values = {}},&#13;&#10;        {name = &quot;Delay&quot;, min = 0.1, max = 30.0, values = {}},&#13;&#10;        {name = &quot;FB Gain&quot;, min = 0, max = 99, values = {}}&#13;&#10;    },&#13;&#10;    [&quot;Tone 2&quot;] = {&#13;&#10;        order = 28,&#13;&#10;        {name = &quot;Low&quot;, min = -12, max = 12, values = {}},&#13;&#10;        {name = &quot;Mid&quot;, min = -12, max = 12, values = {}},&#13;&#10;        {name = &quot;High&quot;, min = -12, max = 12, values = {}}&#13;&#10;    },&#13;&#10;    [&quot;Dly1&amp;T2&quot;] = {&#13;&#10;        order = 29,&#13;&#10;        {name = &quot;Brilliance&quot;, min = 0, max = 12, values = {}},&#13;&#10;        {name = &quot;Delay&quot;, min = 0.1, max = 30.0, values = {}},&#13;&#10;        {name = &quot;FB Gain&quot;, min = 0, max = 99, values = {}}&#13;&#10;    },&#13;&#10;    [&quot;Dly2&amp;T2&quot;] = {&#13;&#10;        order = 30,&#13;&#10;        {name = &quot;Brilliance&quot;, min = 0, max = 12, values = {}},&#13;&#10;        {name = &quot;Delay&quot;, min = 0.1, max = 30.0, values = {}},&#13;&#10;        {name = &quot;FB Gain&quot;, min = 0, max = 99, values = {}}&#13;&#10;    },&#13;&#10;    [&quot;Dist&amp;Rev&quot;] = {&#13;&#10;        order = 31,&#13;&#10;        {name = &quot;Time&quot;, min = 0.3, max = 10, values = {}},&#13;&#10;        {name = &quot;Depth&quot;, min = 0, max = 100, values = {}},&#13;&#10;        {name = &quot;Balance&quot;, min = 0, max = 100, values = {}}&#13;&#10;    },&#13;&#10;    [&quot;Dst&amp;Dly1&quot;] = {&#13;&#10;        order = 32,&#13;&#10;        {name = &quot;Time&quot;, min = 0.1, max = 30, values = {}},&#13;&#10;        {name = &quot;FB Gain&quot;, min = 0, max = 99, values = {}},&#13;&#10;        {name = &quot;Depth&quot;, min = 0, max = 100, values = {}},&#13;&#10;    },&#13;&#10;    [&quot;Dst&amp;Dly2&quot;] = {&#13;&#10;        order = 33,&#13;&#10;        {name = &quot;Time&quot;, min = 0.1, max = 30, values = {}},&#13;&#10;        {name = &quot;FB Gain&quot;, min = 0, max = 99, values = {}},&#13;&#10;        {name = &quot;Depth&quot;, min = 0, max = 100, values = {}},&#13;&#10;    },&#13;&#10;&#13;&#10;}&#13;&#10;"
                  luaMethodLinkedProperty="" luaMethodSource="0" uuid="0925f309f4ac493ab0ab828bfd06de85"
                  luaMethodValid="1"/>
+      <luaMethod luaMethodName="generateUiComboMenu" luaMethodCode="--&#13;&#10;-- Called when a mouse is down on this component&#13;&#10;--&#13;&#10;-- get name of modulator with L(comp:getOwner():getName())&#13;&#10;-- get mouse event info from event parameter event.x, event.y, event.mods, etc.&#13;&#10;-- x coordinate = event.x&#13;&#10;-- y coordinate = event.y&#13;&#10;&#13;&#10;generateUiComboMenu = function(--[[ CtrlrComponent --]] comp --[[ MouseEvent --]], event)&#13;&#10;    local combo = panel:getModulatorByName(&quot;effects&quot;)&#13;&#10;    local tab = sy55_effects&#13;&#10;    local orderedFX = {}&#13;&#10;    for k, v in pairs(tab) do&#13;&#10;        console(k .. &quot;,&quot; .. v.order)&#13;&#10;        orderedFX[tonumber(v.order)] = k&#13;&#10;    end&#13;&#10;&#13;&#10;    combo:getComponent():setProperty(&quot;uiComboContent&quot;, table.concat(orderedFX, &quot;\n&quot;), false)&#13;&#10;    console(table.concat(orderedFX, &quot;\n&quot;))&#13;&#10;end&#13;&#10;"
+                 luaMethodLinkedProperty="componentLuaMouseDown" luaMethodSource="0"
+                 uuid="c0404651eefa40bf9998bf67c2b3d90c" luaMethodValid="1"/>
     </luaManagerMethods>
   </luaManager>
   <panelResources/>
@@ -110,7 +113,7 @@
                  uiPanelTooltipFont="&lt;Sans-Serif&gt;;15;1;0;0;0;1;3" uiPanelTooltipColour="0xff000000"
                  uiPanelTooltipBackgroundColour="0xffeeeebb" uiPanelTooltipOutlineColour="0xff000000"
                  uiPanelTooltipCornerRound="1.0" uiPanelLegacyMode="1" uiPanelLookAndFeel="V3"
-                 uiPanelHeight="400" uiPanelWidth="400">
+                 uiPanelWidth="400" uiPanelHeight="400">
     <uiPanelCanvasLayer uiPanelCanvasLayerName="New layer" uiPanelCanvasLayerUid="8f64a1c1f10e0000feffffffffffffff"
                         uiPanelCanvasLayerColour="0x000000" uiPanelCanvasLayerVisibility="1"
                         uiPanelCanvasLayerIndex="0"/>
@@ -125,14 +128,14 @@
              modulatorLinkedToComponent="Modulator" modulatorBaseValue="0"
              modulatorCustomIndex="0" modulatorCustomName="" modulatorCustomIndexGroup="0"
              modulatorCustomNameGroup="" modulatorVstNameFormat="%n" luaModulatorValueChange="-- None"
-             name="slider1" modulatorMin="0" modulatorMax="99" modulatorValue="1.0">
+             name="slider1" modulatorMin="0" modulatorMax="99" modulatorValue="41.0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1" midiMessageCtrlrValue="0" midiMessageCtrlrNumberSize="0"
           midiMessageLatchAndStream="0" midiMessageMultiList="" midiMessageSysExFormula=""/>
     <component componentVisibility="1" componentSentBack="0" componentMouseCursor="2"
                componentDisabled="0" componentIsLocked="0" componentSnapSize="0"
                componentGroupName="" componentGroupped="0" componentRadioGroupId="0"
-               componentVisibleName="Time" componentLabelVisible="1" componentLabelAlwaysOnTop="1"
+               componentVisibleName="Low" componentLabelVisible="1" componentLabelAlwaysOnTop="1"
                componentLabelPosition="top" componentLabelWidth="0" componentLabelHeight="14"
                componentLabelJustification="centred" componentLabelFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;3"
                componentLabelColour="0xff000000" componentEffect="0" componentEffectRadius="1.0"
@@ -149,15 +152,14 @@
                uiSliderRotaryOutlineColour="0xff0000ff" uiSliderRotaryFillColour="0xff0000ff"
                uiSliderThumbColour="0xffff0000" uiSliderValueHighlightColour="0xff0000ff"
                uiSliderValueOutlineColour="0xffffffff" uiSliderTrackColour="0xff0f0f0f"
-               uiFixedSliderContent="0&#10;1&#10;2&#10;3&#10;4&#10;5&#10;6&#10;7&#10;8&#10;9&#10;10&#10;11&#10;12&#10;13&#10;14&#10;15&#10;16&#10;17&#10;18&#10;19&#10;20&#10;21&#10;22&#10;23&#10;24&#10;25&#10;26&#10;27&#10;28&#10;29&#10;30&#10;31&#10;32&#10;33&#10;34&#10;35&#10;36&#10;37&#10;38&#10;39&#10;40&#10;41&#10;42&#10;43&#10;44&#10;45&#10;46&#10;47&#10;48&#10;49&#10;50&#10;51&#10;52&#10;53&#10;54&#10;55&#10;56&#10;57&#10;58&#10;59&#10;60&#10;61&#10;62&#10;63&#10;64&#10;65&#10;66&#10;67&#10;68&#10;69&#10;70&#10;71&#10;72&#10;73&#10;74&#10;75&#10;76&#10;77&#10;78&#10;79&#10;80&#10;81&#10;82&#10;83&#10;84&#10;85&#10;86&#10;87&#10;88&#10;89&#10;90&#10;91&#10;92&#10;93&#10;94&#10;95&#10;96&#10;97&#10;98&#10;99"
-               uiSliderValueFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;3" uiSliderIncDecButtonColour="0xff0000ff"
-               uiSliderIncDecTextColour="0xffffffff" uiSliderValueTextJustification="centred"
-               uiSliderVelocitySensitivity="1" uiSliderVelocityThreshold="1"
-               uiSliderVelocityOffset="0" uiSliderVelocityMode="0" uiSliderVelocityModeKeyTrigger="1"
-               uiSliderSpringMode="0" uiSliderSpringValue="0" uiSliderMouseWheelInterval="1.0"
-               uiSliderPopupBubble="0" uiType="uiFixedSlider" componentRectangle="136 112 64 64"
-               componentLayerUid="8f64a1c1f10e0000feffffffffffffff" componentRadioGroupNotifyMidi="1"
-               componentMax="99.0" componentMin="0.0"/>
+               uiFixedSliderContent="" uiSliderValueFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;3"
+               uiSliderIncDecButtonColour="0xff0000ff" uiSliderIncDecTextColour="0xffffffff"
+               uiSliderValueTextJustification="centred" uiSliderVelocitySensitivity="1"
+               uiSliderVelocityThreshold="1" uiSliderVelocityOffset="0" uiSliderVelocityMode="0"
+               uiSliderVelocityModeKeyTrigger="1" uiSliderSpringMode="0" uiSliderSpringValue="0"
+               uiSliderMouseWheelInterval="1.0" uiSliderPopupBubble="0" componentMin="-12.0"
+               componentMax="12.0" componentRadioGroupNotifyMidi="1" componentLayerUid="8f64a1c1f10e0000feffffffffffffff"
+               componentRectangle="136 112 64 64" uiType="uiFixedSlider"/>
   </modulator>
   <modulator modulatorVstExported="1" vstIndex="4495" modulatorIsStatic="0"
              modulatorGlobalVariable="-1" modulatorMuteOnStart="0" modulatorMute="0"
@@ -169,14 +171,14 @@
              modulatorLinkedToComponent="Modulator" modulatorBaseValue="0"
              modulatorCustomIndex="0" modulatorCustomName="" modulatorCustomIndexGroup="0"
              modulatorCustomNameGroup="" modulatorVstNameFormat="%n" luaModulatorValueChange="-- None"
-             name="slider2" modulatorMin="0" modulatorMax="2" modulatorValue="0.0">
+             name="slider2" modulatorMin="0" modulatorMax="2" modulatorValue="2.0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1" midiMessageCtrlrValue="0" midiMessageCtrlrNumberSize="0"
           midiMessageLatchAndStream="0" midiMessageMultiList="" midiMessageSysExFormula=""/>
     <component componentVisibility="1" componentSentBack="0" componentMouseCursor="2"
                componentDisabled="0" componentIsLocked="0" componentSnapSize="0"
                componentGroupName="" componentGroupped="0" componentRadioGroupId="0"
-               componentVisibleName="LPF" componentLabelVisible="1" componentLabelAlwaysOnTop="1"
+               componentVisibleName="Mid" componentLabelVisible="1" componentLabelAlwaysOnTop="1"
                componentLabelPosition="top" componentLabelWidth="0" componentLabelHeight="14"
                componentLabelJustification="centred" componentLabelFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;3"
                componentLabelColour="0xff000000" componentEffect="0" componentEffectRadius="1"
@@ -193,14 +195,14 @@
                uiSliderRotaryOutlineColour="0xff0000ff" uiSliderRotaryFillColour="0xff0000ff"
                uiSliderThumbColour="0xffff0000" uiSliderValueHighlightColour="0xff0000ff"
                uiSliderValueOutlineColour="0xffffffff" uiSliderTrackColour="0xff0f0f0f"
-               uiFixedSliderContent="1.25KHz&#10;0kHz&#10;12kHz" uiSliderValueFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;3"
+               uiFixedSliderContent="" uiSliderValueFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;3"
                uiSliderIncDecButtonColour="0xff0000ff" uiSliderIncDecTextColour="0xffffffff"
                uiSliderValueTextJustification="centred" uiSliderVelocitySensitivity="1"
                uiSliderVelocityThreshold="1" uiSliderVelocityOffset="0" uiSliderVelocityMode="0"
                uiSliderVelocityModeKeyTrigger="1" uiSliderSpringMode="0" uiSliderSpringValue="0"
-               uiSliderMouseWheelInterval="1" uiSliderPopupBubble="0" componentLayerUid="8f64a1c1f10e0000feffffffffffffff"
-               componentRectangle="216 112 64 64" uiType="uiFixedSlider" componentRadioGroupNotifyMidi="1"
-               componentMax="3.0" componentMin="0.0"/>
+               uiSliderMouseWheelInterval="1" uiSliderPopupBubble="0" componentMin="-12.0"
+               componentMax="12.0" componentRadioGroupNotifyMidi="1" uiType="uiFixedSlider"
+               componentRectangle="216 112 64 64" componentLayerUid="8f64a1c1f10e0000feffffffffffffff"/>
   </modulator>
   <modulator modulatorVstExported="1" vstIndex="4496" modulatorIsStatic="0"
              modulatorGlobalVariable="-1" modulatorMuteOnStart="0" modulatorMute="0"
@@ -219,7 +221,7 @@
     <component componentVisibility="1" componentSentBack="0" componentMouseCursor="2"
                componentDisabled="0" componentIsLocked="0" componentSnapSize="0"
                componentGroupName="" componentGroupped="0" componentRadioGroupId="0"
-               componentVisibleName="Delay Time" componentLabelVisible="1" componentLabelAlwaysOnTop="1"
+               componentVisibleName="High" componentLabelVisible="1" componentLabelAlwaysOnTop="1"
                componentLabelPosition="top" componentLabelWidth="0" componentLabelHeight="14"
                componentLabelJustification="centred" componentLabelFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;3"
                componentLabelColour="0xff000000" componentEffect="0" componentEffectRadius="1"
@@ -236,15 +238,14 @@
                uiSliderRotaryOutlineColour="0xff0000ff" uiSliderRotaryFillColour="0xff0000ff"
                uiSliderThumbColour="0xffff0000" uiSliderValueHighlightColour="0xff0000ff"
                uiSliderValueOutlineColour="0xffffffff" uiSliderTrackColour="0xff0f0f0f"
-               uiFixedSliderContent="0.1&#10;0.2&#10;0.5&#10;0.75&#10;1.0ms"
-               uiSliderValueFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;3" uiSliderIncDecButtonColour="0xff0000ff"
-               uiSliderIncDecTextColour="0xffffffff" uiSliderValueTextJustification="centred"
-               uiSliderVelocitySensitivity="1" uiSliderVelocityThreshold="1"
-               uiSliderVelocityOffset="0" uiSliderVelocityMode="0" uiSliderVelocityModeKeyTrigger="1"
-               uiSliderSpringMode="0" uiSliderSpringValue="0" uiSliderMouseWheelInterval="1"
-               uiSliderPopupBubble="0" componentLayerUid="8f64a1c1f10e0000feffffffffffffff"
-               componentRectangle="296 112 64 64" uiType="uiFixedSlider" componentRadioGroupNotifyMidi="1"
-               componentMax="5.0" componentMin="1.0"/>
+               uiFixedSliderContent="" uiSliderValueFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;3"
+               uiSliderIncDecButtonColour="0xff0000ff" uiSliderIncDecTextColour="0xffffffff"
+               uiSliderValueTextJustification="centred" uiSliderVelocitySensitivity="1"
+               uiSliderVelocityThreshold="1" uiSliderVelocityOffset="0" uiSliderVelocityMode="0"
+               uiSliderVelocityModeKeyTrigger="1" uiSliderSpringMode="0" uiSliderSpringValue="0"
+               uiSliderMouseWheelInterval="1" uiSliderPopupBubble="0" componentMin="-12.0"
+               componentMax="12.0" componentRadioGroupNotifyMidi="1" uiType="uiFixedSlider"
+               componentRectangle="296 112 64 64" componentLayerUid="8f64a1c1f10e0000feffffffffffffff"/>
   </modulator>
   <modulator modulatorVstExported="1" vstIndex="4497" modulatorIsStatic="0"
              modulatorGlobalVariable="-1.0" modulatorMuteOnStart="0" modulatorMute="0"
@@ -256,7 +257,7 @@
              modulatorLinkedToComponent="Modulator" modulatorBaseValue="0"
              modulatorCustomIndex="0" modulatorCustomName="" modulatorCustomIndexGroup="0"
              modulatorCustomNameGroup="" modulatorVstNameFormat="%n" luaModulatorValueChange="test"
-             name="effects" modulatorMin="0" modulatorMax="33" modulatorValue="0.0">
+             name="effects" modulatorMin="0" modulatorMax="33" modulatorValue="24.0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1" midiMessageCtrlrValue="0" midiMessageCtrlrNumberSize="0"
           midiMessageLatchAndStream="0" midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -275,7 +276,7 @@
                componentLuaMouseEnter="-- None" componentLuaMouseExit="-- None"
                uiComboSearch="0" uiComboButtonWidthOverride="0" uiComboButtonWidth="16"
                uiComboDynamicContent="0" uiComboSelectedId="-1" uiComboSelectedIndex="-1"
-               uiComboContent="Rev.Hall&#10;Rev.Room&#10;RevPlate&#10;RevChrch&#10;Rev.Club&#10;RevStage&#10;BathRoom&#10;RevMetal&#10;Delay&#10;DelayL/R&#10;St.Echo&#10;Doubler1&#10;Doubler2&#10;PingPong&#10;Pan Ref.&#10;EarlyRef&#10;Gate Rev&#10;Rvs Gate&#10;FB E/R&#10;FB Gate&#10;FB Rvs&#10;Dly1&amp;Rev&#10;Dly2&amp;Rev&#10;Tunnel&#10;Tone 1&#10;Dly1&amp;T1&#10;Dly2&amp;T1&#10;Tone 2&#10;Dly1&amp;T2&#10;Dly2&amp;T2&#10;Dist&amp;Rev&#10;Dst&amp;Dly1&#10;Dst&amp;Dly2&#10;Dist&quot;"
+               uiComboContent="Rev.Hall&#10;Rev.Room&#10;RevPlate&#10;RevChrch&#10;Rev.Club&#10;RevStage&#10;BathRoom&#10;RevMetal&#10;Delay&#10;DelayL/R&#10;St.Echo&#10;Doubler1&#10;Doubler2&#10;PingPong&#10;Pan Ref.&#10;EarlyRef&#10;Gate Rev&#10;Rvs Gate&#10;FB E/R&#10;FB Gate&#10;FB Rvs&#10;Dly1&amp;Rev&#10;Dly2&amp;Rev&#10;Tunnel&#10;Tone 1&#10;Dly1&amp;T1&#10;Dly2&amp;T1&#10;Tone 2&#10;Dly1&amp;T2&#10;Dly2&amp;T2&#10;Dist&amp;Rev&#10;Dst&amp;Dly1&#10;Dst&amp;Dly2&#10;Dist."
                uiButtonLookAndFeel="Default" uiButtonLookAndFeelIsCustom="0"
                uiComboArrowColour="0xff0000ff" uiComboOutlineColour="0xff0000ff"
                uiComboTextJustification="centred" uiComboFont="&lt;Sans-Serif&gt;;14;0;0;0;0;1;3"
@@ -284,8 +285,68 @@
                uiComboBgColour="0xffffffff" uiComboMenuBackgroundColour="0xfff0f0f0"
                uiComboMenuHighlightColour="ffadd8e6" uiComboMenuFontHighlightedColour="0xff232323"
                uiComboMenuBackgroundRibbed="1" uiComboButtonGradient="0" uiComboButtonGradientColour1="ff0000ff"
-               uiComboButtonGradientColour2="ff00008b" uiType="uiCombo" componentRectangle="136 208 88 32"
-               componentLayerUid="8f64a1c1f10e0000feffffffffffffff" componentRadioGroupNotifyMidi="1"/>
+               uiComboButtonGradientColour2="ff00008b" componentRadioGroupNotifyMidi="1"
+               componentLayerUid="8f64a1c1f10e0000feffffffffffffff" componentRectangle="136 208 88 32"
+               uiType="uiCombo"/>
+  </modulator>
+  <modulator modulatorVstExported="1" vstIndex="4498" modulatorIsStatic="0"
+             modulatorGlobalVariable="-1" modulatorMuteOnStart="0" modulatorMute="0"
+             modulatorExcludeFromSnapshot="0" modulatorValueExpression="modulatorValue"
+             modulatorValueExpressionReverse="midiValue" modulatorControllerExpression="value"
+             luaModulatorGetValueForMIDI="-- None" luaModulatorGetValueFromMIDI="-- None"
+             modulatorLinkedToPanelProperty="-- None" modulatorLinkedToModulatorProperty="-- None"
+             modulatorLinkedToModulator="-- None" modulatorLinkedToModulatorSource="1"
+             modulatorLinkedToComponent="Modulator" modulatorBaseValue="0"
+             modulatorCustomIndex="0" modulatorCustomName="" modulatorCustomIndexGroup="0"
+             modulatorCustomNameGroup="" modulatorVstNameFormat="%n" luaModulatorValueChange="-- None"
+             name="modulator-1" modulatorMin="0" modulatorMax="1" modulatorValue="0.0">
+    <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
+          midiMessageCtrlrNumber="1" midiMessageCtrlrValue="0" midiMessageCtrlrNumberSize="0"
+          midiMessageLatchAndStream="0" midiMessageMultiList="" midiMessageSysExFormula=""/>
+    <component componentVisibility="1" componentSentBack="0" componentMouseCursor="2"
+               componentDisabled="0" componentIsLocked="0" componentSnapSize="0"
+               componentGroupName="" componentGroupped="0" componentRadioGroupId="0"
+               componentVisibleName="modulator-1" componentLabelVisible="1"
+               componentLabelAlwaysOnTop="1" componentLabelPosition="top" componentLabelWidth="0"
+               componentLabelHeight="14" componentLabelJustification="centred"
+               componentLabelFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;3" componentLabelColour="ff000000"
+               componentEffect="0" componentEffectRadius="1" componentEffectColour="0xff000000"
+               componentEffectOffsetX="0" componentEffectOffsetY="0" componentExcludedFromLabelDisplay="0"
+               componentValueDecimalPlaces="0" componentLuaMouseMoved="-- None"
+               componentLuaMouseDown="generateUiComboMenu" componentLuaMouseUp="-- None"
+               componentLuaMouseDrag="-- None" componentLuaMouseDoubleClick="-- None"
+               componentLuaMouseEnter="-- None" componentLuaMouseExit="-- None"
+               uiButtonTrueValue="1" uiButtonFalseValue="0" uiButtonIsToggle="0"
+               uiButtonColourOn="fffffff" uiButtonColourOff="ffffffff" uiButtonTextColourOn="0xff000000"
+               uiButtonTextColourOff="0xff454545" uiButtonContent="generate menu&#10;generate menu"
+               uiButtonConnectedLeft="1" uiButtonConnectedRight="1" uiButtonConnectedTop="1"
+               uiButtonConnectedBottom="1" uiButtonRepeat="0" uiButtonRepeatRate="100"
+               uiButtonTriggerOnMouseDown="0" componentInternalFunction="-- None"
+               componentRectangle="368 208 88 38" uiType="uiButton" componentLayerUid="8f64a1c1f10e0000feffffffffffffff"/>
   </modulator>
   <panelCustomData/>
+  <modulator modulatorCustomIndex="0" modulatorCustomIndexGroup="0" modulatorIsStatic="1"
+             name="modulator-2" modulatorVstExported="0" modulatorValue="0.0">
+    <component componentVisibility="1" componentSentBack="0" componentMouseCursor="2"
+               componentDisabled="0" componentIsLocked="0" componentSnapSize="0"
+               componentGroupName="" componentGroupped="0" componentRadioGroupId="0"
+               componentVisibleName="modulator-2" componentLabelVisible="0"
+               componentLabelAlwaysOnTop="1" componentLabelPosition="top" componentLabelWidth="0"
+               componentLabelHeight="14" componentLabelJustification="centred"
+               componentLabelFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;3" componentLabelColour="ff000000"
+               componentEffect="0" componentEffectRadius="1" componentEffectColour="0xff000000"
+               componentEffectOffsetX="0" componentEffectOffsetY="0" componentExcludedFromLabelDisplay="0"
+               componentValueDecimalPlaces="0" componentLuaMouseMoved="-- None"
+               componentLuaMouseDown="-- None" componentLuaMouseUp="-- None"
+               componentLuaMouseDrag="-- None" componentLuaMouseDoubleClick="-- None"
+               componentLuaMouseEnter="-- None" componentLuaMouseExit="-- None"
+               uiLabelBgColour="0" uiLabelTextColour="ff000000" uiLabelOutline="0"
+               uiLabelOutlineColour="0" uiLabelJustification="centred" uiLabelFitFont="0"
+               uiLabelFont="&lt;Sans-Serif&gt;;14;0;0;0;0;1;3" uiLabelText="Parameter values for each slider are probably not correct - guide only"
+               uiLabelDisplaysAllValues="0" uiLabelDisplayFormat="%n(%N) = %v(%h)"
+               uiLabelInputHighlightTextColour="0xffffffff" uiLabelInputHighlightColour="0xff0000ff"
+               uiLabelEditOnSingleClick="0" uiLabelEditOnDoubleClick="0" uiLabelEditFocusDiscardsChanges="1"
+               uiLabelInputAllowedChars="" uiLabelInputMaxLength="1024" uiLabelChangedCbk="-- None"
+               uiType="uiLabel" componentRectangle="80 272 421 24" componentLayerUid="8f64a1c1f10e0000feffffffffffffff"/>
+  </modulator>
 </panel>
