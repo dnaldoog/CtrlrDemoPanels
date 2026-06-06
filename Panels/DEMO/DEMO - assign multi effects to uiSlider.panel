@@ -113,7 +113,7 @@
                  uiPanelTooltipFont="&lt;Sans-Serif&gt;;15;1;0;0;0;1;3" uiPanelTooltipColour="0xff000000"
                  uiPanelTooltipBackgroundColour="0xffeeeebb" uiPanelTooltipOutlineColour="0xff000000"
                  uiPanelTooltipCornerRound="1.0" uiPanelLegacyMode="1" uiPanelLookAndFeel="V3"
-                 uiPanelWidth="400" uiPanelHeight="400">
+                 uiPanelHeight="400" uiPanelWidth="400">
     <uiPanelCanvasLayer uiPanelCanvasLayerName="New layer" uiPanelCanvasLayerUid="8f64a1c1f10e0000feffffffffffffff"
                         uiPanelCanvasLayerColour="0x000000" uiPanelCanvasLayerVisibility="1"
                         uiPanelCanvasLayerIndex="0"/>
@@ -128,14 +128,15 @@
              modulatorLinkedToComponent="Modulator" modulatorBaseValue="0"
              modulatorCustomIndex="0" modulatorCustomName="" modulatorCustomIndexGroup="0"
              modulatorCustomNameGroup="" modulatorVstNameFormat="%n" luaModulatorValueChange="-- None"
-             name="slider1" modulatorMin="0" modulatorMax="99" modulatorValue="41.0">
+             name="slider1" modulatorMin="-65536.0" modulatorMax="65536.0"
+             modulatorValue="41.0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1" midiMessageCtrlrValue="0" midiMessageCtrlrNumberSize="0"
           midiMessageLatchAndStream="0" midiMessageMultiList="" midiMessageSysExFormula=""/>
     <component componentVisibility="1" componentSentBack="0" componentMouseCursor="2"
                componentDisabled="0" componentIsLocked="0" componentSnapSize="0"
                componentGroupName="" componentGroupped="0" componentRadioGroupId="0"
-               componentVisibleName="Low" componentLabelVisible="1" componentLabelAlwaysOnTop="1"
+               componentVisibleName="Room Size" componentLabelVisible="1" componentLabelAlwaysOnTop="1"
                componentLabelPosition="top" componentLabelWidth="0" componentLabelHeight="14"
                componentLabelJustification="centred" componentLabelFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;3"
                componentLabelColour="0xff000000" componentEffect="0" componentEffectRadius="1.0"
@@ -157,9 +158,9 @@
                uiSliderValueTextJustification="centred" uiSliderVelocitySensitivity="1"
                uiSliderVelocityThreshold="1" uiSliderVelocityOffset="0" uiSliderVelocityMode="0"
                uiSliderVelocityModeKeyTrigger="1" uiSliderSpringMode="0" uiSliderSpringValue="0"
-               uiSliderMouseWheelInterval="1.0" uiSliderPopupBubble="0" componentMin="-12.0"
-               componentMax="12.0" componentRadioGroupNotifyMidi="1" componentLayerUid="8f64a1c1f10e0000feffffffffffffff"
-               componentRectangle="136 112 64 64" uiType="uiFixedSlider"/>
+               uiSliderMouseWheelInterval="1.0" uiSliderPopupBubble="0" uiType="uiFixedSlider"
+               componentRectangle="136 112 64 64" componentLayerUid="8f64a1c1f10e0000feffffffffffffff"
+               componentRadioGroupNotifyMidi="1" componentMax="3.2" componentMin="0.5"/>
   </modulator>
   <modulator modulatorVstExported="1" vstIndex="4495" modulatorIsStatic="0"
              modulatorGlobalVariable="-1" modulatorMuteOnStart="0" modulatorMute="0"
@@ -171,14 +172,15 @@
              modulatorLinkedToComponent="Modulator" modulatorBaseValue="0"
              modulatorCustomIndex="0" modulatorCustomName="" modulatorCustomIndexGroup="0"
              modulatorCustomNameGroup="" modulatorVstNameFormat="%n" luaModulatorValueChange="-- None"
-             name="slider2" modulatorMin="0" modulatorMax="2" modulatorValue="2.0">
+             name="slider2" modulatorMin="-65536.0" modulatorMax="65536.0"
+             modulatorValue="2.0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1" midiMessageCtrlrValue="0" midiMessageCtrlrNumberSize="0"
           midiMessageLatchAndStream="0" midiMessageMultiList="" midiMessageSysExFormula=""/>
     <component componentVisibility="1" componentSentBack="0" componentMouseCursor="2"
                componentDisabled="0" componentIsLocked="0" componentSnapSize="0"
                componentGroupName="" componentGroupped="0" componentRadioGroupId="0"
-               componentVisibleName="Mid" componentLabelVisible="1" componentLabelAlwaysOnTop="1"
+               componentVisibleName="FB Gain" componentLabelVisible="1" componentLabelAlwaysOnTop="1"
                componentLabelPosition="top" componentLabelWidth="0" componentLabelHeight="14"
                componentLabelJustification="centred" componentLabelFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;3"
                componentLabelColour="0xff000000" componentEffect="0" componentEffectRadius="1"
@@ -200,9 +202,9 @@
                uiSliderValueTextJustification="centred" uiSliderVelocitySensitivity="1"
                uiSliderVelocityThreshold="1" uiSliderVelocityOffset="0" uiSliderVelocityMode="0"
                uiSliderVelocityModeKeyTrigger="1" uiSliderSpringMode="0" uiSliderSpringValue="0"
-               uiSliderMouseWheelInterval="1" uiSliderPopupBubble="0" componentMin="-12.0"
-               componentMax="12.0" componentRadioGroupNotifyMidi="1" uiType="uiFixedSlider"
-               componentRectangle="216 112 64 64" componentLayerUid="8f64a1c1f10e0000feffffffffffffff"/>
+               uiSliderMouseWheelInterval="1" uiSliderPopupBubble="0" componentLayerUid="8f64a1c1f10e0000feffffffffffffff"
+               componentRectangle="216 112 64 64" uiType="uiFixedSlider" componentRadioGroupNotifyMidi="1"
+               componentMax="100.0" componentMin="0.0"/>
   </modulator>
   <modulator modulatorVstExported="1" vstIndex="4496" modulatorIsStatic="0"
              modulatorGlobalVariable="-1" modulatorMuteOnStart="0" modulatorMute="0"
@@ -214,14 +216,14 @@
              modulatorLinkedToComponent="Modulator" modulatorBaseValue="0"
              modulatorCustomIndex="0" modulatorCustomName="" modulatorCustomIndexGroup="0"
              modulatorCustomNameGroup="" modulatorVstNameFormat="%n" luaModulatorValueChange="-- None"
-             name="slider3" modulatorMin="0" modulatorMax="4" modulatorValue="0.0">
+             name="slider3" modulatorMin="0" modulatorMax="1" modulatorValue="0.0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1" midiMessageCtrlrValue="0" midiMessageCtrlrNumberSize="0"
           midiMessageLatchAndStream="0" midiMessageMultiList="" midiMessageSysExFormula=""/>
     <component componentVisibility="1" componentSentBack="0" componentMouseCursor="2"
                componentDisabled="0" componentIsLocked="0" componentSnapSize="0"
                componentGroupName="" componentGroupped="0" componentRadioGroupId="0"
-               componentVisibleName="High" componentLabelVisible="1" componentLabelAlwaysOnTop="1"
+               componentVisibleName="Direction" componentLabelVisible="1" componentLabelAlwaysOnTop="1"
                componentLabelPosition="top" componentLabelWidth="0" componentLabelHeight="14"
                componentLabelJustification="centred" componentLabelFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;3"
                componentLabelColour="0xff000000" componentEffect="0" componentEffectRadius="1"
@@ -238,14 +240,14 @@
                uiSliderRotaryOutlineColour="0xff0000ff" uiSliderRotaryFillColour="0xff0000ff"
                uiSliderThumbColour="0xffff0000" uiSliderValueHighlightColour="0xff0000ff"
                uiSliderValueOutlineColour="0xffffffff" uiSliderTrackColour="0xff0f0f0f"
-               uiFixedSliderContent="" uiSliderValueFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;3"
+               uiFixedSliderContent="L-&gt;R&#10;R-&gt;L" uiSliderValueFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;3"
                uiSliderIncDecButtonColour="0xff0000ff" uiSliderIncDecTextColour="0xffffffff"
                uiSliderValueTextJustification="centred" uiSliderVelocitySensitivity="1"
                uiSliderVelocityThreshold="1" uiSliderVelocityOffset="0" uiSliderVelocityMode="0"
                uiSliderVelocityModeKeyTrigger="1" uiSliderSpringMode="0" uiSliderSpringValue="0"
-               uiSliderMouseWheelInterval="1" uiSliderPopupBubble="0" componentMin="-12.0"
-               componentMax="12.0" componentRadioGroupNotifyMidi="1" uiType="uiFixedSlider"
-               componentRectangle="296 112 64 64" componentLayerUid="8f64a1c1f10e0000feffffffffffffff"/>
+               uiSliderMouseWheelInterval="1" uiSliderPopupBubble="0" componentLayerUid="8f64a1c1f10e0000feffffffffffffff"
+               componentRectangle="296 112 64 64" uiType="uiFixedSlider" componentRadioGroupNotifyMidi="1"
+               componentMax="2.0" componentMin="1.0"/>
   </modulator>
   <modulator modulatorVstExported="1" vstIndex="4497" modulatorIsStatic="0"
              modulatorGlobalVariable="-1.0" modulatorMuteOnStart="0" modulatorMute="0"
@@ -257,7 +259,7 @@
              modulatorLinkedToComponent="Modulator" modulatorBaseValue="0"
              modulatorCustomIndex="0" modulatorCustomName="" modulatorCustomIndexGroup="0"
              modulatorCustomNameGroup="" modulatorVstNameFormat="%n" luaModulatorValueChange="test"
-             name="effects" modulatorMin="0" modulatorMax="33" modulatorValue="24.0">
+             name="effects" modulatorMin="0" modulatorMax="33" modulatorValue="14.0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1" midiMessageCtrlrValue="0" midiMessageCtrlrNumberSize="0"
           midiMessageLatchAndStream="0" midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -285,9 +287,8 @@
                uiComboBgColour="0xffffffff" uiComboMenuBackgroundColour="0xfff0f0f0"
                uiComboMenuHighlightColour="ffadd8e6" uiComboMenuFontHighlightedColour="0xff232323"
                uiComboMenuBackgroundRibbed="1" uiComboButtonGradient="0" uiComboButtonGradientColour1="ff0000ff"
-               uiComboButtonGradientColour2="ff00008b" componentRadioGroupNotifyMidi="1"
-               componentLayerUid="8f64a1c1f10e0000feffffffffffffff" componentRectangle="136 208 88 32"
-               uiType="uiCombo"/>
+               uiComboButtonGradientColour2="ff00008b" uiType="uiCombo" componentRectangle="136 208 88 32"
+               componentLayerUid="8f64a1c1f10e0000feffffffffffffff" componentRadioGroupNotifyMidi="1"/>
   </modulator>
   <modulator modulatorVstExported="1" vstIndex="4498" modulatorIsStatic="0"
              modulatorGlobalVariable="-1" modulatorMuteOnStart="0" modulatorMute="0"
@@ -322,9 +323,9 @@
                uiButtonConnectedLeft="1" uiButtonConnectedRight="1" uiButtonConnectedTop="1"
                uiButtonConnectedBottom="1" uiButtonRepeat="0" uiButtonRepeatRate="100"
                uiButtonTriggerOnMouseDown="0" componentInternalFunction="-- None"
-               componentRectangle="368 208 88 38" uiType="uiButton" componentLayerUid="8f64a1c1f10e0000feffffffffffffff"/>
+               componentRectangle="368 208 88 38" componentLayerUid="8f64a1c1f10e0000feffffffffffffff"
+               uiType="uiButton"/>
   </modulator>
-  <panelCustomData/>
   <modulator modulatorCustomIndex="0" modulatorCustomIndexGroup="0" modulatorIsStatic="1"
              name="modulator-2" modulatorVstExported="0" modulatorValue="0.0">
     <component componentVisibility="1" componentSentBack="0" componentMouseCursor="2"
@@ -347,6 +348,7 @@
                uiLabelInputHighlightTextColour="0xffffffff" uiLabelInputHighlightColour="0xff0000ff"
                uiLabelEditOnSingleClick="0" uiLabelEditOnDoubleClick="0" uiLabelEditFocusDiscardsChanges="1"
                uiLabelInputAllowedChars="" uiLabelInputMaxLength="1024" uiLabelChangedCbk="-- None"
-               uiType="uiLabel" componentRectangle="80 272 421 24" componentLayerUid="8f64a1c1f10e0000feffffffffffffff"/>
+               componentLayerUid="8f64a1c1f10e0000feffffffffffffff" componentRectangle="80 272 421 24"
+               uiType="uiLabel"/>
   </modulator>
 </panel>
