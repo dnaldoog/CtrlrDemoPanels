@@ -141,7 +141,7 @@
              modulatorLinkedToComponent="Modulator" modulatorBaseValue="0"
              modulatorCustomIndex="0" modulatorCustomName="" modulatorCustomIndexGroup="0"
              modulatorCustomNameGroup="" modulatorVstNameFormat="%n" luaModulatorValueChange="recordValue"
-             name="slider1" modulatorMin="0" modulatorMax="36" modulatorValue="6.0">
+             name="slider1" modulatorMin="0" modulatorMax="36" modulatorValue="0.0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1" midiMessageCtrlrValue="0" midiMessageCtrlrNumberSize="0"
           midiMessageLatchAndStream="0" midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -190,7 +190,7 @@
              modulatorLinkedToComponent="Modulator" modulatorBaseValue="0"
              modulatorCustomIndex="0" modulatorCustomName="" modulatorCustomIndexGroup="0"
              modulatorCustomNameGroup="" modulatorVstNameFormat="%n" luaModulatorValueChange="recordValue"
-             name="slider2" modulatorMin="0" modulatorMax="14" modulatorValue="10.0">
+             name="slider2" modulatorMin="0" modulatorMax="14" modulatorValue="0.0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1" midiMessageCtrlrValue="0" midiMessageCtrlrNumberSize="0"
           midiMessageLatchAndStream="0" midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -239,7 +239,7 @@
              modulatorLinkedToComponent="Modulator" modulatorBaseValue="0"
              modulatorCustomIndex="0" modulatorCustomName="" modulatorCustomIndexGroup="0"
              modulatorCustomNameGroup="" modulatorVstNameFormat="%n" luaModulatorValueChange="recordValue"
-             name="slider3" modulatorMin="0" modulatorMax="104" modulatorValue="19.0">
+             name="slider3" modulatorMin="0" modulatorMax="104" modulatorValue="0.0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1" midiMessageCtrlrValue="0" midiMessageCtrlrNumberSize="0"
           midiMessageLatchAndStream="0" midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -288,7 +288,7 @@
              modulatorLinkedToComponent="Modulator" modulatorBaseValue="0"
              modulatorCustomIndex="0" modulatorCustomName="" modulatorCustomIndexGroup="0"
              modulatorCustomNameGroup="" modulatorVstNameFormat="%n" luaModulatorValueChange="test"
-             name="effects" modulatorMin="0" modulatorMax="33" modulatorValue="6.0">
+             name="effects" modulatorMin="0" modulatorMax="33" modulatorValue="0.0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1" midiMessageCtrlrValue="0" midiMessageCtrlrNumberSize="0"
           midiMessageLatchAndStream="0" midiMessageMultiList="" midiMessageSysExFormula=""/>
