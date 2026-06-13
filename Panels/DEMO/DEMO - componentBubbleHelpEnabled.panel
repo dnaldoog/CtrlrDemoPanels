@@ -24,7 +24,7 @@
        luaPanelMessageHandler="-- None" luaPanelModulatorValueChanged="-- None"
        luaPanelSaveState="-- None" luaPanelRestoreState="-- None" luaPanelMidiSnapshotPost="-- None"
        luaPanelMidiSnapshotPre="-- None" luaAudioProcessBlock="-- None"
-       luaPanelOSCReceived="-- None" panelFilePath="C:\Users\zan64\Documents\CtrlrDemoPanels\Panels\DEMO\DEMO - componentBubbleHelpEnabled switching.panel"
+       luaPanelOSCReceived="-- None" panelFilePath="C:\Users\zan64\Documents\CtrlrDemoPanels\Panels\DEMO\DEMO - componentBubbleHelpEnabled.panel"
        panelLastSaveDir="C:\Users\zan64\Documents\CtrlrDemoPanels\Panels\DEMO"
        panelUID="8.f7IgOzS6UaL" panelInstanceUID="sa1x" panelInstanceManufacturerID="VPfv"
        panelModulatorListColumns="-- None" panelModulatorListCsvDelimiter=","
@@ -76,8 +76,8 @@
                  uiPanelLock="0" uiPanelDisabledOnEdit="0" uiPanelMenuBarVisible="1"
                  uiPanelMenuBarHideOnExport="0" uiPanelProgramsMenuHideOnExport="0"
                  uiPanelMidiControllerMenuHideOnExport="0" uiPanelMidiThruMenuHideOnExport="0"
-                 uiPanelMidiChannelMenuHideOnExport="0" uiPanelViewPortSize="351"
-                 uiPanelPropertiesSize="599" uiViewPortResizable="1" uiViewPortShowScrollBars="1"
+                 uiPanelMidiChannelMenuHideOnExport="0" uiPanelViewPortSize="665"
+                 uiPanelPropertiesSize="285" uiViewPortResizable="1" uiViewPortShowScrollBars="1"
                  uiViewPortEnableResizeLimits="0" uiViewPortMinWidth="0" uiViewPortMinHeight="0"
                  uiViewPortMaxWidth="0" uiViewPortMaxHeight="0" uiViewPortEnableFixedAspectRatio="0"
                  uiViewPortFixedAspectRatio="1.5" uiPanelZoom="1.0" uiPanelViewPortBackgroundColour="b2efefef"
@@ -106,7 +106,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="toggleBubbleHelp" name="modulator-1"
-             modulatorMin="0" modulatorMax="1.0" modulatorValue="1.0">
+             modulatorMin="0" modulatorMax="1" modulatorValue="1.0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1" midiMessageCtrlrValue="0" midiMessageCtrlrNumberSize="0"
           midiMessageLatchAndStream="0" midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -129,11 +129,12 @@
                componentBubbleHelpDismissOnExit="1" uiButtonTrueValue="1.0"
                uiButtonFalseValue="0" uiButtonIsToggle="0" uiButtonColourOn="fff3f3f3"
                uiButtonColourOff="ffffffff" uiButtonTextColourOn="0xff000000"
-               uiButtonTextColourOff="0xff454545" uiButtonContent="off&#10;on"
+               uiButtonTextColourOff="0xff454545" uiButtonContent="Dismiss&#10;Dismiss"
                uiButtonConnectedLeft="0" uiButtonConnectedRight="0" uiButtonConnectedTop="0"
                uiButtonConnectedBottom="0" uiButtonRepeat="0" uiButtonRepeatRate="100.0"
                uiButtonTriggerOnMouseDown="0" componentInternalFunction="-- None"
-               componentRectangle="198 79 88 80" uiType="uiButton" componentLayerUid="b00069f2210000000052919869010000"/>
+               componentRectangle="198 79 88 80" componentLayerUid="b00069f2210000000052919869010000"
+               uiType="uiButton"/>
   </modulator>
   <modulator modulatorVstExported="1" vstIndex="5" modulatorIsStatic="0" modulatorGlobalVariable="-1.0"
              modulatorMuteOnStart="0" modulatorMute="0" modulatorExcludeFromSnapshot="0"
@@ -145,7 +146,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="-- None" name="modulator-3" modulatorMin="0"
-             modulatorMax="1.0" modulatorValue="1.0">
+             modulatorMax="1" modulatorValue="1.0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1" midiMessageCtrlrValue="0" midiMessageCtrlrNumberSize="0"
           midiMessageLatchAndStream="0" midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -165,15 +166,13 @@
                componentBubbleHelpEnabled="1.0" componentBubbleHelpTitle="SAVE FILE"
                componentBubbleHelpText="Click here to potentially save a file that needs to be saved on the hard drive!"
                componentBubbleHelpTimeout="5000.0" componentBubbleHelpTrigger="1"
-               componentBubbleHelpDismissOnExit="1" uiButtonTrueValue="1.0"
+               componentBubbleHelpDismissOnExit="0" uiButtonTrueValue="1.0"
                uiButtonFalseValue="0" uiButtonIsToggle="0" uiButtonColourOn="fff3f3f3"
                uiButtonColourOff="ffffffff" uiButtonTextColourOn="0xff000000"
-               uiButtonTextColourOff="0xff454545" uiButtonContent="save&#10;save"
+               uiButtonTextColourOff="0xff454545" uiButtonContent="Linger&#10;Linger&#10;"
                uiButtonConnectedLeft="0" uiButtonConnectedRight="0" uiButtonConnectedTop="0"
                uiButtonConnectedBottom="0" uiButtonRepeat="0" uiButtonRepeatRate="100.0"
                uiButtonTriggerOnMouseDown="0" componentInternalFunction="-- None"
-               componentRectangle="202 191 88 80" componentLayerUid="b00069f2210000000052919869010000"
-               uiType="uiButton"/>
+               componentRectangle="202 191 88 80" uiType="uiButton" componentLayerUid="b00069f2210000000052919869010000"/>
   </modulator>
-  <panelCustomData/>
 </panel>
