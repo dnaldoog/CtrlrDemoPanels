@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<panel name="Ctrlr Panel" panelShowDialogs="1" panelMessageTime="10000"
-       panelAuthorName="" panelAuthorEmail="" panelAuthorDonateUrl=""
-       panelAuthorUrl="" panelAuthorDesc="" panelVersionMajor="1" panelVersionMinor="0"
-       panelVersionName="Hell-O-Kitty" panelVendor="" panelDevice=""
-       panelCertificateWinSelectPath="" panelCertificateWinPassCode=""
-       panelPlugType="Instrument|Synth" panelExportPublicKey="" panelExportServerAuthURL="https://localhost:8000/auth/authenticate"
+<panel name="DEMO - popup showAt (comp) JUCE8" panelShowDialogs="1"
+       panelMessageTime="2000" panelAuthorName="" panelAuthorEmail=""
+       panelAuthorDonateUrl="" panelAuthorUrl="" panelAuthorDesc=""
+       panelVersionMajor="1" panelVersionMinor="0" panelVersionName=""
+       panelVendor="" panelDevice="" panelCertificateWinSelectPath=""
+       panelCertificateWinPassCode="" panelPlugType="Instrument|Synth"
+       panelExportPublicKey="" panelExportServerAuthURL="https://localhost:8000/auth/authenticate"
        panelMidiSnapshotAfterLoad="0" panelMidiSnapshotAfterProgramChange="0"
        panelMidiSnapshotDelay="10" panelMidiSnapshotShowProgress="0"
        panelMidiInputDevice="-- None" panelMidiInputChannelDevice="1"
        panelMidiControllerDevice="-- None" panelMidiControllerChannelDevice="1"
        panelMidiOutputDevice="-- None" panelMidiOutputChannelDevice="1"
-       panelMidiThruD2D="0" panelMidiThruD2DChannelize="0" panelMidiRealtimeIgnore="1"
+       panelMidiThruD2D="0" panelMidiThruD2DChannelize="0" panelMidiRealtimeIgnore="0"
        panelMidiInputThreadPriority="7" panelMidiProgram="0" panelMidiBankLsb="0"
        panelMidiBankMsb="0" panelMidiSendProgramChangeOnLoad="0" panelMidiProgramCalloutOnprogramChange="0"
        panelMidiMatchCacheSize="32" panelMidiGlobalDelay="0" panelMidiPauseOut="0"
@@ -23,38 +24,22 @@
        luaPanelMessageHandler="-- None" luaPanelModulatorValueChanged="-- None"
        luaPanelSaveState="-- None" luaPanelRestoreState="-- None" luaPanelMidiSnapshotPost="-- None"
        luaPanelMidiSnapshotPre="-- None" luaAudioProcessBlock="-- None"
-       luaPanelOSCReceived="-- None" panelFilePath="C:\Users\zan64\Documents\CtrlrDemoPanels\Panels\DEMO\DEMO - PopupMenu and how to detect method availability.panel"
+       luaPanelOSCReceived="-- None" panelFilePath="C:\Users\zan64\Documents\CtrlrDemoPanels\Panels\DEMO\DEMO - popup showAt (comp) JUCE8.panel"
        panelLastSaveDir="C:\Users\zan64\Documents\CtrlrDemoPanels\Panels\DEMO"
-       panelUID="8.Gym.WNAq6VA" panelInstanceUID="fa37" panelInstanceManufacturerID="JncC"
+       panelUID="8.m5jXXcH.NVM" panelInstanceUID="Jcrg" panelInstanceManufacturerID="RYwT"
        panelModulatorListColumns="-- None" panelModulatorListCsvDelimiter=","
        panelModulatorListXmlRoot="ctrlrModulatorList" panelModulatorListXmlModulator="ctrlrModulator"
        panelModulatorListSortOption="1" panelGlobalVariables="-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1"
-       panelResources="-- None" panelPropertyDisplayIDs="0" panelMidiInputFromHost="0"
-       panelMidiInputChannelHost="1" panelMidiOutputToHost="0" panelMidiOutputChannelHost="1"
-       panelMidiThruH2H="0" panelMidiThruH2HChannelize="0" panelMidiThruH2D="0"
-       panelMidiThruH2DChannelize="0" panelMidiThruD2H="0" panelMidiThruD2HChannelize="0"
-       ctrlrMenuItemBackgroundColour="ffffffff" ctrlrMenuItemTextColour="ff000000"
-       ctrlrMenuItemHighlightedTextColour="ffffffff" ctrlrMenuItemHighlightColour="ff4364ff"
-       ctrlrMenuItemFont="&lt;Sans-Serif&gt;;18;0;0;0;0;1;3" ctrlrMenuItemSeparatorColour="44000000"
-       ctrlrMenuItemHeaderColour="ff000000" ctrlrMenuBarBackgroundColour1="fff7f7f7"
-       ctrlrMenuBarBackgroundColour2="ffcccccc" ctrlrMenuBarTextColour="ff000000"
-       ctrlrMenuBarHighlightedTextColour="ffffffff" ctrlrMenuBarHighlightColour="ff4364ff"
-       ctrlrMenuBarFont="&lt;Sans-Serif&gt;;18;0;0;0;0;1;3" ctrlrUseEditorWrapper="0"
-       panelIndex="0" panelIsDirty="0">
+       panelResources="-- None" panelPropertyDisplayIDs="0" panelIndex="1"
+       panelIsDirty="0">
   <uiWindowManager>
-    <uiChildWindow uiChildWindowName="LuaMethodEditor" uiChildWindowState="323 204 1348 754">
-      <uiChildWindowContentState luaMethodEditor="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#13;&#10;&#13;&#10;&lt;CLOSED id=&quot;LUA&quot; scrollPos=&quot;0&quot;&gt;&#13;&#10;  &lt;SELECTED id=&quot;/LUA&quot;/&gt;&#13;&#10;&lt;/CLOSED&gt;&#13;&#10;;c5f543a025b241d28640271bde5e6dfd:46d755a7e0de435ba1ab22b4040b32b7:0253c84185e24c9f86463cf9afda56f1"/>
-    </uiChildWindow>
-    <uiChildWindow uiChildWindowName="LayerEditor" uiChildWindowState="561 318 800 500">
-      <uiChildWindowContentState/>
-    </uiChildWindow>
-    <uiChildWindow uiChildWindowName="LuaConsole" uiChildWindowState="922 498 800 500">
-      <uiChildWindowContentState/>
+    <uiChildWindow uiChildWindowName="LuaMethodEditor" uiChildWindowState="8 31 800 500">
+      <uiChildWindowContentState luaMethodEditor="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#13;&#10;&#13;&#10;&lt;CLOSED id=&quot;LUA&quot; scrollPos=&quot;0&quot;/&gt;&#13;&#10;;5f6a5bab24074a8f94f69b8a2a6b269d"/>
     </uiChildWindow>
   </uiWindowManager>
   <luaManager>
     <luaManagerMethods>
-      <luaMethodGroup name="Built-In" uuid="a7a5095a90f44ad997fcbc8975e2b4f7">
+      <luaMethodGroup name="Built-In" uuid="4d95da136f9d4dda91a0744c3dba475e">
         <luaMethod luaMethodName="table_dump" luaMethodCode="-- @1.1&#10;--&#10;-- Print table contents&#10;--&#10;function table_dump(table)&#10;&#9;for key,value in ipairs(table) do&#10;&#9;&#9;_DBG (&quot;KEY= [&quot;..key..&quot;]&quot;)&#10;&#10;&#9;&#9;if (type(value) == &quot;table&quot;) then&#10;&#9;&#9;&#9;table_dump(value)&#10;&#9;&#9;elseif (type(value) == &quot;nil&quot;) then&#10;&#9;&#9;&#9;_DBG (&quot; = NIL&quot;)&#10;&#9;&#9;else&#10;&#9;&#9;&#9;what (value)&#10;&#9;&#9;end&#10;&#9;end&#10;end"
                    luaMethodLinkedProperty="" luaMethodSource="0" uuid="00000000000000000000000000000001"
                    luaMethodValid="1"/>
@@ -74,45 +59,38 @@
                    luaMethodLinkedProperty="" luaMethodSource="0" uuid="00000000000000000000000000000006"
                    luaMethodValid="1"/>
       </luaMethodGroup>
-      <luaMethod luaMethodName="onMouseDown" luaMethodCode="--&#10;-- Called when a mouse is down on this component&#10;--&#10;&#10;onMouseDown = function(--[[ CtrlrComponent --]] comp, --[[ MouseEvent --]] event)&#13;&#10;&#9;logString(&quot;&quot;)&#13;&#10;&#9;logString (&quot;onMouseDown&quot;)&#13;&#10;&#13;&#10;&#9;if event.mods:isPopupMenu() then&#13;&#10;&#9;&#9;logString (&quot;\tright click&quot;)&#13;&#10;&#9;&#9;m = PopupMenu()&#13;&#10;&#9;&#9;m:addItem (1, &quot;Item 1&quot;, true, true)&#13;&#10;&#9;&#9;m:addItem (2, &quot;Item 2&quot;, true, true)&#13;&#10;&#9;&#9;m:addItem (3, &quot;Item 3&quot;, true, true)&#13;&#10;&#9;&#9;m:addItem (4, &quot;Item 4&quot;, true, true)&#13;&#10;&#9;&#9;if m.showAt == nil then&#13;&#10;&#9;&#9;&#9;ret = m:show(-1,-1,-1,24)&#13;&#10;&#9;&#9;&#9;logString (&quot;\tshowAt() not available, using show()&quot;)&#13;&#10;&#9;&#9;else&#13;&#10;        logString(&quot;m:showAt(comp,height) COMP NAME = &quot;..L(comp:getOwner():getName()))&#13;&#10;&#9;&#9;&#9;ret = m:showAt(comp,24)&#13;&#10;&#9;&#9;end&#13;&#10;&#13;&#10;&#9;&#9;logString (string.format (&quot;\titem clicked: %d&quot;, ret))&#13;&#10;&#9;end&#10;end"
+      <luaMethod luaMethodName="showPopup" luaMethodCode="--&#10;-- Called when a mouse is down on this component&#10;--&#10;-- get name of modulator with L(comp:getOwner():getName())&#10;-- get mouse event info from event parameter event.x, event.y, event.mods, etc.&#10;-- x coordinate = event.x&#10;-- y coordinate = event.y&#10;&#10;showPopup = function(--[[ CtrlrComponent --]] comp, --[[ MouseEvent --]] event)&#13;&#10;    if event.mods:isPopupMenu() then&#13;&#10;        local m = PopupMenu()&#13;&#10;        m:addItem(1, &quot;Reset Value&quot;, true, false)&#13;&#10;        m:addItem(2, &quot;Randomize&quot;, true, false)&#13;&#10;        m:addSeparator()&#13;&#10;        m:addItem(3, &quot;Configure Modulator...&quot;, true, false)&#13;&#10;&#13;&#10;        -- Pass the component, row height (24px), and the callback function:&#13;&#10;        m:showAtAsync(comp, 24, function(result)&#13;&#10;            if result == 0 then&#13;&#10;                console(&quot;Menu dismissed without selection.&quot;)&#13;&#10;                return&#13;&#10;            end&#13;&#10;&#13;&#10;            console(&quot;User selected item ID: &quot; .. result)&#13;&#10;&#13;&#10;            if result == 1 then&#13;&#10;                comp:getOwner():setValue(0, true)&#13;&#10;            elseif result == 2 then&#13;&#10;                comp:getOwner():setValue(math.random(0, 127), true)&#13;&#10;            end&#13;&#10;        end)&#13;&#10;&#13;&#10;        -- Code here continues immediately without blocking the UI thread!&#13;&#10;    end&#13;&#10;&#10;end"
                  luaMethodLinkedProperty="componentLuaMouseDown" luaMethodSource="0"
-                 uuid="c5f543a025b241d28640271bde5e6dfd" luaMethodValid="1"/>
-      <luaMethod luaMethodName="onMouseDownAlt" luaMethodCode="--&#10;-- Called when a mouse is down on this component&#10;--&#10;&#10;onMouseDownAlt = function(--[[ CtrlrComponent --]] comp, --[[ MouseEvent --]] event)&#13;&#10;&#9;logString(&quot;&quot;)&#13;&#10;&#9;logString (&quot;onMouseDownAlt&quot;)&#13;&#10;&#13;&#10;&#9;if event.mods:isPopupMenu() then&#13;&#10;&#9;&#9;logString (&quot;\tright click&quot;)&#13;&#10;&#9;&#9;m = PopupMenu()&#13;&#10;&#9;&#9;m:addItem (1, &quot;Item 1&quot;, true, true)&#13;&#10;&#9;&#9;m:addItem (2, &quot;Item 2&quot;, true, true)&#13;&#10;&#9;&#9;m:addItem (3, &quot;Item 3&quot;, true, true)&#13;&#10;&#9;&#9;m:addItem (4, &quot;Item 4&quot;, true, true)&#13;&#10;&#9;&#9;ret = m:show(-1,-1,-1,24)&#13;&#10;&#13;&#10;&#9;&#9;logString (string.format (&quot;\titem clicked: %d&quot;, ret))&#13;&#10;&#9;end&#10;end"
-                 luaMethodLinkedProperty="componentLuaMouseDown" luaMethodSource="0"
-                 uuid="46d755a7e0de435ba1ab22b4040b32b7" luaMethodValid="1"/>
-      <luaMethod luaMethodName="logString" luaMethodCode="function logString(text)&#13;&#10;&#9;l = panel:getLabel(&quot;logLabel&quot;)&#13;&#10;&#9;if text == &quot;&quot; then&#13;&#10;&#9;&#9;l:setText(&quot;&quot;)&#13;&#10;&#9;&#9;return&#13;&#10;&#9;end&#13;&#10;&#9;l:appendText(text):appendText(&quot;\n&quot;)&#10;end"
-                 luaMethodLinkedProperty="" luaMethodSource="0" uuid="0253c84185e24c9f86463cf9afda56f1"
-                 luaMethodValid="1"/>
+                 uuid="5f6a5bab24074a8f94f69b8a2a6b269d" luaMethodValid="1"/>
     </luaManagerMethods>
   </luaManager>
   <panelResources/>
-  <uiPanelEditor uiPanelCanvasRectangle="0 0 442 405" name="Ctrlr Panel" uiPanelEditMode="0"
-                 uiPanelLock="1" uiPanelDisabledOnEdit="0" uiPanelMenuBarVisible="1"
-                 uiPanelMenuBarHideOnExport="0" uiPanelProgramsMenuHideOnExport="0"
+  <uiPanelEditor uiPanelCanvasRectangle="0 0 600 400" name="DEMO - popup showAt (comp) JUCE8"
+                 uiPanelEditMode="0" uiPanelLock="0" uiPanelDisabledOnEdit="0"
+                 uiPanelMenuBarVisible="1" uiPanelMenuBarHideOnExport="0" uiPanelProgramsMenuHideOnExport="0"
                  uiPanelMidiControllerMenuHideOnExport="0" uiPanelMidiThruMenuHideOnExport="0"
                  uiPanelMidiChannelMenuHideOnExport="0" uiPanelViewPortSize="1337"
                  uiPanelPropertiesSize="573" uiViewPortResizable="1" uiViewPortShowScrollBars="1"
                  uiViewPortWidth="1918" uiViewPortHeight="960" uiViewPortEnableResizeLimits="0"
                  uiViewPortMinWidth="0" uiViewPortMinHeight="0" uiViewPortMaxWidth="0"
                  uiViewPortMaxHeight="0" uiViewPortEnableFixedAspectRatio="0"
-                 uiViewPortFixedAspectRatio="1.5" uiPanelZoom="1" uiPanelViewPortBackgroundColour="b2efefef"
-                 uiPanelBackgroundColour="0xffffffff" uiPanelBackgroundColour1="0xffffffff"
-                 uiPanelBackgroundColour2="0xffffffff" uiPanelBackgroundGradientType="1"
+                 uiViewPortFixedAspectRatio="1.5" uiPanelZoom="1.0" uiPanelViewPortBackgroundColour="b2777777"
+                 uiPanelBackgroundColour="ff777777" uiPanelBackgroundColour1="ff777777"
+                 uiPanelBackgroundColour2="ff636363" uiPanelBackgroundGradientType="0"
                  uiPanelImageResource="-- None" uiPanelImageAlpha="255" uiPanelImageLayout="64"
                  uiPanelSnapActive="1" uiPanelSnapSize="8" uiPanelPropertiesOnRight="0"
                  luaPanelPaintBackground="-- None" luaViewPortResized="-- None"
                  luaPanelResized="-- None" luaPanelFileDragDropHandler="-- None"
                  luaPanelFileDragEnterHandler="-- None" luaPanelFileDragExitHandler="-- None"
                  uiPanelInvisibleComponentAlpha="0.5" uiPanelTooltipPlacement="2"
-                 uiPanelTooltipFont="&lt;Sans-Serif&gt;;15;1;0;0;0;1;3" uiPanelTooltipColour="0xff000000"
-                 uiPanelTooltipBackgroundColour="0xffeeeebb" uiPanelTooltipOutlineColour="0xff000000"
-                 uiPanelTooltipCornerRound="1" uiPanelLegacyMode="1" uiPanelLookAndFeel="V3"
-                 uiPanelMidiToolbarVisible="0" uiPanelHeight="400" uiPanelWidth="400">
-    <uiPanelCanvasLayer uiPanelCanvasLayerName="New layer" uiPanelCanvasLayerUid="cc98f1c1ba0000006037aff5ff7f0000"
+                 uiPanelTooltipFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;3" uiPanelTooltipColour="ff000000"
+                 uiPanelTooltipBackgroundColour="eeeeeedd" uiPanelTooltipOutlineColour="77000000"
+                 uiPanelTooltipCornerRound="1.0" uiPanelLegacyMode="0" uiPanelLookAndFeel="V4 Light">
+    <uiPanelCanvasLayer uiPanelCanvasLayerName="New layer" uiPanelCanvasLayerUid="90d5f773ce030000e0648bd9cf010000"
                         uiPanelCanvasLayerColour="0x000000" uiPanelCanvasLayerVisibility="1"
                         uiPanelCanvasLayerIndex="0"/>
   </uiPanelEditor>
-  <modulator modulatorVstExported="1" vstIndex="1" modulatorIsStatic="0" modulatorGlobalVariable="-1"
+  <modulator modulatorVstExported="1" vstIndex="4" modulatorIsStatic="0" modulatorGlobalVariable="-1"
              modulatorMuteOnStart="0" modulatorMute="0" modulatorExcludeFromSnapshot="0"
              modulatorValueExpression="modulatorValue" modulatorValueExpressionReverse="midiValue"
              modulatorControllerExpression="value" luaModulatorGetValueForMIDI="-- None"
@@ -122,102 +100,33 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="-- None" name="modulator-1" modulatorMin="0"
-             modulatorMax="1" modulatorValue="1.0">
+             modulatorMax="1" modulatorValue="0.0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1" midiMessageCtrlrValue="0" midiMessageCtrlrNumberSize="0"
           midiMessageLatchAndStream="0" midiMessageMultiList="" midiMessageSysExFormula=""/>
     <component componentVisibility="1" componentSentBack="0" componentMouseCursor="2"
                componentDisabled="0" componentIsLocked="0" componentSnapSize="0"
                componentGroupName="" componentGroupped="0" componentRadioGroupId="0"
-               componentVisibleName="Menu attached to button" componentLabelVisible="1"
+               componentVisibleName="modulator-1" componentLabelVisible="1"
                componentLabelAlwaysOnTop="1" componentLabelPosition="top" componentLabelWidth="0"
                componentLabelHeight="14" componentLabelJustification="centred"
-               componentLabelFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;0" componentLabelColour="0xff000000"
+               componentLabelFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;3" componentLabelColour="ff000000"
                componentEffect="0" componentEffectRadius="1" componentEffectColour="0xff000000"
                componentEffectOffsetX="0" componentEffectOffsetY="0" componentExcludedFromLabelDisplay="0"
                componentValueDecimalPlaces="0" componentLuaMouseMoved="-- None"
-               componentLuaMouseDown="onMouseDown" componentLuaMouseUp="-- None"
+               componentLuaMouseDown="showPopup" componentLuaMouseUp="-- None"
                componentLuaMouseDrag="-- None" componentLuaMouseDoubleClick="-- None"
                componentLuaMouseEnter="-- None" componentLuaMouseExit="-- None"
                componentBubbleHelpEnabled="0" componentBubbleHelpTitle="" componentBubbleHelpText=""
                componentBubbleHelpTimeout="5000" componentBubbleHelpTrigger="0"
                componentBubbleHelpDismissOnExit="0" uiButtonLookAndFeel="Default"
-               uiButtonLookAndFeelIsCustom="0" uiButtonIsToggle="0" uiButtonTrueValue="1"
+               uiButtonLookAndFeelIsCustom="0" uiButtonIsToggle="1" uiButtonTrueValue="1"
                uiButtonFalseValue="0" uiButtonContent="False&#10;True" uiButtonRepeat="0"
                uiButtonRepeatRate="100" uiButtonTriggerOnMouseDown="0" componentInternalFunction="-- None"
-               componentRectangle="32 24 183 124" uiButtonColourOn="0xff0000ff"
-               uiButtonColourOff="0xff4364ff" uiButtonTextColourOn="0xff000000"
-               uiButtonTextColourOff="0xff454545" uiButtonConnectedLeft="0"
-               uiButtonConnectedRight="0" uiButtonConnectedTop="0" uiButtonConnectedBottom="0"
-               componentLayerUid="cc98f1c1ba0000006037aff5ff7f0000" uiType="uiButton"
-               componentRadioGroupNotifyMidi="1"/>
-  </modulator>
-  <modulator modulatorVstExported="1" vstIndex="2" modulatorIsStatic="0" modulatorGlobalVariable="-1"
-             modulatorMuteOnStart="0" modulatorMute="0" modulatorExcludeFromSnapshot="0"
-             modulatorValueExpression="modulatorValue" modulatorValueExpressionReverse="midiValue"
-             modulatorControllerExpression="value" luaModulatorGetValueForMIDI="-- None"
-             luaModulatorGetValueFromMIDI="-- None" modulatorLinkedToPanelProperty="-- None"
-             modulatorLinkedToModulatorProperty="-- None" modulatorLinkedToModulator="-- None"
-             modulatorLinkedToModulatorSource="1" modulatorLinkedToComponent="Modulator"
-             modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
-             modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
-             luaModulatorValueChange="-- None" name="modulator-3" modulatorMin="0"
-             modulatorMax="1" modulatorValue="1.0">
-    <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
-          midiMessageCtrlrNumber="1" midiMessageCtrlrValue="0" midiMessageCtrlrNumberSize="0"
-          midiMessageLatchAndStream="0" midiMessageMultiList="" midiMessageSysExFormula=""/>
-    <component componentVisibility="1" componentSentBack="0" componentMouseCursor="2"
-               componentDisabled="0" componentIsLocked="0" componentSnapSize="0"
-               componentGroupName="" componentGroupped="0" componentRadioGroupId="0"
-               componentVisibleName="Menu at cursor position" componentLabelVisible="1"
-               componentLabelAlwaysOnTop="1" componentLabelPosition="top" componentLabelWidth="0"
-               componentLabelHeight="14" componentLabelJustification="centred"
-               componentLabelFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;0" componentLabelColour="0xff000000"
-               componentEffect="0" componentEffectRadius="1" componentEffectColour="0xff000000"
-               componentEffectOffsetX="0" componentEffectOffsetY="0" componentExcludedFromLabelDisplay="0"
-               componentValueDecimalPlaces="0" componentLuaMouseMoved="-- None"
-               componentLuaMouseDown="onMouseDownAlt" componentLuaMouseUp="-- None"
-               componentLuaMouseDrag="-- None" componentLuaMouseDoubleClick="-- None"
-               componentLuaMouseEnter="-- None" componentLuaMouseExit="-- None"
-               componentBubbleHelpEnabled="0" componentBubbleHelpTitle="" componentBubbleHelpText=""
-               componentBubbleHelpTimeout="5000" componentBubbleHelpTrigger="0"
-               componentBubbleHelpDismissOnExit="0" uiButtonLookAndFeel="Default"
-               uiButtonLookAndFeelIsCustom="0" uiButtonIsToggle="0" uiButtonTrueValue="1"
-               uiButtonFalseValue="0" uiButtonContent="False&#10;True" uiButtonRepeat="0"
-               uiButtonRepeatRate="100" uiButtonTriggerOnMouseDown="0" componentInternalFunction="-- None"
-               componentRectangle="232 24 183 124" uiButtonColourOn="0xff0000ff"
-               uiButtonColourOff="0xff4364ff" uiButtonTextColourOn="0xff000000"
-               uiButtonTextColourOff="0xff454545" uiButtonConnectedLeft="0"
-               uiButtonConnectedRight="0" uiButtonConnectedTop="0" uiButtonConnectedBottom="0"
-               uiType="uiButton" componentLayerUid="cc98f1c1ba0000006037aff5ff7f0000"
-               componentRadioGroupNotifyMidi="1"/>
-  </modulator>
-  <modulator modulatorCustomIndex="0" modulatorCustomIndexGroup="0" modulatorIsStatic="1"
-             name="logLabel" modulatorVstExported="0" modulatorValue="0.0">
-    <component componentVisibility="1" componentSentBack="0" componentMouseCursor="2"
-               componentDisabled="0" componentIsLocked="0" componentSnapSize="0"
-               componentGroupName="" componentGroupped="0" componentRadioGroupId="0"
-               componentVisibleName="modulator-2" componentLabelVisible="0"
-               componentLabelAlwaysOnTop="1" componentLabelPosition="top" componentLabelWidth="0"
-               componentLabelHeight="14" componentLabelJustification="centred"
-               componentLabelFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;0" componentLabelColour="0xff000000"
-               componentEffect="0" componentEffectRadius="1" componentEffectColour="0xff000000"
-               componentEffectOffsetX="0" componentEffectOffsetY="0" componentExcludedFromLabelDisplay="0"
-               componentValueDecimalPlaces="0" componentLuaMouseMoved="-- None"
-               componentLuaMouseDown="-- None" componentLuaMouseUp="-- None"
-               componentLuaMouseDrag="-- None" componentLuaMouseDoubleClick="-- None"
-               componentLuaMouseEnter="-- None" componentLuaMouseExit="-- None"
-               componentBubbleHelpEnabled="0" componentBubbleHelpTitle="" componentBubbleHelpText=""
-               componentBubbleHelpTimeout="5000" componentBubbleHelpTrigger="0"
-               componentBubbleHelpDismissOnExit="0" uiLabelBgColour="0x00000000"
-               uiLabelTextColour="0xff000000" uiLabelOutline="2" uiLabelOutlineColour="ff000000"
-               uiLabelJustification="topLeft" uiLabelFitFont="0" uiLabelFont="&lt;Monospaced&gt;;14;0;0;0;0;1;3"
-               uiLabelText="onMouseDown&#10;&#9;right click&#10;m:showAt(comp,height) COMP NAME = modulator-1&#10;&#9;item clicked: 0&#10;"
-               uiLabelDisplaysAllValues="0" uiLabelDisplayFormat="%n(%N) = %v(%h)"
-               uiLabelInputHighlightTextColour="0xffffffff" uiLabelInputHighlightColour="0xff0000ff"
-               uiLabelEditOnSingleClick="0" uiLabelEditOnDoubleClick="0" uiLabelEditFocusDiscardsChanges="1"
-               uiLabelInputAllowedChars="" uiLabelInputMaxLength="1024" uiLabelChangedCbk="-- None"
-               uiType="uiLabel" componentRectangle="32 160 382 221" componentLayerUid="cc98f1c1ba0000006037aff5ff7f0000"
-               componentRadioGroupNotifyMidi="1"/>
+               componentRectangle="168 88 88 64" uiButtonColourOn="ff42a2c8"
+               uiButtonColourOff="ffffffff" uiButtonTextColourOn="ffffffff"
+               uiButtonTextColourOff="ff000000" uiButtonConnectedLeft="0" uiButtonConnectedRight="0"
+               uiButtonConnectedTop="0" uiButtonConnectedBottom="0" uiType="uiButton"
+               componentLayerUid="90d5f773ce030000e0648bd9cf010000"/>
   </modulator>
 </panel>
