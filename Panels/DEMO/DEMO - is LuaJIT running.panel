@@ -30,13 +30,13 @@
        panelModulatorListColumns="-- None" panelModulatorListCsvDelimiter=","
        panelModulatorListXmlRoot="ctrlrModulatorList" panelModulatorListXmlModulator="ctrlrModulator"
        panelModulatorListSortOption="1" panelGlobalVariables="-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1"
-       panelResources="-- None" panelPropertyDisplayIDs="1" panelIndex="0"
+       panelResources="-- None" panelPropertyDisplayIDs="1" panelIndex="1"
        panelIsDirty="0">
   <uiWindowManager>
     <uiChildWindow uiChildWindowName="LuaMethodEditor" uiChildWindowState="560 31 1026 1000">
       <uiChildWindowContentState luaMethodEditor="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#13;&#10;&#13;&#10;&lt;OPEN id=&quot;LUA&quot; scrollPos=&quot;0&quot;&gt;&#13;&#10;  &lt;SELECTED id=&quot;/LUA/myNewMethod&quot;/&gt;&#13;&#10;&lt;/OPEN&gt;&#13;&#10;;63d1af05ae3d404497569eb5d13ae3a9:263ae613dfa14c75a6e71008920d694e:d7ab4e6a8a5d4e0dacc74543277473c7"/>
     </uiChildWindow>
-    <uiChildWindow uiChildWindowName="LuaConsole" uiChildWindowState="445 120 800 500">
+    <uiChildWindow uiChildWindowName="LuaConsole" uiChildWindowState="539 415 800 500">
       <uiChildWindowContentState/>
     </uiChildWindow>
   </uiWindowManager>
@@ -62,7 +62,7 @@
                    luaMethodLinkedProperty="" luaMethodSource="0" uuid="00000000000000000000000000000006"
                    luaMethodValid="1"/>
       </luaMethodGroup>
-      <luaMethod luaMethodName="myNewMethod" luaMethodCode="function myNewMethod()&#10;console(&quot;Are we luajit?&quot;)&#13;&#10;--console(String(jit.version))  -- e.g. &quot;LuaJIT 2.1.0-beta3&quot;&#13;&#10;console(tostring(jit.status())) -- true/false + active optimizations&#13;&#10;console(string.rep(&quot;~&quot;,50))&#10;end"
+      <luaMethod luaMethodName="myNewMethod" luaMethodCode="function myNewMethod()&#10;    local jitActive = false&#13;&#10;    if jit and type(jit.status) == &quot;function&quot; then&#13;&#10;        jitActive = jit.status()&#13;&#10;    end&#13;&#10;    &#13;&#10;    console(&quot;CtrlrX LuaJIT Test: Script executed successfully!&quot;)&#13;&#10;    console(&quot;LuaJIT compiler active: &quot; .. tostring(jitActive))&#10;end"
                  luaMethodLinkedProperty="" luaMethodSource="0" uuid="63d1af05ae3d404497569eb5d13ae3a9"
                  luaMethodValid="1"/>
       <luaMethod luaMethodName="init" luaMethodCode="--&#10;-- Called when the panel has finished loading&#10;--&#10;-- @type the type of instance being started, types available in the CtrlrPanel&#10;-- class as enum&#10;--&#10;-- InstanceSingle&#10;-- InstanceMulti&#10;-- InstanceSingleRestricted&#10;-- InstanceSingleEngine&#10;-- InstanceMultiEngine&#10;-- InstanceSingleRestrictedEngine&#10;--&#10;init = function(--[[ CtrlrInstance --]] type)&#10;end"
@@ -86,16 +86,16 @@
                  uiViewPortFixedAspectRatio="1.2119" uiPanelZoom="1.0" uiPanelViewPortBackgroundColour="b2efefef"
                  uiPanelBackgroundColour="ffefefef" uiPanelBackgroundColour1="ffefefef"
                  uiPanelBackgroundColour2="ffc7c7c7" uiPanelBackgroundGradientType="0"
-                 uiPanelImageResource="-- None" uiPanelImageAlpha="255" uiPanelImageLayout="64"
-                 uiPanelSnapActive="1" uiPanelSnapSize="8" uiPanelPropertiesOnRight="0"
-                 luaPanelPaintBackground="-- None" luaViewPortResized="-- None"
-                 luaPanelResized="-- None" luaPanelFileDragDropHandler="-- None"
+                 uiPanelImageResource="-- None" uiPanelIconResource="-- None"
+                 uiPanelImageAlpha="255" uiPanelImageLayout="64" uiPanelSnapActive="1"
+                 uiPanelSnapSize="8" uiPanelPropertiesOnRight="0" luaPanelPaintBackground="-- None"
+                 luaViewPortResized="-- None" luaPanelResized="-- None" luaPanelFileDragDropHandler="-- None"
                  luaPanelFileDragEnterHandler="-- None" luaPanelFileDragExitHandler="-- None"
                  uiPanelInvisibleComponentAlpha="0.5" uiPanelTooltipPlacement="2"
                  uiPanelTooltipFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;3" uiPanelTooltipColour="ff000000"
                  uiPanelTooltipBackgroundColour="ffffffff" uiPanelTooltipOutlineColour="ffdddddd"
-                 uiPanelTooltipCornerRound="1.0" uiPanelLegacyMode="0" uiPanelLookAndFeel="V4 Light"
-                 uiPanelJitMode="0">
+                 uiPanelTooltipCornerRound="1.0" uiPanelJitMode="0" uiPanelLegacyMode="1"
+                 uiPanelLookAndFeel="V4 Light">
     <uiPanelCanvasLayer uiPanelCanvasLayerName="New layer" uiPanelCanvasLayerUid="b497ae69ed010000a0ee5e3751020000"
                         uiPanelCanvasLayerColour="0x000000" uiPanelCanvasLayerVisibility="1"
                         uiPanelCanvasLayerIndex="0"/>
