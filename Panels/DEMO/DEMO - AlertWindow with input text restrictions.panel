@@ -30,7 +30,7 @@
        panelModulatorListColumns="-- None" panelModulatorListCsvDelimiter=","
        panelModulatorListXmlRoot="ctrlrModulatorList" panelModulatorListXmlModulator="ctrlrModulator"
        panelModulatorListSortOption="1" panelGlobalVariables="-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1"
-       panelResources="-- None" panelPropertyDisplayIDs="0" panelIndex="3"
+       panelResources="-- None" panelPropertyDisplayIDs="0" panelIndex="0"
        panelIsDirty="0" ctrlrLuaExternalEditorEnabled="0">
   <uiWindowManager>
     <uiChildWindow uiChildWindowName="LuaMethodEditor" uiChildWindowState="fs 8 31 800 500">
@@ -42,16 +42,16 @@
   </uiWindowManager>
   <luaManager>
     <luaManagerMethods>
-      <luaMethod luaMethodName="callAlert" luaMethodCode="&#13;&#10;&#13;&#10;callAlert = function(--[[ CtrlrComponent --]] comp --[[ MouseEvent --]], event)&#13;&#10;&#13;&#10;local ls = {}&#13;&#10;for i,v in ipairs(legalChars) do&#13;&#10;table.insert(ls,v)&#13;&#10;end&#13;&#10;console(table.concat(ls,&quot;\n&quot;))&#13;&#10;local sf,max_chars = string.format,16&#13;&#10;&#13;&#10;&#13;&#10;    local ren = &quot;&quot;&#13;&#10;    local modalWindow = AlertWindow(&quot;\nRename Patch?&quot;, ren, AlertWindow.QuestionIcon)&#13;&#10;    local allowedCharsStr = table.concat(ls)&#13;&#10;    modalWindow:setMessage(&quot;Max Chars = &quot;..max_chars)&#13;&#10;    modalWindow:addTextEditor(&quot;edit_string&quot;, ren, &quot;RENAME&quot;, false)&#13;&#10;    modalWindow:addTextBlock(sf(&quot;Allowed Characters:&quot;))&#13;&#10;    modalWindow:addTextBlock(allowedCharsStr)&#13;&#10;&#13;&#10;    modalWindow:addButton(&quot; OK &quot;, 1, KeyPress(KeyPress.returnKey), KeyPress())&#13;&#10;    modalWindow:addButton(&quot; Suggest &quot;, 2, KeyPress(), KeyPress())&#13;&#10;    modalWindow:addButton(&quot;Cancel&quot;, 0, KeyPress(KeyPress.escapeKey), KeyPress())&#13;&#10;    modalWindow:getTextEditor(&quot;edit_string&quot;):setInputRestrictions(max_chars, allowedCharsStr)&#13;&#10;&#13;&#10;    local ret = modalWindow:runModalLoop()&#13;&#10;&#13;&#10;    if ret == 1 then&#13;&#10;        local str = L(modalWindow:getTextEditor(&quot;edit_string&quot;):getText())&#13;&#10;        panel:getLabelComponent(&quot;renameL&quot;):setText(str)&#13;&#10;    elseif ret == 2 then&#13;&#10;        local str = L(modalWindow:getTextEditor(&quot;edit_string&quot;):getText())&#13;&#10;        panel:getLabelComponent(&quot;renameL&quot;):setText(string.reverse(str))&#13;&#10;    end&#13;&#10;    modalWindow:setVisible(false)&#13;&#10;end&#13;&#10;"
+      <luaMethod luaMethodName="callAlert" luaMethodCode="&#13;&#10;&#13;&#10;callAlert = function(--[[ CtrlrComponent --]] comp --[[ MouseEvent --]], event)&#13;&#10;&#13;&#10;local ls = {}&#13;&#10;for i,v in ipairs(legalChars) do&#13;&#10;table.insert(ls,v)&#13;&#10;end&#13;&#10;--console(table.concat(ls,&quot;\n&quot;))&#13;&#10;local sf,max_chars = string.format,16&#13;&#10;&#13;&#10;&#13;&#10;    local ren = &quot;&quot;&#13;&#10;    local modalWindow = AlertWindow(&quot;\nRename Patch?&quot;, ren, AlertWindow.QuestionIcon)&#13;&#10;    local allowedCharsStr = table.concat(ls)&#13;&#10;    modalWindow:setMessage(&quot;Max Chars = &quot;..max_chars)&#13;&#10;    modalWindow:addTextEditor(&quot;edit_string&quot;, ren, &quot;RENAME&quot;, false)&#13;&#10;    modalWindow:addTextBlock(&quot;Allowed Characters:&quot;)&#13;&#10;    modalWindow:addTextBlock(allowedCharsStr)&#13;&#10;&#13;&#10;    modalWindow:addButton(&quot; OK &quot;, 1, KeyPress(KeyPress.returnKey), KeyPress())&#13;&#10;    modalWindow:addButton(&quot; Suggest &quot;, 2, KeyPress(), KeyPress())&#13;&#10;    modalWindow:addButton(&quot;Cancel&quot;, 0, KeyPress(KeyPress.escapeKey), KeyPress())&#13;&#10;    modalWindow:getTextEditor(&quot;edit_string&quot;):setInputRestrictions(max_chars, allowedCharsStr)&#13;&#10;    modalWindow:getTextEditor(&quot;edit_string&quot;):setTextToShowWhenEmpty(&quot;Please enter a name: Max chars=&quot;..max_chars, Colour(0xffff0000))&#13;&#10;console(&quot;num chars=&quot;..    modalWindow:getTextEditor(&quot;edit_string&quot;):getTotalNumChars())&#13;&#10;    local ret = modalWindow:runModalLoop()&#13;&#10;&#13;&#10;    if ret == 1 then&#13;&#10;        local str = L(modalWindow:getTextEditor(&quot;edit_string&quot;):getText())&#13;&#10;        panel:getLabelComponent(&quot;renameL&quot;):setText(str)&#13;&#10;    elseif ret == 2 then&#13;&#10;        local str = L(modalWindow:getTextEditor(&quot;edit_string&quot;):getText())&#13;&#10;        panel:getLabelComponent(&quot;renameL&quot;):setText(string.reverse(str))&#13;&#10;    end&#13;&#10;panel:getLabelComponent(&quot;numcharsL&quot;):setText(&quot;number of characters: &quot;..modalWindow:getTextEditor(&quot;edit_string&quot;):getTotalNumChars())&#13;&#10;    modalWindow:setVisible(false)&#13;&#10;end&#13;&#10;"
                  luaMethodLinkedProperty="componentLuaMouseDown" luaMethodSource="0"
                  uuid="c7cac4ada68945db80dd6626254776b9" luaMethodValid="1"/>
       <luaMethod luaMethodName="legalChars" luaMethodCode="legalChars = {&#13;&#10;&quot;A&quot;,-- see page 21 Manual&#13;&#10;&quot;B&quot;,&#13;&#10;&quot;C&quot;,&#13;&#10;&quot;D&quot;,&#13;&#10;&quot;E&quot;,&#13;&#10;&quot;F&quot;,&#13;&#10;&quot;G&quot;,&#13;&#10;&quot;H&quot;,&#13;&#10;&quot;I&quot;,&#13;&#10;&quot;J&quot;,&#13;&#10;&quot;K&quot;,&#13;&#10;&quot;L&quot;,&#13;&#10;&quot;M&quot;,&#13;&#10;&quot;N&quot;,&#13;&#10;&quot;O&quot;,&#13;&#10;&quot;P&quot;,&#13;&#10;&quot;Q&quot;,&#13;&#10;&quot;R&quot;,&#13;&#10;&quot;S&quot;,&#13;&#10;&quot;T&quot;,&#13;&#10;&quot;U&quot;,&#13;&#10;&quot;V&quot;,&#13;&#10;&quot;W&quot;,&#13;&#10;&quot;X&quot;,&#13;&#10;&quot;Y&quot;,&#13;&#10;&quot;Z&quot;,&#13;&#10;&quot; &quot;,&#13;&#10;&quot;a&quot;,&#13;&#10;&quot;b&quot;,&#13;&#10;&quot;c&quot;,&#13;&#10;&quot;d&quot;,&#13;&#10;&quot;e&quot;,&#13;&#10;&quot;f&quot;,&#13;&#10;&quot;g&quot;,&#13;&#10;&quot;h&quot;,&#13;&#10;&quot;i&quot;,&#13;&#10;&quot;j&quot;,&#13;&#10;&quot;k&quot;,&#13;&#10;&quot;l&quot;,&#13;&#10;&quot;m&quot;,&#13;&#10;&quot;n&quot;,&#13;&#10;&quot;o&quot;,&#13;&#10;&quot;p&quot;,&#13;&#10;&quot;q&quot;,&#13;&#10;&quot;r&quot;,&#13;&#10;&quot;s&quot;,&#13;&#10;&quot;t&quot;,&#13;&#10;&quot;u&quot;,&#13;&#10;&quot;v&quot;,&#13;&#10;&quot;w&quot;,&#13;&#10;&quot;x&quot;,&#13;&#10;&quot;y&quot;,&#13;&#10;&quot;z&quot;,&#13;&#10;&quot;1&quot;,&#13;&#10;&quot;2&quot;,&#13;&#10;&quot;3&quot;,&#13;&#10;&quot;4&quot;,&#13;&#10;&quot;5&quot;,&#13;&#10;&quot;6&quot;,&#13;&#10;&quot;7&quot;,&#13;&#10;&quot;8&quot;,&#13;&#10;&quot;9&quot;,&#13;&#10;&quot;0&quot;,&#13;&#10;&quot;+&quot;,&#13;&#10;&quot;-&quot;,&#13;&#10;&quot;*&quot;,&#13;&#10;&quot;/&quot;,&#13;&#10;&quot;#&quot;,&#13;&#10;&quot;!&quot;,&#13;&#10;&quot;,&quot;,&#13;&#10;&quot;.&quot;,&#13;&#10;}"
                  luaMethodLinkedProperty="" luaMethodSource="0" uuid="b5d5a78497304dae85b579e610dbcfce"
                  luaMethodValid="1"/>
-      <luaMethod luaMethodName="init" luaMethodCode="--&#10;-- Called when the panel has finished loading&#10;--&#10;-- @type the type of instance being started, types available in the CtrlrPanel&#10;-- class as enum&#10;--&#10;-- InstanceSingle&#10;-- InstanceMulti&#10;-- InstanceSingleRestricted&#10;-- InstanceSingleEngine&#10;-- InstanceMultiEngine&#10;-- InstanceSingleRestrictedEngine&#10;--&#10;init = function(--[[ CtrlrInstance --]] type)&#13;&#10;panel:getLabelComponent(&quot;renameL&quot;):setText(&quot;&quot;)&#10;end"
+      <luaMethod luaMethodName="init" luaMethodCode="--&#10;-- Called when the panel has finished loading&#10;--&#10;-- @type the type of instance being started, types available in the CtrlrPanel&#10;-- class as enum&#10;--&#10;-- InstanceSingle&#10;-- InstanceMulti&#10;-- InstanceSingleRestricted&#10;-- InstanceSingleEngine&#10;-- InstanceMultiEngine&#10;-- InstanceSingleRestrictedEngine&#10;--&#10;init = function(--[[ CtrlrInstance --]] type)&#13;&#10;panel:getLabelComponent(&quot;renameL&quot;):setText(&quot;&quot;)&#10;panel:getLabelComponent(&quot;numcharsL&quot;):setText(&quot;number of characters: 0&quot;)&#10;end"
                  luaMethodLinkedProperty="luaPanelLoaded" luaMethodSource="0"
                  uuid="24d0a58e798e44d8a9a6dad70d7ab79c" luaMethodValid="1"/>
-      <luaMethodGroup name="Built-In" uuid="0836d7aa931a4535b1802a0072c180cd" isReadOnly="1">
+      <luaMethodGroup name="Built-In" uuid="a52c90d3369547da873f21410a627b71" isReadOnly="1">
         <luaMethod luaMethodName="table_dump" luaMethodCode="-- @1.1&#10;--&#10;-- Print table contents&#10;--&#10;function table_dump(table)&#10;&#9;for key,value in ipairs(table) do&#10;&#9;&#9;_DBG (&quot;KEY= [&quot;..key..&quot;]&quot;)&#10;&#10;&#9;&#9;if (type(value) == &quot;table&quot;) then&#10;&#9;&#9;&#9;table_dump(value)&#10;&#9;&#9;elseif (type(value) == &quot;nil&quot;) then&#10;&#9;&#9;&#9;_DBG (&quot; = NIL&quot;)&#10;&#9;&#9;else&#10;&#9;&#9;&#9;what (value)&#10;&#9;&#9;end&#10;&#9;end&#10;end"
                    luaMethodLinkedProperty="" luaMethodSource="0" uuid="00000000000000000000000000000001"
                    isReadOnly="1" luaMethodValid="1"/>
@@ -111,7 +111,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="-- None" modulatorMin="0" modulatorMax="1"
-             modulatorValue="1.0">
+             modulatorValue="0.0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1" midiMessageCtrlrValue="0" midiMessageCtrlrNumberSize="0"
           midiMessageLatchAndStream="0" midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -137,8 +137,8 @@
                componentRectangle="256 48 88 64" uiButtonColourOn="ff42a2c8"
                uiButtonColourOff="fffbbaba" uiButtonTextColourOn="ffffffff"
                uiButtonTextColourOff="ff000000" uiButtonConnectedLeft="0" uiButtonConnectedRight="0"
-               uiButtonConnectedTop="0" uiButtonConnectedBottom="0" uiType="uiButton"
-               componentLayerUid="91cfc2e49d00000030697af2c1010000"/>
+               uiButtonConnectedTop="0" uiButtonConnectedBottom="0" componentLayerUid="91cfc2e49d00000030697af2c1010000"
+               uiType="uiButton"/>
   </modulator>
   <modulator modulatorCustomIndex="0" modulatorCustomIndexGroup="0" modulatorIsStatic="1"
              name="renameL" modulatorVstExported="0" modulatorValue="0.0">
@@ -157,14 +157,15 @@
                componentLuaMouseEnter="-- None" componentLuaMouseExit="-- None"
                componentBubbleHelpEnabled="0" componentBubbleHelpTitle="" componentBubbleHelpText=""
                componentBubbleHelpTimeout="5000" componentBubbleHelpTrigger="0"
-               componentBubbleHelpDismissOnExit="0" uiLabelBgColour="0" uiLabelTextColour="ff000000"
-               uiLabelOutline="0" uiLabelOutlineColour="0" uiLabelJustification="centred"
-               uiLabelFitFont="0" uiLabelFont="&lt;Sans-Serif&gt;;14;0;0;0;0;1;3"
-               uiLabelText="" uiLabelDisplaysAllValues="0" uiLabelDisplayFormat="%n(%N) = %v(%h)"
+               componentBubbleHelpDismissOnExit="0" uiLabelBgColour="ffd3fffd"
+               uiLabelTextColour="ff000000" uiLabelOutline="0" uiLabelOutlineColour="0"
+               uiLabelJustification="centred" uiLabelFitFont="0" uiLabelFont="&lt;Sans-Serif&gt;;14;0;0;0;0;1;3"
+               uiLabelText="Hi tehre" uiLabelDisplaysAllValues="0" uiLabelDisplayFormat="%n(%N) = %v(%h)"
                uiLabelInputHighlightTextColour="ff000000" uiLabelInputHighlightColour="ffffff00"
                uiLabelEditOnSingleClick="1" uiLabelEditOnDoubleClick="0" uiLabelEditFocusDiscardsChanges="1"
                uiLabelInputAllowedChars="" uiLabelInputMaxLength="1024" uiLabelChangedCbk="-- None"
-               uiType="uiLabel" componentRectangle="40 152 519 53" componentLayerUid="91cfc2e49d00000030697af2c1010000"/>
+               componentLayerUid="91cfc2e49d00000030697af2c1010000" componentRectangle="40 123 519 53"
+               uiType="uiLabel"/>
   </modulator>
   <modulator name="modulator-3" modulatorGlobalVariable="-1" modulatorVstExported="1"
              vstIndex="4505" modulatorIsStatic="0" modulatorMuteOnStart="0"
@@ -203,7 +204,35 @@
                componentRectangle="376 48 88 64" uiButtonColourOn="ff42a2c8"
                uiButtonColourOff="ffbafbbd" uiButtonTextColourOn="ffffffff"
                uiButtonTextColourOff="ff000000" uiButtonConnectedLeft="0" uiButtonConnectedRight="0"
-               uiButtonConnectedTop="0" uiButtonConnectedBottom="0" componentLayerUid="91cfc2e49d00000030697af2c1010000"
-               uiType="uiButton"/>
+               uiButtonConnectedTop="0" uiButtonConnectedBottom="0" uiType="uiButton"
+               componentLayerUid="91cfc2e49d00000030697af2c1010000"/>
   </modulator>
+  <modulator modulatorCustomIndex="0" modulatorCustomIndexGroup="0" modulatorIsStatic="1"
+             name="numcharsL" modulatorVstExported="0" modulatorValue="0.0">
+    <component componentVisibility="1" componentSentBack="0" componentMouseCursor="2"
+               componentDisabled="0" componentIsLocked="0" componentSnapSize="0"
+               componentGroupName="" componentGroupped="0" componentRadioGroupId="0"
+               componentVisibleName="modulator-2" componentLabelVisible="0"
+               componentLabelAlwaysOnTop="1" componentLabelPosition="top" componentLabelWidth="0"
+               componentLabelHeight="14" componentLabelJustification="centred"
+               componentLabelFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;3" componentLabelColour="ff000000"
+               componentEffect="0" componentEffectRadius="1" componentEffectColour="0xff000000"
+               componentEffectOffsetX="0" componentEffectOffsetY="0" componentExcludedFromLabelDisplay="0"
+               componentValueDecimalPlaces="0" componentLuaMouseMoved="-- None"
+               componentLuaMouseDown="-- None" componentLuaMouseUp="-- None"
+               componentLuaMouseDrag="-- None" componentLuaMouseDoubleClick="-- None"
+               componentLuaMouseEnter="-- None" componentLuaMouseExit="-- None"
+               componentBubbleHelpEnabled="0" componentBubbleHelpTitle="" componentBubbleHelpText=""
+               componentBubbleHelpTimeout="5000" componentBubbleHelpTrigger="0"
+               componentBubbleHelpDismissOnExit="0" uiLabelBgColour="0" uiLabelTextColour="ff000000"
+               uiLabelOutline="0" uiLabelOutlineColour="0" uiLabelJustification="centred"
+               uiLabelFitFont="0" uiLabelFont="&lt;Sans-Serif&gt;;14;0;0;0;0;1;3"
+               uiLabelText="number of characters: 8" uiLabelDisplaysAllValues="0"
+               uiLabelDisplayFormat="%n(%N) = %v(%h)" uiLabelInputHighlightTextColour="ff000000"
+               uiLabelInputHighlightColour="ffffff00" uiLabelEditOnSingleClick="0"
+               uiLabelEditOnDoubleClick="0" uiLabelEditFocusDiscardsChanges="1"
+               uiLabelInputAllowedChars="" uiLabelInputMaxLength="1024" uiLabelChangedCbk="-- None"
+               uiType="uiLabel" componentRectangle="40 187 519 34" componentLayerUid="91cfc2e49d00000030697af2c1010000"/>
+  </modulator>
+  <panelCustomData/>
 </panel>
